@@ -1,3 +1,7 @@
+CREATE DATABASE omajaakaappi;
+
+USE omajaakaappi;
+
 CREATE TABLE tuote
 (
   tuote_id INT NOT NULL,
