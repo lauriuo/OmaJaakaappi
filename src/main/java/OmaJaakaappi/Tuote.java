@@ -1,5 +1,7 @@
 package OmaJaakaappi;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,7 +19,7 @@ public class Tuote {
 
     @Column(name="tuote_kcal")
     private int tuote_kcal;
-
+    
     public Tuote () {
     }
 
@@ -31,15 +33,28 @@ public class Tuote {
     public int getTuote_id() {
         return tuote_id;
     }
+    
     public int getTuote_kcal() {
         return tuote_kcal;
     }
+    public void setTuote_kcal(int kcal) {
+    	this.tuote_kcal = kcal;
+    }
+    
     public String getTuote_nimi() {
         return tuote_nimi;
     }
+    public void setTuote_nimi(String nimi) {
+    	this.tuote_nimi = nimi;
+    }
+    
     public String getTuote_yksikko() {
         return tuote_yksikko;
     }
+    public void setTuote_yksikko(String yksikko) {
+    	this.tuote_yksikko = yksikko;
+    }
+    
     @Override
     public String toString() {
         return "id: " + tuote_id +

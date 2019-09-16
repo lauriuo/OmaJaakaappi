@@ -15,7 +15,7 @@ CREATE TABLE jaakaappi
 (
   jaakaappi_id INT NOT NULL AUTO_INCREMENT,
   tuote_pvm DATE,
-  tuote_maara INT,
+  tuote_maara FLOAT,
   tuote_status VARCHAR(100) NOT NULL,
   tuote_id INT NOT NULL,
   PRIMARY KEY (jaakaappi_id),
@@ -41,7 +41,7 @@ CREATE TABLE rpk
 CREATE TABLE ainekset
 (
   aines_id INT NOT NULL AUTO_INCREMENT,
-  aines_maara INT,
+  aines_maara FLOAT,
   tuote_id INT NOT NULL,
   resepti_id INT NOT NULL,
   PRIMARY KEY (aines_id),
