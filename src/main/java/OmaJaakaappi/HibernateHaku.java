@@ -1,5 +1,6 @@
 package OmaJaakaappi;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -100,7 +101,7 @@ public class HibernateHaku {
             if (transaktio != null) transaktio.rollback();
             e.printStackTrace();
         }
-        /**
+        
         //lisäys jääkaappiin
         try (Session istunto = istuntotehdas.openSession()) {
             transaktio = istunto.beginTransaction();
@@ -116,7 +117,7 @@ public class HibernateHaku {
             if (transaktio != null) transaktio.rollback();
             e.printStackTrace();
         }
-        **/
+        
         //päivitetään jääkaapin tuote
         try (Session istunto = istuntotehdas.openSession()) {
             transaktio = istunto.beginTransaction();
