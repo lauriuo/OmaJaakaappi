@@ -17,14 +17,12 @@
          jdbc:mariadb://localhost/omajaakaappi
       </property>
       
-      <property name = "hibernate.connection.username">
-      ryhma9
-      </property>
-      <property name = "hibernate.connection.password">
-      ryhma9
-      </property>
+      <property name = "hibernate.connection.username">ryhma9</property>
+      <property name = "hibernate.connection.password">ryhma9</property>
       <property name="show_sql">true</property>
-    <mapping class="OmaJaakaappi.Tuote"/>
+      <property name="hbm2ddl.auto">validate</property>
+      <mapping class="OmaJaakaappi.Tuote"/>
+      <mapping class="OmaJaakaappi.Jaakaappi"/>
       <!-- List of XML mapping files -->
    </session-factory>
 </hibernate-configuration>
