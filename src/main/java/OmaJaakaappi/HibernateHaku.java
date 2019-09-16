@@ -1,5 +1,6 @@
 package OmaJaakaappi;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -11,23 +12,65 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 
 public class HibernateHaku {
+
+        public HibernateHaku() {
+        }
+
+        public ArrayList<Object> Haku(String s) {
+            StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
+            SessionFactory istuntotehdas = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+            Transaction transaktio = null;
+            ArrayList<Object> result = new ArrayList<>();
+
+            try (Session istunto = istuntotehdas.openSession()) {
+                transaktio = istunto.beginTransaction();
+                @SuppressWarnings("unchecked")
+                List<Object> haut = istunto.createQuery(s).getResultList();
+                for (Object o : haut) {
+                    result.add(o);
+                }
+            } catch (Exception e) {
+                if (transaktio != null) transaktio.rollback();
+                e.printStackTrace();
+            }
+            return result;
+        }
+        public boolean Lisays(Object o) {
+            StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
+            SessionFactory istuntotehdas = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+            Transaction transaktio = null;
+            try (Session istunto = istuntotehdas.openSession()) {
+                transaktio = istunto.beginTransaction();
+                istunto.save(o);
+                istunto.getTransaction().commit();
+                return true;
+            } catch (Exception e) {
+                if (transaktio != null) transaktio.rollback();
+                e.printStackTrace();
+            }
+            return false;
+        }
+        public boolean Poisto(String s) {
+            StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
+            SessionFactory istuntotehdas = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+            Transaction transaktio = null;
+            try (Session istunto = istuntotehdas.openSession()) {
+                transaktio = istunto.beginTransaction();
+                Query query = istunto.createQuery(s);
+                query.executeUpdate();
+                return true;
+            } catch (Exception e) {
+                if (transaktio != null) transaktio.rollback();
+                e.printStackTrace();
+            }
+            return false;
+        }
     public static void main( String[] args ) {
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
         SessionFactory istuntotehdas = new MetadataSources(registry).buildMetadata().buildSessionFactory();
         Transaction transaktio = null;
         
-        //kaikki tuotteet
-        try (Session istunto = istuntotehdas.openSession()) {
-            transaktio = istunto.beginTransaction();
-            @SuppressWarnings("unchecked")
-            List<Tuote> result = istunto.createQuery("from Tuote").getResultList();
-            for (Tuote t : result) {
-                System.out.println(t.toString());
-            }
-        } catch (Exception e) {
-            if (transaktio != null) transaktio.rollback();
-            e.printStackTrace();
-        }
+        ////kaikki tuotteet
         
       //yksittäisen tuotteen etsiminen syötetyn nimen mukaan
         try (Session istunto = istuntotehdas.openSession()) {
@@ -128,9 +171,6 @@ public class HibernateHaku {
             if (transaktio != null) transaktio.rollback();
             e.printStackTrace();
         }	
-        
-        
-        
         istuntotehdas.close();
     }
 }
