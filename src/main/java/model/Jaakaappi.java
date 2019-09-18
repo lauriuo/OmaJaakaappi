@@ -1,4 +1,4 @@
-package OmaJaakaappi;
+package model;
 
 import java.sql.Date;
 

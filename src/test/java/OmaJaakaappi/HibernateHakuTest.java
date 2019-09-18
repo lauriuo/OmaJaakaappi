@@ -1,36 +1,44 @@
 package OmaJaakaappi;
 
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class HibernateHakuTest {
-    public static void main( String[] args ) {
-        StandardServiceRegistry registry =
-        new StandardServiceRegistryBuilder().configure()
-                                            .build();
-        SessionFactory istuntotehdas =
-        new MetadataSources(registry).buildMetadata()
-                                     .buildSessionFactory();
-        
-        Transaction transaktio = null;
-        try (Session istunto = istuntotehdas.openSession()) {
-            transaktio = istunto.beginTransaction();
-            @SuppressWarnings("unchecked")
-            List<Tuote> result = istunto.createQuery("from Tuote")
-                                        .getResultList();
-            for (Tuote t : result) {
-                System.out.println(t.toString());
-            }
-        } catch (Exception e) {
-            if (transaktio != null) transaktio.rollback();
-            e.printStackTrace();
-        }
-        istuntotehdas.close();
-    }
+
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+	}
+
+	@AfterAll
+	static void tearDownAfterClass() throws Exception {
+	}
+
+	@BeforeEach
+	void setUp() throws Exception {
+	}
+
+	@AfterEach
+	void tearDown() throws Exception {
+	}
+
+	@Test
+	void testHaku() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testLisays() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testPoisto() {
+		fail("Not yet implemented");
+	}
+
 }
