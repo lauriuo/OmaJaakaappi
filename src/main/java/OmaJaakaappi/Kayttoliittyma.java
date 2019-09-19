@@ -12,15 +12,16 @@ public class Kayttoliittyma {
     public static void main(String[] args) {  
     	String purkkafiksi;
         char valinta;
-		final char READALL = '1', READONE = '2', CREATE = '3', UPDATE = '4', DELETE = '5', QUIT = '6';
+		final char READALL = '1', READID = '2', READNAME = '3', CREATE = '4', UPDATE = '5', DELETE = '6', QUIT = '7';
 		
         do {
 			System.out.print("1: Hae kaikki tuotteet.\n" +
 							 "2: Hae tuote ID:llä.\n" +
-							 "3: Lisää tuote.\n" +
-							 "4: Muokkaa tuotetta.\n" +
-							 "5: Poista tuote.\n" +
-							 "6. Lopeta ohjelma.\n" +
+							 "3: Hae tuote nimellä.\n" +
+							 "4: Lisää tuote.\n" +
+							 "5: Muokkaa tuotetta.\n" +
+							 "6: Poista tuote.\n" +
+							 "7. Lopeta ohjelma.\n" +
 							 "Valintasi: ");
 			valinta = scanner.nextLine().charAt(0);
 			switch (valinta) {
@@ -31,11 +32,16 @@ public class Kayttoliittyma {
 		        }
 		        System.out.println("-----------------------------------------");
 				break;
-			case READONE:
+			case READID:
 				System.out.print("Kirjoita tuotteen ID: ");
 				int tuote_id = scanner.nextInt();
 				System.out.println(tuote.readTuote(tuote_id));
-				purkkafiksi = scanner.nextLine();	// <-----------------------------------------------------korjaa
+				System.out.println("-----------------------------------------");
+				break;
+			case READNAME:
+				System.out.print("Kirjoita tuotteen nimi: ");
+				String hae_nimi = scanner.nextLine();
+				System.out.println(tuote.readTuoteNimi(hae_nimi));
 				System.out.println("-----------------------------------------");
 				break;
 			case CREATE:

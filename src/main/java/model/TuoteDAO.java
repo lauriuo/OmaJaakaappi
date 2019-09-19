@@ -47,7 +47,6 @@ public class TuoteDAO implements ITuoteDAO {
 		Session istunto = istuntotehdas.openSession();
 		try {
 			tuote = istunto.get(Tuote.class, tuote_id);
-			istunto.close();
 		} catch (Exception e) {
             if (transaktio != null) transaktio.rollback();
             e.printStackTrace();
@@ -55,6 +54,21 @@ public class TuoteDAO implements ITuoteDAO {
             istunto.close();
 		}
 		return tuote;
+	}
+	
+	public Tuote readTuoteNimi(String tuote_nimi) {
+		Session istunto = istuntotehdas.openSession();
+		try {
+			Query query = istunto.createQuery("from Tuote where tuote_nimi = :tuotenimi").setParameter("tuotenimi", tuote_nimi);
+			Tuote tuote = (Tuote) query.uniqueResult();
+			return tuote;
+		} catch (Exception e) {
+            if (transaktio != null) transaktio.rollback();
+            e.printStackTrace();
+        } finally {
+            istunto.close();
+		}
+		return null;
 	}
 
 	@Override
@@ -104,9 +118,13 @@ public class TuoteDAO implements ITuoteDAO {
 		Session istunto = istuntotehdas.openSession();
 		try {
             transaktio = istunto.beginTransaction();
-            Query query = istunto.createQuery("delete Tuote where tuote_nimi = :nimi").setParameter("nimi", tuote_nimi);
-            query.executeUpdate();
-            return true;
+            if (istunto.createQuery("select 1 from Tuote where tuote_nimi = :tuotenimi").setParameter("tuotenimi", tuote_nimi).uniqueResult() != null) {
+            	return false;
+            } else {
+                Query query = istunto.createQuery("delete Tuote where tuote_nimi = :nimi").setParameter("nimi", tuote_nimi);
+                query.executeUpdate();
+                return true;
+            }
         } catch (Exception e) {
             if (transaktio != null) transaktio.rollback();
             e.printStackTrace();

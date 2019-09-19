@@ -14,7 +14,7 @@
       
       <!-- Assume test is the database name -->
       <property name = "hibernate.connection.url">
-         jdbc:mariadb://localhost:4444/omajaakaappi
+         jdbc:mariadb://localhost/omajaakaappi
       </property>
       
       <property name = "hibernate.connection.username">
@@ -24,7 +24,8 @@
       ryhma9
       </property>
       <property name="show_sql">true</property>
-    <mapping class="OmaJaakaappi.Tuote"/>
+      <mapping class="model.Jaakaappi"/>
+      <mapping class="model.Tuote"/>
       <!-- List of XML mapping files -->
    </session-factory>
 </hibernate-configuration>
