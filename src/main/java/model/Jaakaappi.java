@@ -15,7 +15,7 @@ public class Jaakaappi {
     private Date tuote_pvm;
 
     @Column(name="tuote_maara")
-    private float tuote_maara;
+    private double tuote_maara;
     
     @Column(name="tuote_status")
     private String tuote_status;
@@ -28,7 +28,7 @@ public class Jaakaappi {
     
     }
     
-    public Jaakaappi(int jaakaappi_id, Date tuote_pvm, float tuote_maara, String tuote_status, Tuote tuote) {
+    public Jaakaappi(int jaakaappi_id, Date tuote_pvm, double tuote_maara, String tuote_status, Tuote tuote) {
     	this.jaakaappi_id = jaakaappi_id;
     	this.tuote_pvm = tuote_pvm;
     	this.tuote_maara = tuote_maara;
@@ -52,11 +52,11 @@ public class Jaakaappi {
 		this.tuote_pvm = tuote_pvm;
 	}
 
-	public float getTuote_maara() {
+	public double getTuote_maara() {
 		return tuote_maara;
 	}
 
-	public void setTuote_maara(int tuote_maara) {
+	public void setTuote_maara(double tuote_maara) {
 		this.tuote_maara = tuote_maara;
 	}
 

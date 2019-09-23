@@ -35,7 +35,6 @@ public class TuoteDAOTest {
 	void testCreateTuote() {
 		tuote.createTuote("Testi-Tuote", "yksikko", 1);
 		assertEquals("Testi-Tuote", tuote.readTuoteNimi("Testi-Tuote").getTuote_nimi(), "Tuotetta ei löytynyt.");
-		tuote.deleteTuote("Testi-Tuote");
 	}
 
 	@Test
@@ -43,14 +42,14 @@ public class TuoteDAOTest {
 		tuote.createTuote("Testi-Tuote", "yksikko", 1);
 		tuote.updateTuote("Testi-Tuote", "Uusi nimi", "uusi yksikkö", 2);
 		assertEquals("uusi yksikkö", tuote.readTuoteNimi("Uusi nimi").getTuote_yksikko(), "Tuotetta ei löytynyt.");
-		tuote.deleteTuote("Uusi nimi");
 	}
 
 	@Test
+	@Transactional(rollbackOn=Tuote.class)
 	void testDeleteTuote() {
 		tuote.createTuote("Testi-Tuote", "yksikko", 1);
 		tuote.deleteTuote("Testi-Tuote");
-		assertEquals("null", tuote.readTuoteNimi("Testi-Tuote"), "Tuotetta ei poistettu.");
+		assertEquals(null, tuote.readTuoteNimi("Testi-Tuote"), "Tuotetta ei poistettu.");
 
 	}
 

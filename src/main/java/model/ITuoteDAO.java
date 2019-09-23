@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public interface ITuoteDAO {
-	public abstract boolean createTuote(String nimi, String yksikko, int kcal);
+	public abstract boolean createTuote(String nimi, String yksikko, double kcal);
 	public abstract Tuote readTuote(int tuote_id);
 	public abstract Tuote readTuoteNimi(String tuote_nimi);
 	public abstract ArrayList<Object> readTuotteet();
