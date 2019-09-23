@@ -12,7 +12,8 @@ import org.junit.jupiter.api.Test;
 
 @Transactional
 public class TuoteDAOTest {
-	private TuoteDAO tuote = new TuoteDAO();
+	private static TuoteDAO tuote = new TuoteDAO();
+	private static JaakaappiDAO jaakaappi = new JaakaappiDAO();
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -20,11 +21,14 @@ public class TuoteDAOTest {
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
+		jaakaappi.emptyJaakaappi();
+		tuote.emptyTuote();
 	}
 
 	@BeforeEach
 	void setUp() throws Exception {
-		
+		jaakaappi.emptyJaakaappi();
+		tuote.emptyTuote();
 	}
 
 	@AfterEach

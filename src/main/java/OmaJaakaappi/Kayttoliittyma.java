@@ -57,12 +57,11 @@ public class Kayttoliittyma {
 				break;
 			case TUOTELISAA:
 				System.out.println("Kirjoita tuotteen nimi: ");
-				String tuote_nimi = scanner.nextLine();
+				String tuote_nimi = scanner.next();
 				System.out.println("Kirjoita tuotteen mittana käytetty yksikkö: ");
-				String tuote_yksikko = scanner.nextLine();
+				String tuote_yksikko = scanner.next();
 				System.out.println("Kirjoita tuotteessa oleva kalorimäärä per 100g/1dl: ");
 				int tuote_kcal = scanner.nextInt();
-				purkkafiksi = scanner.nextLine();	// <-----------------------------------------------------korjaa
 				 if (tuote.createTuote(tuote_nimi, tuote_yksikko, tuote_kcal) == true) {
 					 System.out.println("Tuote lisätty.");
 				 } else {
@@ -72,14 +71,13 @@ public class Kayttoliittyma {
 				break;
 			case TUOTEPAIVITA:
 				System.out.println("Kirjoita tuotteen nimi: ");
-				String vanha_nimi = scanner.nextLine();
+				String vanha_nimi = scanner.next();
 				System.out.println("Kirjoita tuotteen uusi nimi: ");
-				String uusi_nimi = scanner.nextLine();
+				String uusi_nimi = scanner.next();
 				System.out.println("Kirjoita tuotteen mittana käytetty yksikkö: ");
-				String uusi_yksikko = scanner.nextLine();
+				String uusi_yksikko = scanner.next();
 				System.out.println("Kirjoita tuotteessa oleva kalorimäärä per 100g/1dl: ");
-				int uusi_kcal = scanner.nextInt();
-				purkkafiksi = scanner.nextLine();	// <-----------------------------------------------------korjaa
+				double uusi_kcal = scanner.nextDouble();
 				tuote.updateTuote(vanha_nimi, uusi_nimi, uusi_yksikko, uusi_kcal);
 				System.out.println("-----------------------------------------");
 				break;
@@ -115,7 +113,7 @@ public class Kayttoliittyma {
 				double maara = scanner.nextInt();
 				System.out.println("Kirjoita tuotteen viimeinen päivämäärä(muodossa 2019-05-23): ");
 				String pvm_string = scanner.next();
-				purkkafiksi = scanner.nextLine();	// <-----------------------------------------------------korjaa
+				purkkafiksi = scanner.nextLine();	// <-----------------------------------------------------tarkista toimiiko ilman
 				Date pvm = Date.valueOf(pvm_string);
 				String status = "Käytettävissä";
 				jaakaappi.createJaakaappi(pvm, maara, status, tuote_id);
@@ -125,13 +123,13 @@ public class Kayttoliittyma {
 				System.out.println("Kirjoita jääkaapissa olevan tuotteen ID: ");
 				jaakaappi_id = scanner.nextInt();
 				System.out.println("Kirjoita tuotteen uusi viimeinen päivämäärä(muodossa 2019-05-23): ");
-				pvm_string = scanner.nextLine();
+				pvm_string = scanner.next();
 				Date uusi_pvm = Date.valueOf(pvm_string);
 				System.out.println("Kirjoita jääkaapissa olevan tuotteen uusi määrä: ");
 				double uusi_maara = scanner.nextDouble();
 				System.out.println("Kirjoita jääkaapissa olevan tuotteen uusi status: ");
-				String uusi_status = scanner.nextLine();
-				purkkafiksi = scanner.nextLine();	// <-----------------------------------------------------korjaa
+				String uusi_status = scanner.next();
+				purkkafiksi = scanner.nextLine();	// <-----------------------------------------------------tarkista toimiiko ilman
 				jaakaappi.updateJaakaappi(jaakaappi_id, uusi_pvm, uusi_maara, uusi_status);
 				System.out.println("-----------------------------------------");
 				break;

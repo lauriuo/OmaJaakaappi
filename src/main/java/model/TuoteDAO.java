@@ -92,7 +92,7 @@ public class TuoteDAO implements ITuoteDAO {
 	}
 
 	@Override
-	public boolean updateTuote(String vanha_nimi, String uusi_nimi, String uusi_yksikko, int uusi_kcal) {
+	public boolean updateTuote(String vanha_nimi, String uusi_nimi, String uusi_yksikko, double uusi_kcal) {
 		Session istunto = istuntotehdas.openSession();
 		try {
             transaktio = istunto.beginTransaction();
@@ -125,6 +125,23 @@ public class TuoteDAO implements ITuoteDAO {
             } else {
                 return false;
             }
+        } catch (Exception e) {
+            if (transaktio != null) transaktio.rollback();
+            e.printStackTrace();
+    		return false;
+        } finally {
+            istunto.close();
+		}
+	}
+	
+	@Override
+	public boolean emptyTuote() {
+		Session istunto = istuntotehdas.openSession();
+		try {
+            transaktio = istunto.beginTransaction();
+            Query query = istunto.createQuery("delete from Tuote");
+            query.executeUpdate();
+            return true;
         } catch (Exception e) {
             if (transaktio != null) transaktio.rollback();
             e.printStackTrace();

@@ -196,4 +196,20 @@ public class JaakaappiDAO implements IJaakaappiDAO {
 		}
 	}
 
+	@Override
+	public boolean emptyJaakaappi() {
+		Session istunto = istuntotehdas.openSession();
+		try {
+            transaktio = istunto.beginTransaction();
+            Query query = istunto.createQuery("delete from Jaakaappi");
+            query.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            if (transaktio != null) transaktio.rollback();
+            e.printStackTrace();
+    		return false;
+        } finally {
+            istunto.close();
+		}
+	}
 }
