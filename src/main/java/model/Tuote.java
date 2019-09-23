@@ -19,7 +19,7 @@ public class Tuote {
     private String tuote_yksikko;
 
     @Column(name="tuote_kcal")
-    private int tuote_kcal;
+    private double tuote_kcal;
     
     public Tuote () {
     }
@@ -35,10 +35,10 @@ public class Tuote {
         return tuote_id;
     }
     
-    public int getTuote_kcal() {
+    public double getTuote_kcal() {
         return tuote_kcal;
     }
-    public void setTuote_kcal(int kcal) {
+    public void setTuote_kcal(double kcal) {
     	this.tuote_kcal = kcal;
     }
     

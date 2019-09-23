@@ -18,7 +18,7 @@ public class TuoteDAO implements ITuoteDAO {
     private static Transaction transaktio = null;
 
 	@Override
-	public boolean createTuote(String nimi, String yksikko, int kcal) {
+	public boolean createTuote(String nimi, String yksikko, double kcal) {
 		Session istunto = istuntotehdas.openSession();
 		try {
             transaktio = istunto.beginTransaction();
@@ -31,14 +31,15 @@ public class TuoteDAO implements ITuoteDAO {
                 uusiTuote.setTuote_kcal(kcal);
                 istunto.save(uusiTuote);
                 istunto.getTransaction().commit();
+        		return true;
             }
         } catch (Exception e) {
             if (transaktio != null) transaktio.rollback();
             e.printStackTrace();
+            return false;
         } finally {
             istunto.close();
 		}
-		return true;
 	}
 
 	@Override
@@ -47,7 +48,6 @@ public class TuoteDAO implements ITuoteDAO {
 		Session istunto = istuntotehdas.openSession();
 		try {
 			tuote = istunto.get(Tuote.class, tuote_id);
-			istunto.close();
 		} catch (Exception e) {
             if (transaktio != null) transaktio.rollback();
             e.printStackTrace();
@@ -55,6 +55,21 @@ public class TuoteDAO implements ITuoteDAO {
             istunto.close();
 		}
 		return tuote;
+	}
+	
+	public Tuote readTuoteNimi(String tuote_nimi) {
+		Session istunto = istuntotehdas.openSession();
+		try {
+			Query query = istunto.createQuery("from Tuote where tuote_nimi = :tuotenimi").setParameter("tuotenimi", tuote_nimi);
+			Tuote tuote = (Tuote) query.uniqueResult();
+			return tuote;
+		} catch (Exception e) {
+            if (transaktio != null) transaktio.rollback();
+            e.printStackTrace();
+            return null;
+        } finally {
+            istunto.close();
+		}
 	}
 
 	@Override
@@ -67,7 +82,6 @@ public class TuoteDAO implements ITuoteDAO {
             for (Object o : haut) {
                 result.add(o);
             }
-            istunto.close();
 		} catch (Exception e) {
             if (transaktio != null) transaktio.rollback();
             e.printStackTrace();
@@ -93,10 +107,10 @@ public class TuoteDAO implements ITuoteDAO {
         } catch (Exception e) {
             if (transaktio != null) transaktio.rollback();
             e.printStackTrace();
+    		return false;
         } finally {
             istunto.close();
 		}
-		return false;
 	}
 
 	@Override
@@ -104,16 +118,19 @@ public class TuoteDAO implements ITuoteDAO {
 		Session istunto = istuntotehdas.openSession();
 		try {
             transaktio = istunto.beginTransaction();
-            Query query = istunto.createQuery("delete Tuote where tuote_nimi = :nimi").setParameter("nimi", tuote_nimi);
-            query.executeUpdate();
-            return true;
+            if (istunto.createQuery("select 1 from Tuote where tuote_nimi = :tuotenimi").setParameter("tuotenimi", tuote_nimi).uniqueResult() != null) {
+            	Query query = istunto.createQuery("delete Tuote where tuote_nimi = :tuotenimi").setParameter("tuotenimi", tuote_nimi);
+                query.executeUpdate();
+                return true;
+            } else {
+                return false;
+            }
         } catch (Exception e) {
             if (transaktio != null) transaktio.rollback();
             e.printStackTrace();
+    		return false;
         } finally {
             istunto.close();
 		}
-		return false;
 	}
-
 }
