@@ -14,8 +14,8 @@ import org.junit.jupiter.api.Test;
 
 @Transactional
 class JaakaappiDAOTest {
-	private TuoteDAO tuote = new TuoteDAO();
-	private JaakaappiDAO jaakaappi = new JaakaappiDAO();
+	private static TuoteDAO tuote = new TuoteDAO();
+	private static JaakaappiDAO jaakaappi = new JaakaappiDAO();
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -23,10 +23,14 @@ class JaakaappiDAOTest {
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
+		jaakaappi.emptyJaakaappi();
+		tuote.emptyTuote();
 	}
 
 	@BeforeEach
 	void setUp() throws Exception {
+		jaakaappi.emptyJaakaappi();
+		tuote.emptyTuote();
 	}
 
 	@AfterEach
@@ -54,11 +58,6 @@ class JaakaappiDAOTest {
 		jaakaappi.createJaakaappi(pvm, maara1, "Käytettävissä", tuote_id);
 		jaakaappi.createJaakaappi(pvm, maara2, "Käytettävissä", tuote_id);
 		assertEquals(12, jaakaappi.readJaakaappi(tuote_id, pvm).getTuote_maara(), "Määrä väärin.");
-	}
-
-	@Test
-	void testReadJaakaappiNimi() {
-		fail("Not yet implemented");
 	}
 
 	@Test
