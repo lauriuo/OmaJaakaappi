@@ -24,6 +24,7 @@ public class Jaakaappi {
     @JoinColumn(name="tuote_id")
     private Tuote tuote;
     
+    
     public Jaakaappi() {	
     
     }
