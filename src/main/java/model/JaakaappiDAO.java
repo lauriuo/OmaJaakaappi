@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,7 +62,7 @@ public class JaakaappiDAO implements IJaakaappiDAO {
 		Jaakaappi jaakaappi = null;
 		Session istunto = istuntotehdas.openSession();
 		try {
-			Query query = istunto.createQuery("from Jaakaappi where tuote_id = :tuoteid and tuote_pvm = :pvm")
+			Query query = istunto.createQuery("from Jaakaappi where tuote_id = :tuoteid and tuote_pvm = :pvm order by tuote_pvm")
 					.setParameter("tuoteid", tuote_id)
 					.setParameter("pvm", pvm);
 			jaakaappi = (Jaakaappi) query.uniqueResult();
@@ -121,7 +122,56 @@ public class JaakaappiDAO implements IJaakaappiDAO {
 		Session istunto = istuntotehdas.openSession();
 		try {
 			@SuppressWarnings("unchecked")
-            List<Object> all_jk = istunto.createQuery("from Jaakaappi").getResultList();
+            List<Object> all_jk = istunto.createQuery("from Jaakaappi where tuote_status = 'Käytettävissä' order by tuote_pvm desc").getResultList();
+            for (Object o : all_jk) {
+                result.add(o);
+            }
+		} catch (Exception e) {
+            if (transaktio != null) transaktio.rollback();
+            e.printStackTrace();
+        } finally {
+            istunto.close();
+		}
+		return result;
+	}
+
+	@Override
+	public ArrayList<Object> readUsedJaakaapit() {
+		ArrayList<Object> result = new ArrayList<>();
+		Session istunto = istuntotehdas.openSession();
+		try {
+			@SuppressWarnings("unchecked")
+            List<Object> all_jk = istunto.createQuery("from Jaakaappi where tuote_status = 'Käytetty' order by tuote_pvm desc").getResultList();
+            for (Object o : all_jk) {
+                result.add(o);
+            }
+		} catch (Exception e) {
+            if (transaktio != null) transaktio.rollback();
+            e.printStackTrace();
+        } finally {
+            istunto.close();
+		}
+		return result;
+	}
+
+	@Override
+	public ArrayList<Object> readGoingOldJaakaapit() {
+		ArrayList<Object> result = new ArrayList<>();
+		Session istunto = istuntotehdas.openSession();
+
+		LocalDateTime now = LocalDateTime.now();
+		LocalDateTime plus2days = LocalDateTime.now().plusDays(2);
+		java.sql.Date sqltimenow = java.sql.Date.valueOf(now.toLocalDate());
+		java.sql.Date sqltime2days = java.sql.Date.valueOf(plus2days.toLocalDate());
+
+		try {
+			@SuppressWarnings("unchecked")
+			List<Object> all_jk = istunto.createQuery("from Jaakaappi where tuote_status = 'Käytettävissä' " +
+				"and tuote_pvm >= :sqltimenow and tuote_pvm <= :sqltime2days order by tuote_pvm desc")
+				.setParameter("sqltime2days", sqltime2days)
+				.setParameter("sqltimenow", sqltimenow)
+				.getResultList();
+
             for (Object o : all_jk) {
                 result.add(o);
             }

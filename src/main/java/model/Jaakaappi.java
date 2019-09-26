@@ -1,6 +1,8 @@
 package model;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 import javax.persistence.*;
 
@@ -84,6 +86,5 @@ public class Jaakaappi {
                 ". Määrä: " + tuote_maara +
                 ". Status: " + tuote_status +
                 ". Tuote: " + tuote.getTuote_nimi();
-    }
-	
+	}
 }

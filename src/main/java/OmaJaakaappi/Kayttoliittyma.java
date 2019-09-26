@@ -1,6 +1,8 @@
 package OmaJaakaappi;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,11 +17,13 @@ public class Kayttoliittyma {
     public static void main(String[] args) {  
     	String purkkafiksi;
         int valinta;
-		final int TUOTEHAE = 1, TUOTEID = 2, TUOTENIMI = 3, TUOTELISAA = 4, TUOTEPAIVITA = 5, TUOTEPOISTA = 6, 
-				JKHAE = 7, JKHAEID = 8, JKHAENIMI = 9, JKLISAA = 10, JKPAIVITA = 11, JKUPDATESTATUS = 12, JKPOISTA = 13, QUIT = 14;
+		final int QUIT = 0, TUOTEHAE = 1, TUOTEID = 2, TUOTENIMI = 3, TUOTELISAA = 4, TUOTEPAIVITA = 5, TUOTEPOISTA = 6, 
+				JKHAE = 7, JKHAEID = 8, JKHAENIMI = 9, JKLISAA = 10, JKPAIVITA = 11, JKUPDATESTATUS = 12, JKPOISTA = 13,
+				 JKHAEKAYTETTY = 14, JKHAEVANHENEVAT = 15;
 		
         do {
-			System.out.print("1: Hae kaikki tuotteet.\n" +
+			System.out.print("0. Lopeta ohjelma.\n" +
+  							 "1: Hae kaikki tuotteet.\n" +
 							 "2: Hae tuote ID:llä.\n" +
 							 "3: Hae tuote nimellä.\n" +
 							 "4: Lisää tuote.\n" +
@@ -32,9 +36,14 @@ public class Kayttoliittyma {
 							 "11: Muokkaa jääkaapissa olevia tuotteita.\n" +
 							 "12: Muokkaa jääkaapissa olevien tuotteiden statusta.\n" +
 							 "13: Poista jääkaapissa olevia tuotteita.\n" +
-							 "14. Lopeta ohjelma.\n" +
+							 "14: Valitse käytetyt tuotteet. \n" +
+							 "15: Valitse vanhaksi menevät tuotteet jääkaapista. \n" +
 							 "Valintasi: ");
+			LocalDateTime time = LocalDateTime.now();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			System.out.println("Kello on nyt: " + time.format(formatter));
 			valinta = scanner.nextInt();
+
 			switch (valinta) {
 			case TUOTEHAE:
 				ArrayList<Object> tuotteet = tuote.readTuotteet();
@@ -136,6 +145,7 @@ public class Kayttoliittyma {
 			case JKUPDATESTATUS:
 				System.out.println("Kirjoita jääkaapissa olevan tuotteen id: ");
 				jaakaappi_id = scanner.nextInt();
+				purkkafiksi = scanner.nextLine();
 				System.out.println("Kirjoita jääkaapissa olevan tuotteen uusi status: ");
 				uusi_status = scanner.nextLine();
 				jaakaappi.updateJkStatus(jaakaappi_id, uusi_status);
@@ -146,6 +156,20 @@ public class Kayttoliittyma {
 				jaakaappi_id = scanner.nextInt();
 				jaakaappi.deleteJaakaappi(jaakaappi_id);
 				System.out.println("-----------------------------------------");
+				break;
+			case JKHAEKAYTETTY:
+				ArrayList<Object> kaytetty = jaakaappi.readUsedJaakaapit();
+				System.out.println("Tuotteet jotka käytetty: ");
+				for (Object t : kaytetty) {
+					System.out.println(t);	
+				}
+				break;
+			case JKHAEVANHENEVAT:
+				System.out.println("2 päivän kuluessa vanhenevat tuotteet: ");
+				ArrayList<Object> vanhenevat = jaakaappi.readGoingOldJaakaapit();
+				for (Object t : vanhenevat) {
+					System.out.println(t);
+				}
 				break;
 			}
         } while (valinta != QUIT);
