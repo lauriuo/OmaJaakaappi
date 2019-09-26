@@ -26,6 +26,7 @@
       <property name="show_sql">true</property>
       <mapping class="model.Jaakaappi"/>
       <mapping class="model.Tuote"/>
+      <mapping class="model.Rpk"/>
       <!-- List of XML mapping files -->
    </session-factory>
 </hibernate-configuration>
