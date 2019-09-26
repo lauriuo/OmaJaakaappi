@@ -25,7 +25,7 @@ CREATE TABLE jaakaappi
 CREATE TABLE resepti
 (
   resepti_id INT NOT NULL AUTO_INCREMENT,
-  resepti_ohje VARCHAR(1000) NOT NULL,
+  resepti_ohje VARCHAR(4000) NOT NULL,
   PRIMARY KEY (resepti_id)
 );
 
