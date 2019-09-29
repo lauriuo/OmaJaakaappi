@@ -27,6 +27,8 @@
       <mapping class="model.Jaakaappi"/>
       <mapping class="model.Tuote"/>
       <mapping class="model.Rpk"/>
+      <mapping class="model.Resepti"/>
+      <mapping class="model.Aines"/>
       <!-- List of XML mapping files -->
    </session-factory>
 </hibernate-configuration>
