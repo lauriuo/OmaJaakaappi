@@ -1,8 +1,5 @@
 package model;
 
-import java.sql.Date;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,22 +11,26 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 
-public class RpkDAO implements IRpkDAO {
+public class ReseptiDAO implements IReseptiDAO {
 	private static StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
     private static SessionFactory istuntotehdas = new MetadataSources(registry).buildMetadata().buildSessionFactory();
     private static Transaction transaktio = null;
 
 	@Override
-	public boolean createRpk(Date rpk_pvm, int jaakaappi_id) {
+	public boolean createResepti(String resepti_nimi, String resepti_ohje) {
 		Session istunto = istuntotehdas.openSession();
 		try {
             transaktio = istunto.beginTransaction();
-            Rpk uusiRpk = new Rpk();
-            uusiRpk.setRpk_pvm(rpk_pvm);
-            uusiRpk.setJaakaappi(istunto.get(Jaakaappi.class, jaakaappi_id));
-            istunto.save(uusiRpk);
-            istunto.getTransaction().commit();
-        	return true;
+            if (istunto.createQuery("select 1 from Resepti where resepti_nimi = :reseptinimi").setParameter("reseptinimi", resepti_nimi).uniqueResult() != null) {
+            	return false;
+            } else {
+            	Resepti uusiResepti = new Resepti();
+            	uusiResepti.setResepti_nimi(resepti_nimi);
+            	uusiResepti.setResepti_ohje(resepti_ohje);
+                istunto.save(uusiResepti);
+                istunto.getTransaction().commit();
+        		return true;
+            }
         } catch (Exception e) {
             if (transaktio != null) transaktio.rollback();
             e.printStackTrace();
@@ -40,68 +41,44 @@ public class RpkDAO implements IRpkDAO {
 	}
 
 	@Override
-	public Rpk readRpkId(int rpk_id) {
-		Rpk rpk = null;
+	public Resepti readReseptiNimi(String resepti_nimi) {
 		Session istunto = istuntotehdas.openSession();
 		try {
-			Query query = istunto.createQuery("from Rpk where rpk_id = :rpkid")
-					.setParameter("rpkid", rpk_id);
-			rpk = (Rpk) query.uniqueResult();
-			return rpk;
+			Query query = istunto.createQuery("from Resepti where resepti_nimi = :reseptinimi").setParameter("reseptinimi", resepti_nimi);
+			Resepti resepti = (Resepti) query.uniqueResult();
+			return resepti;
 		} catch (Exception e) {
             if (transaktio != null) transaktio.rollback();
             e.printStackTrace();
-    		return null;
+            return null;
         } finally {
             istunto.close();
 		}
 	}
 
 	@Override
-	public Rpk readRpkJkId(int jaakaappi_id) {
-		Rpk rpk = null;
+	public Resepti readReseptiId(int resepti_id) {
+		Resepti resepti = null;
 		Session istunto = istuntotehdas.openSession();
 		try {
-			Query query = istunto.createQuery("from Rpk where jaakaappi_id = :jaakaappiid")
-					.setParameter("jaakaappiid", jaakaappi_id);
-			rpk = (Rpk) query.uniqueResult();
-			return rpk;
+			resepti = istunto.get(Resepti.class, resepti_id);
 		} catch (Exception e) {
             if (transaktio != null) transaktio.rollback();
             e.printStackTrace();
-    		return null;
         } finally {
             istunto.close();
 		}
+		return resepti;
 	}
 
 	@Override
-	public ArrayList<Object> readRpkt() {
+	public ArrayList<Object> readReseptit() {
 		ArrayList<Object> result = new ArrayList<>();
 		Session istunto = istuntotehdas.openSession();
 		try {
 			@SuppressWarnings("unchecked")
-            List<Object> all_rpk = istunto.createQuery("from Rpk").getResultList();
-            for (Object o : all_rpk) {
-                result.add(o);
-            }
-		} catch (Exception e) {
-            if (transaktio != null) transaktio.rollback();
-            e.printStackTrace();
-        } finally {
-            istunto.close();
-		}
-		return result;
-	}
-	
-	@Override
-	public ArrayList<Object> readRpkPvm(Date rpk_pvm) {
-		ArrayList<Object> result = new ArrayList<>();
-		Session istunto = istuntotehdas.openSession();
-		try {
-			@SuppressWarnings("unchecked")
-            List<Object> rpk_by_pvm = istunto.createQuery("from Rpk where rpk_pvm = :rpkpvm").setParameter("rpkpvm", rpk_pvm).getResultList();
-            for (Object o : rpk_by_pvm) {
+            List<Object> haut = istunto.createQuery("from Resepti").getResultList();
+            for (Object o : haut) {
                 result.add(o);
             }
 		} catch (Exception e) {
@@ -114,13 +91,14 @@ public class RpkDAO implements IRpkDAO {
 	}
 
 	@Override
-	public boolean updateRpk(int rpk_id, Date rpk_pvm) {
+	public boolean updateResepti(int resepti_id, String uusi_nimi, String uusi_ohje) {
 		Session istunto = istuntotehdas.openSession();
 		try {
             transaktio = istunto.beginTransaction();
-            Query query = istunto.createQuery("update Rpk set rpk_pvm = :rpkpvm where rpk_id = :rpkid")
-            		.setParameter("rpkpvm", rpk_pvm)
-            		.setParameter("rpkid", rpk_id);
+            Query query = istunto.createQuery("update Resepti set resepti_nimi = :reseptinimi , resepti_ohje = :reseptiohje where resepti_id = :reseptiid")
+            		.setParameter("reseptinimi", uusi_nimi)
+            		.setParameter("reseptiohje", uusi_ohje)
+            		.setParameter("reseptiid", resepti_id);
             query.executeUpdate();
             return true;
         } catch (Exception e) {
@@ -133,12 +111,12 @@ public class RpkDAO implements IRpkDAO {
 	}
 
 	@Override
-	public boolean deleteRpk(int rpk_id) {
+	public boolean deleteResepti(int resepti_id) {
 		Session istunto = istuntotehdas.openSession();
 		try {
             transaktio = istunto.beginTransaction();
-            if (istunto.createQuery("select 1 from Rpk where rpk_id = :rpkid").setParameter("rpkid", rpk_id).uniqueResult() != null) {
-            	Query query = istunto.createQuery("delete Rpk where rpk_id = :rpkid").setParameter("rpkid", rpk_id);
+            if (istunto.createQuery("select 1 from Resepti where resepti_id = :reseptiid").setParameter("reseptiid", resepti_id).uniqueResult() != null) {
+            	Query query = istunto.createQuery("delete Resepti where resepti_id = :reseptiid").setParameter("reseptiid", resepti_id);
                 query.executeUpdate();
                 return true;
             } else {
@@ -154,11 +132,11 @@ public class RpkDAO implements IRpkDAO {
 	}
 
 	@Override
-	public boolean emptyRpk() {
+	public boolean emptyResepti() {
 		Session istunto = istuntotehdas.openSession();
 		try {
             transaktio = istunto.beginTransaction();
-            Query query = istunto.createQuery("delete from Rpk");
+            Query query = istunto.createQuery("delete from Resepti");
             query.executeUpdate();
             return true;
         } catch (Exception e) {

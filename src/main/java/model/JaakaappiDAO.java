@@ -26,7 +26,9 @@ public class JaakaappiDAO implements IJaakaappiDAO {
 		try {
             transaktio = istunto.beginTransaction();
             if (istunto.createQuery("select 1 from Jaakaappi where tuote_id = :tuoteid and tuote_pvm = :pvm")
-            		.setParameter("tuoteid", tuote_id).setParameter("pvm", pvm).uniqueResult() != null) {
+            		.setParameter("tuoteid", tuote_id)
+            		.setParameter("pvm", pvm)
+            		.uniqueResult() != null) {
             	Query query = istunto.createQuery("from Jaakaappi where tuote_id = :tuoteid and tuote_pvm = :pvm")
             			.setParameter("tuoteid", tuote_id)
             			.setParameter("pvm", pvm);
@@ -81,8 +83,7 @@ public class JaakaappiDAO implements IJaakaappiDAO {
 		Jaakaappi jaakaappi = null;
 		Session istunto = istuntotehdas.openSession();
 		try {
-			Query query = istunto.createQuery("from Jaakaappi where jaakaappi_id = :jaakaappiid")
-					.setParameter("jaakaappiid", jaakaappi_id);
+			Query query = istunto.createQuery("from Jaakaappi where jaakaappi_id = :jaakaappiid").setParameter("jaakaappiid", jaakaappi_id);
 			jaakaappi = (Jaakaappi) query.uniqueResult();
 			return jaakaappi;
 		} catch (Exception e) {
@@ -99,8 +100,7 @@ public class JaakaappiDAO implements IJaakaappiDAO {
 		ArrayList<Object> result = new ArrayList<>();
 		Session istunto = istuntotehdas.openSession();
 		try {
-			int tuote_id = tuote.readTuoteNimi(tuote_nimi).getTuote_id();
-			Query query = istunto.createQuery("from Jaakaappi where tuote_id = :tuoteid").setParameter("tuoteid", tuote_id);			
+			int tuote_id = tuote.readTuoteNimi(tuote_nimi).getTuote_id();			
 			@SuppressWarnings("unchecked")
             List<Object> jkt = istunto.createQuery("from Jaakaappi where tuote_id = :tuoteid").setParameter("tuoteid", tuote_id).getResultList();
             for (Object o : jkt) {
@@ -207,12 +207,29 @@ public class JaakaappiDAO implements IJaakaappiDAO {
 	}
 
 	@Override
-	public boolean updateJkStatus(int jaakaappi_id, String uusi_status) {
+	public boolean updateJkKaytetty(int jaakaappi_id) {
 		Session istunto = istuntotehdas.openSession();
 		try {
             transaktio = istunto.beginTransaction();
-            Query query = istunto.createQuery("update Jaakaappi set tuote_status = :status where jaakaappi_id = :jaakaappiid")
-            		.setParameter("status", uusi_status)
+            Query query = istunto.createQuery("update Jaakaappi set tuote_status = 'Käytetty' where jaakaappi_id = :jaakaappiid")
+            		.setParameter("jaakaappiid", jaakaappi_id);
+            query.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            if (transaktio != null) transaktio.rollback();
+            e.printStackTrace();
+    		return false;
+        } finally {
+            istunto.close();
+		}
+	}
+	
+	@Override
+	public boolean updateJkHavikki(int jaakaappi_id) {
+		Session istunto = istuntotehdas.openSession();
+		try {
+            transaktio = istunto.beginTransaction();
+            Query query = istunto.createQuery("update Jaakaappi set tuote_status = 'Hävikki' where jaakaappi_id = :jaakaappiid")
             		.setParameter("jaakaappiid", jaakaappi_id);
             query.executeUpdate();
             return true;
@@ -262,4 +279,5 @@ public class JaakaappiDAO implements IJaakaappiDAO {
             istunto.close();
 		}
 	}
+	
 }
