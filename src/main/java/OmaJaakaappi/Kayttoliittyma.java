@@ -6,22 +6,31 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import model.AinesDAO;
 import model.JaakaappiDAO;
+import model.ReseptiDAO;
+import model.RpkDAO;
 import model.TuoteDAO;
 
 public class Kayttoliittyma {
 	static TuoteDAO tuote = new TuoteDAO();
 	static JaakaappiDAO jaakaappi = new JaakaappiDAO();
+	static RpkDAO rpk = new RpkDAO();
+	static ReseptiDAO resepti = new ReseptiDAO();
+	static AinesDAO aines = new AinesDAO();
 	static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {  
     	String purkkafiksi;
         int valinta;
 		final int QUIT = 0, TUOTEHAE = 1, TUOTEID = 2, TUOTENIMI = 3, TUOTELISAA = 4, TUOTEPAIVITA = 5, TUOTEPOISTA = 6, 
-				JKHAE = 7, JKHAEID = 8, JKHAENIMI = 9, JKLISAA = 10, JKPAIVITA = 11, JKUPDATESTATUS = 12, JKPOISTA = 13,
-				 JKHAEKAYTETTY = 14, JKHAEVANHENEVAT = 15;
+				JKHAE = 7, JKHAEID = 8, JKHAENIMI = 9, JKLISAA = 10, JKPAIVITA = 11, JKUPDATEKAYTETTY = 12, JKPOISTA = 13,
+				 JKHAEKAYTETTY = 14, JKHAEVANHENEVAT = 15, RESEPTIHAE = 16, RESEPTILISAA = 17, RESEPTIPAIVITA = 18, RESEPTIPOISTA = 19;
 		
         do {
+        	LocalDateTime time = LocalDateTime.now();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			System.out.println("Kello on nyt: " + time.format(formatter));
 			System.out.print("0. Lopeta ohjelma.\n" +
   							 "1: Hae kaikki tuotteet.\n" +
 							 "2: Hae tuote ID:llä.\n" +
@@ -34,16 +43,16 @@ public class Kayttoliittyma {
 							 "9: Hae jääkaapissa olevia tuotteita nimellä.\n" +
 							 "10: Lisää jääkaappiin tuotteita.\n" +
 							 "11: Muokkaa jääkaapissa olevia tuotteita.\n" +
-							 "12: Muokkaa jääkaapissa olevien tuotteiden statusta.\n" +
+							 "12: Merkitse jääkaapissa olleen tuote käytetyksi.\n" +
 							 "13: Poista jääkaapissa olevia tuotteita.\n" +
 							 "14: Valitse käytetyt tuotteet. \n" +
 							 "15: Valitse vanhaksi menevät tuotteet jääkaapista. \n" +
+							 "16: Hae reseptit. \n" +
+							 "17: Lisää resepti. \n" +
+							 "18: Päivitä reseptiä. \n" +
+							 "19: Poista resepti. \n" +
 							 "Valintasi: ");
-			LocalDateTime time = LocalDateTime.now();
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-			System.out.println("Kello on nyt: " + time.format(formatter));
 			valinta = scanner.nextInt();
-
 			switch (valinta) {
 			case TUOTEHAE:
 				ArrayList<Object> tuotteet = tuote.readTuotteet();
@@ -142,13 +151,10 @@ public class Kayttoliittyma {
 				jaakaappi.updateJaakaappi(jaakaappi_id, uusi_pvm, uusi_maara, uusi_status);
 				System.out.println("-----------------------------------------");
 				break;
-			case JKUPDATESTATUS:
-				System.out.println("Kirjoita jääkaapissa olevan tuotteen id: ");
+			case JKUPDATEKAYTETTY:
+				System.out.println("Kirjoita käytetyn jääkaapissa oleen tuotteen id: ");
 				jaakaappi_id = scanner.nextInt();
-				purkkafiksi = scanner.nextLine();
-				System.out.println("Kirjoita jääkaapissa olevan tuotteen uusi status: ");
-				uusi_status = scanner.nextLine();
-				jaakaappi.updateJkStatus(jaakaappi_id, uusi_status);
+				jaakaappi.updateJkKaytetty(jaakaappi_id);
 				System.out.println("-----------------------------------------");
 				break;
 			case JKPOISTA:
@@ -170,6 +176,58 @@ public class Kayttoliittyma {
 				for (Object t : vanhenevat) {
 					System.out.println(t);
 				}
+				break;
+			case RESEPTIHAE:
+				ArrayList<Object> reseptit = resepti.readReseptit();
+		        for (Object r : reseptit) {
+		        	System.out.println(r);
+		        }
+		        System.out.println("-----------------------------------------");
+				break;
+			case RESEPTILISAA:
+				purkkafiksi = scanner.nextLine();
+				System.out.println("Kirjoita reseptit nimi: ");
+				String resepti_nimi = scanner.nextLine();
+				purkkafiksi = scanner.nextLine();
+				System.out.println("Kirjoita reseptin ohje: ");
+				String resepti_ohje = scanner.nextLine();
+				 if (resepti.createResepti(resepti_nimi, resepti_ohje) == true) {
+					 System.out.println("Resepti lisätty.");
+				 } else {
+					 System.out.println("Reseptiä ei lisätty.");
+				 }
+			        System.out.println("-----------------------------------------");
+				break;
+			case RESEPTIPAIVITA:
+				purkkafiksi = scanner.nextLine();
+				System.out.println("Kirjoita reseptin ID: ");
+				int resepti_id = scanner.nextInt();
+				System.out.println("Kirjoita reseptin uusi nimi: ");
+				String resepti_uusi_nimi = scanner.nextLine();
+				purkkafiksi = scanner.nextLine();
+				System.out.println("Kirjoita reseptin uusi ohje: ");
+				String resepti_uusi_ohje = scanner.nextLine();
+				purkkafiksi = scanner.nextLine();
+				 if (resepti.updateResepti(resepti_id, resepti_uusi_nimi, resepti_uusi_ohje) == true) {
+					 System.out.println("Resepti päivitetty.");
+				 } else {
+					 System.out.println("Reseptiä ei päivitetty.");
+				 }
+			        System.out.println("-----------------------------------------");
+				break;
+			case RESEPTIPOISTA:
+				System.out.println("Kirjoita poistettavan reseptin ID: ");
+				int poistettava_resepti = scanner.nextInt();
+				if (aines.deleteAineksetResepti(poistettava_resepti) == true) {
+					if (resepti.deleteResepti(poistettava_resepti) == true) {
+						System.out.println("Resepti poistettu aineksineen.");
+					} else {
+						System.out.println("Reseptin ainekset poistettiin, mutta reseptiä ei poistettu.");
+					}
+				 } else {
+					System.out.println("Reseptiä ei poistettu.");
+				 }
+				System.out.println("-----------------------------------------");
 				break;
 			}
         } while (valinta != QUIT);
