@@ -128,7 +128,21 @@ class AinesDAOTest {
 		aines.createAines(tuote.readTuoteNimi(tuote_nimi).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 5);
 		int aines_id = aines.readAines(tuote_nimi, resepti_nimi).getAines_id();
 		aines.deleteAines(aines_id);
-		assertEquals(null, aines.readAinesId(aines_id));
+		assertEquals(null, aines.readAinesId(aines_id), "Aineksia ei poistettu oikein.");
 	}
 
+	@Test
+	void testDeleteAineksetResepti() {
+		String tuote_nimi = "Testi-Tuote";
+		String tuote_nimi2 = "Testi-Tuote2";
+		String resepti_nimi = "Testi-Resepti";
+		tuote.createTuote(tuote_nimi, "Kpl", 1);
+		tuote.createTuote(tuote_nimi2, "Kpl", 2);
+		resepti.createResepti(resepti_nimi, "1: ASD. 2: DSA.");
+		aines.createAines(tuote.readTuoteNimi(tuote_nimi).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 5);
+		aines.createAines(tuote.readTuoteNimi(tuote_nimi2).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 6);
+		aines.deleteAineksetResepti(resepti.readReseptiNimi(resepti_nimi).getResepti_id());
+		assertEquals(0, aines.readAineksetReseptiNimi(resepti_nimi).size(), "Aineksia ei poistettu oikein.");
+	}
+	
 }

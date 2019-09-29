@@ -223,6 +223,27 @@ public class AinesDAO implements IAinesDAO {
 	}
 
 	@Override
+	public boolean deleteAineksetResepti(int resepti_id) {
+		Session istunto = istuntotehdas.openSession();
+		try {
+            transaktio = istunto.beginTransaction();
+            if (istunto.createQuery("select 1 from Aines where resepti_id = :reseptiid").setParameter("reseptiid", resepti_id).uniqueResult() != null) {
+            	Query query = istunto.createQuery("delete Aines where resepti_id = :reseptiid").setParameter("reseptiid", resepti_id);
+                query.executeUpdate();
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            if (transaktio != null) transaktio.rollback();
+            e.printStackTrace();
+    		return false;
+        } finally {
+            istunto.close();
+		}
+	}
+	
+	@Override
 	public boolean emptyAines() {
 		Session istunto = istuntotehdas.openSession();
 		try {
