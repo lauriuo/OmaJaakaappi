@@ -39,7 +39,7 @@ CREATE TABLE rpk
   FOREIGN KEY (jaakaappi_id) REFERENCES jaakaappi(jaakaappi_id)
 );
 
-CREATE TABLE ainekset
+CREATE TABLE aines
 (
   aines_id INT NOT NULL AUTO_INCREMENT,
   aines_maara DOUBLE,

@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 @Transactional
 public class TuoteDAOTest {
 	private static TuoteDAO tuote = new TuoteDAO();
-	private static JaakaappiDAO jaakaappi = new JaakaappiDAO();
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -21,13 +20,11 @@ public class TuoteDAOTest {
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-		jaakaappi.emptyJaakaappi();
 		tuote.emptyTuote();
 	}
 
 	@BeforeEach
 	void setUp() throws Exception {
-		jaakaappi.emptyJaakaappi();
 		tuote.emptyTuote();
 	}
 
@@ -37,23 +34,28 @@ public class TuoteDAOTest {
 
 	@Test
 	void testCreateTuote() {
-		tuote.createTuote("Testi-Tuote", "yksikko", 1);
-		assertEquals("Testi-Tuote", tuote.readTuoteNimi("Testi-Tuote").getTuote_nimi(), "Tuotetta ei löytynyt.");
+		String tuote_nimi = "Testi-Tuote";
+		tuote.createTuote(tuote_nimi, "yksikko", 1);
+		assertEquals(tuote_nimi, tuote.readTuoteNimi(tuote_nimi).getTuote_nimi(), "Tuotetta ei löytynyt.");
 	}
 
 	@Test
 	void testUpdateTuote() {
-		tuote.createTuote("Testi-Tuote", "yksikko", 1);
-		tuote.updateTuote("Testi-Tuote", "Uusi nimi", "uusi yksikkö", 2);
-		assertEquals("uusi yksikkö", tuote.readTuoteNimi("Uusi nimi").getTuote_yksikko(), "Tuotetta ei löytynyt.");
+		String tuote_nimi = "Testi-Tuote";
+		String uusi_nimi = "Uusi tuote";
+		String tuote_yksikko = "Kpl";
+		String uusi_yksikko = "Uusi yksikkö";
+		tuote.createTuote(tuote_nimi, tuote_yksikko, 1);
+		tuote.updateTuote(tuote_nimi, uusi_nimi, uusi_yksikko, 2);
+		assertEquals(uusi_yksikko, tuote.readTuoteNimi(uusi_nimi).getTuote_yksikko(), "Tuotetta ei löytynyt.");
 	}
 
 	@Test
-	@Transactional(rollbackOn=Tuote.class)
 	void testDeleteTuote() {
-		tuote.createTuote("Testi-Tuote", "yksikko", 1);
-		tuote.deleteTuote("Testi-Tuote");
-		assertEquals(null, tuote.readTuoteNimi("Testi-Tuote"), "Tuotetta ei poistettu.");
+		String tuote_nimi = "Testi-Tuote";
+		tuote.createTuote(tuote_nimi, "yksikko", 1);
+		tuote.deleteTuote(tuote_nimi);
+		assertEquals(null, tuote.readTuoteNimi(tuote_nimi), "Tuotetta ei poistettu.");
 
 	}
 
