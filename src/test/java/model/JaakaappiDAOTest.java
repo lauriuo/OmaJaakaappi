@@ -3,6 +3,7 @@ package model;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 import javax.transaction.Transactional;
 
@@ -101,6 +102,20 @@ class JaakaappiDAOTest {
 		int jaakaappi_id = jaakaappi.readJaakaappi(tuote_id, pvm).getJaakaappi_id();
 		jaakaappi.deleteJaakaappi(jaakaappi_id);
 		assertEquals(null, jaakaappi.readJaakaappiId(jaakaappi_id));
+	}
+	@Test
+	void testGoingOldJaakaapit() {
+		tuote.createTuote("aika1", "kpl", 1);
+		tuote.createTuote("aika2", "kpl", 1);
+		LocalDateTime now = LocalDateTime.now();
+		LocalDateTime plus3days = LocalDateTime.now().minusDays(1);
+		java.sql.Date sqltimenow = java.sql.Date.valueOf(now.toLocalDate());
+		java.sql.Date sqltime3days = java.sql.Date.valueOf(plus3days.toLocalDate());
+
+		jaakaappi.createJaakaappi(sqltimenow, 1, "Käytettävissä", 1);
+		jaakaappi.createJaakaappi(sqltime3days, 1, "Käytettävissä", 1);
+
+		assertEquals(1, jaakaappi.readJaakaapit().size(), "Pitäis näkyä 1 tuote.");
 	}
 
 }
