@@ -124,15 +124,16 @@ class JaakaappiDAOTest {
 	void testGoingOldJaakaapit() {
 		tuote.createTuote("aika1", "kpl", 1);
 		tuote.createTuote("aika2", "kpl", 1);
+		int aika1_id = tuote.readTuoteNimi("aika1").getTuote_id();
+		int aika2_id = tuote.readTuoteNimi("aika2").getTuote_id();
 		LocalDateTime now = LocalDateTime.now();
-		LocalDateTime plus3days = LocalDateTime.now().minusDays(1);
+		LocalDateTime plus3days = LocalDateTime.now().plusDays(3);
 		java.sql.Date sqltimenow = java.sql.Date.valueOf(now.toLocalDate());
 		java.sql.Date sqltime3days = java.sql.Date.valueOf(plus3days.toLocalDate());
 
-		jaakaappi.createJaakaappi(sqltimenow, 1, "Käytettävissä", 1);
-		jaakaappi.createJaakaappi(sqltime3days, 1, "Käytettävissä", 1);
+		jaakaappi.createJaakaappi(sqltimenow, 1, "Käytettävissä", aika1_id);
+		jaakaappi.createJaakaappi(sqltime3days, 1, "Käytettävissä", aika2_id);
 
-		assertEquals(1, jaakaappi.readJaakaapit().size(), "Pitäis näkyä 1 tuote.");
+		assertEquals(1, jaakaappi.readGoingOldJaakaapit().size(), "Pitäis näkyä 1 tuote.");
 	}
-
 }
