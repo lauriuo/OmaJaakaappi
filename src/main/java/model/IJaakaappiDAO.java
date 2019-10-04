@@ -10,6 +10,7 @@ public interface IJaakaappiDAO {
 	public abstract ArrayList<Object> readJaakaappiNimi(String tuote_nimi);
 	public abstract ArrayList<Object> readJaakaapit();
 	public abstract ArrayList<Object> readUsedJaakaapit();
+	public abstract ArrayList<Object> readWasteJaakaapit();
 	public abstract ArrayList<Object> readGoingOldJaakaapit();
 	public abstract boolean updateJaakaappi(int jaakaappi_id, Date uusi_pvm, double uusi_maara, String uusi_status);
 	public abstract boolean updateJkKaytetty(int jaakaappi_id);

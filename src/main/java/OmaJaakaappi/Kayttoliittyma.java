@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import model.AinesDAO;
+import model.Jaakaappi;
 import model.JaakaappiDAO;
 import model.ReseptiDAO;
 import model.RpkDAO;
@@ -25,7 +26,8 @@ public class Kayttoliittyma {
         int valinta;
 		final int QUIT = 0, TUOTEHAE = 1, TUOTEID = 2, TUOTENIMI = 3, TUOTELISAA = 4, TUOTEPAIVITA = 5, TUOTEPOISTA = 6, 
 				JKHAE = 7, JKHAEID = 8, JKHAENIMI = 9, JKLISAA = 10, JKPAIVITA = 11, JKUPDATEKAYTETTY = 12, JKPOISTA = 13,
-				 JKHAEKAYTETTY = 14, JKHAEVANHENEVAT = 15, RESEPTIHAE = 16, RESEPTILISAA = 17, RESEPTIPAIVITA = 18, RESEPTIPOISTA = 19;
+				 JKHAEKAYTETTY = 14, JKHAEVANHENEVAT = 15, RESEPTIHAE = 16, RESEPTILISAA = 17, RESEPTIPAIVITA = 18, RESEPTIPOISTA = 19,
+				 JKHAEVANHAT = 20, JKPAIVITASTATUS = 21;
 		
         do {
         	LocalDateTime time = LocalDateTime.now();
@@ -51,6 +53,8 @@ public class Kayttoliittyma {
 							 "17: Lisää resepti. \n" +
 							 "18: Päivitä reseptiä. \n" +
 							 "19: Poista resepti. \n" +
+							 "20: Näytä vanhaksi menneet tuotteet. \n" +
+							 "21: Muuta osa tuotteista käytetyiksi / hävikiksi. \n" +
 							 "Valintasi: ");
 			valinta = scanner.nextInt();
 			switch (valinta) {
@@ -228,6 +232,61 @@ public class Kayttoliittyma {
 					System.out.println("Reseptiä ei poistettu.");
 				 }
 				System.out.println("-----------------------------------------");
+				break;
+			case JKHAEVANHAT:
+				 ArrayList<Object> vanhat = jaakaappi.readWasteJaakaapit();
+				System.out.println("Vanhaksi menneet tuotteet: ");
+				for (Object v : vanhat) {
+					System.out.println(v);	
+				}
+				break;
+			case JKPAIVITASTATUS:
+				System.out.println("Kirjoita muutettavan tuotteen nimi: ");
+				String muutettava_tuote = scanner.next();
+				ArrayList<Object> nimi_tuotteet = jaakaappi.readJaakaappiNimi(muutettava_tuote);
+
+				if (nimi_tuotteet.isEmpty()) {
+					System.out.println("Ei tuotetta Jääkaapissa nimellä " + muutettava_tuote + ".\n");
+				} else {
+					System.out.println("Tuotteet nimellä " + muutettava_tuote + ": \n");
+					for (Object t : nimi_tuotteet) {
+						System.out.println(t);	
+					}
+					System.out.println("Valitse muutettavan tuotteen ID: \n");
+					int muutettava_id = scanner.nextInt();
+					purkkafiksi = scanner.nextLine();
+					System.out.println("Muutetaanko tuote: \n 1. hävikiksi \n 2. käytetyksi");
+					int havikki_vai_kaytetty = scanner.nextInt();
+					purkkafiksi = scanner.nextLine();
+					Jaakaappi muutettava_jaakaappi = jaakaappi.readJaakaappiId(muutettava_id);
+					System.out.println("Kuinka paljon tuotteen " + muutettava_jaakaappi.getTuote().getTuote_nimi() + 
+										" määrästä " + muutettava_jaakaappi.getTuote_maara() + " muutetaan? \n"); 
+					double tuote_maara = scanner.nextDouble();
+					purkkafiksi = scanner.nextLine();
+					double maara_erotus = muutettava_jaakaappi.getTuote_maara() -  tuote_maara;
+
+					//Jos muutettavasta tuotteesta valitaan vain osa, luodaan toinen uusi tuote jääkaappiin.
+					//Eli jos erotus menee miinukselle, se tarkoittaa että vain koko tuote muutetaan, ei tarvitse uutta tuotetta.
+					if (maara_erotus <= 0) {
+						if (havikki_vai_kaytetty == 1) {
+							jaakaappi.updateJkHavikki(muutettava_id);
+						} else if (havikki_vai_kaytetty == 2) {
+							jaakaappi.updateJkKaytetty(muutettava_id);
+						}
+					} else {
+						muutettava_jaakaappi.setTuote_maara(maara_erotus);
+						String tyyppi_string = "Käytettävissä";
+						if (havikki_vai_kaytetty == 1) {
+							tyyppi_string = "Hävikki";
+						} else if (havikki_vai_kaytetty == 2) {
+							tyyppi_string = "Käytetty";
+						}
+						jaakaappi.createJaakaappi(muutettava_jaakaappi.getTuote_pvm(), tuote_maara,
+												tyyppi_string, muutettava_jaakaappi.getTuote().getTuote_id());
+						jaakaappi.updateJaakaappi(muutettava_jaakaappi.getJaakaappi_id(), muutettava_jaakaappi.getTuote_pvm(),
+												maara_erotus, muutettava_jaakaappi.getTuote_status());
+						}
+					}
 				break;
 			}
         } while (valinta != QUIT);

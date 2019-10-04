@@ -25,7 +25,7 @@ public class JaakaappiDAO implements IJaakaappiDAO {
 		Session istunto = istuntotehdas.openSession();
 		try {
             transaktio = istunto.beginTransaction();
-            if (istunto.createQuery("select 1 from Jaakaappi where tuote_id = :tuoteid and tuote_pvm = :pvm")
+			/*  if (istunto.createQuery("select 1 from Jaakaappi where tuote_id = :tuoteid and tuote_pvm = :pvm")
             		.setParameter("tuoteid", tuote_id)
             		.setParameter("pvm", pvm)
             		.uniqueResult() != null) {
@@ -40,7 +40,7 @@ public class JaakaappiDAO implements IJaakaappiDAO {
                 		.setParameter("pvm", pvm);
                 query.executeUpdate();
             	return true;
-            } else {
+            } else */
 	            Jaakaappi uusiJaakaappi = new Jaakaappi();
 	        	uusiJaakaappi.setTuote_pvm(pvm);
 	        	uusiJaakaappi.setTuote_maara(maara);
@@ -49,7 +49,6 @@ public class JaakaappiDAO implements IJaakaappiDAO {
 	            istunto.save(uusiJaakaappi);
 	            istunto.getTransaction().commit();
 	            return true;
-            }
         } catch (Exception e) {
             if (transaktio != null) transaktio.rollback();
             e.printStackTrace();
@@ -58,7 +57,6 @@ public class JaakaappiDAO implements IJaakaappiDAO {
             istunto.close();
 		}
 	}
-
 	@Override
 	public Jaakaappi readJaakaappi(int tuote_id, Date pvm) {
 		Jaakaappi jaakaappi = null;
@@ -142,6 +140,24 @@ public class JaakaappiDAO implements IJaakaappiDAO {
 		try {
 			@SuppressWarnings("unchecked")
             List<Object> all_jk = istunto.createQuery("from Jaakaappi where tuote_status = 'Käytetty' order by tuote_pvm desc").getResultList();
+            for (Object o : all_jk) {
+                result.add(o);
+            }
+		} catch (Exception e) {
+            if (transaktio != null) transaktio.rollback();
+            e.printStackTrace();
+        } finally {
+            istunto.close();
+		}
+		return result;
+	}
+	@Override
+	public ArrayList<Object> readWasteJaakaapit() {
+		ArrayList<Object> result = new ArrayList<>();
+		Session istunto = istuntotehdas.openSession();
+		try {
+			@SuppressWarnings("unchecked")
+            List<Object> all_jk = istunto.createQuery("from Jaakaappi where tuote_status = 'Hävikki' order by tuote_pvm desc").getResultList();
             for (Object o : all_jk) {
                 result.add(o);
             }

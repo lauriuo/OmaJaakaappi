@@ -136,4 +136,18 @@ class JaakaappiDAOTest {
 
 		assertEquals(1, jaakaappi.readGoingOldJaakaapit().size(), "Pitäis näkyä 1 tuote.");
 	}
+	@Test
+	void testReadWasteJaakaapit() {
+		tuote.createTuote("huono", "kpl", 1);
+		tuote.createTuote("hyva", "kpl", 1);
+		int huono_id = tuote.readTuoteNimi("huono").getTuote_id();
+		int hyva_id = tuote.readTuoteNimi("hyva").getTuote_id();
+		LocalDateTime now = LocalDateTime.now();
+		java.sql.Date sql_aika = java.sql.Date.valueOf(now.toLocalDate());
+
+		jaakaappi.createJaakaappi(sql_aika, 1, "Hävikki", huono_id);
+		jaakaappi.createJaakaappi(sql_aika, 1, "Käytettävissä", hyva_id);
+
+		assertEquals(1, jaakaappi.readWasteJaakaapit().size(), "Pitäis näkyä 1 tuote.");
+	}
 }
