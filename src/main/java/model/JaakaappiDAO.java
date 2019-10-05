@@ -25,7 +25,7 @@ public class JaakaappiDAO implements IJaakaappiDAO {
 		Session istunto = istuntotehdas.openSession();
 		try {
             transaktio = istunto.beginTransaction();
-			/*  if (istunto.createQuery("select 1 from Jaakaappi where tuote_id = :tuoteid and tuote_pvm = :pvm")
+			if (istunto.createQuery("select 1 from Jaakaappi where tuote_id = :tuoteid and tuote_pvm = :pvm")
             		.setParameter("tuoteid", tuote_id)
             		.setParameter("pvm", pvm)
             		.uniqueResult() != null) {
@@ -40,7 +40,7 @@ public class JaakaappiDAO implements IJaakaappiDAO {
                 		.setParameter("pvm", pvm);
                 query.executeUpdate();
             	return true;
-            } else */
+            } else {
 	            Jaakaappi uusiJaakaappi = new Jaakaappi();
 	        	uusiJaakaappi.setTuote_pvm(pvm);
 	        	uusiJaakaappi.setTuote_maara(maara);
@@ -48,7 +48,8 @@ public class JaakaappiDAO implements IJaakaappiDAO {
 	        	uusiJaakaappi.setTuote(istunto.get(Tuote.class, tuote_id));
 	            istunto.save(uusiJaakaappi);
 	            istunto.getTransaction().commit();
-	            return true;
+				return true;
+			}
         } catch (Exception e) {
             if (transaktio != null) transaktio.rollback();
             e.printStackTrace();
@@ -278,7 +279,37 @@ public class JaakaappiDAO implements IJaakaappiDAO {
             istunto.close();
 		}
 	}
-
+	@Override
+	public boolean updateJkMaara(int jaakaappi_id, double maara, String kaytetty_tai_havikki) {
+		Session istunto = istuntotehdas.openSession();
+		try {
+			transaktio = istunto.beginTransaction();
+			Query query = istunto.createQuery("from Jaakaappi where jaakaappi_id = :jaakaappiid").setParameter("jaakaappiid", jaakaappi_id);
+			Jaakaappi jaakaappi = (Jaakaappi) query.uniqueResult();
+			double erotus = jaakaappi.getTuote_maara() - maara;
+			if (erotus <= 0) {
+				updateJaakaappi(jaakaappi_id, jaakaappi.getTuote_pvm(),
+								jaakaappi.getTuote_maara(), kaytetty_tai_havikki);
+			} else {
+					updateJaakaappi(jaakaappi_id, jaakaappi.getTuote_pvm(),
+									erotus, jaakaappi.getTuote_status());
+		            Jaakaappi uusiJaakaappi = new Jaakaappi();
+	        		uusiJaakaappi.setTuote_pvm(jaakaappi.getTuote_pvm());
+	        		uusiJaakaappi.setTuote_maara(maara);
+	        		uusiJaakaappi.setTuote_status(kaytetty_tai_havikki);
+	        		uusiJaakaappi.setTuote(istunto.get(Tuote.class, jaakaappi.getTuote().getTuote_id()));
+	            	istunto.save(uusiJaakaappi);
+	            	istunto.getTransaction().commit();
+				}
+			return true;
+        } catch (Exception e) {
+            if (transaktio != null) transaktio.rollback();
+            e.printStackTrace();
+    		return false;
+        } finally {
+            istunto.close();
+		}
+	}
 	@Override
 	public boolean emptyJaakaappi() {
 		Session istunto = istuntotehdas.openSession();

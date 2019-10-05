@@ -241,52 +241,27 @@ public class Kayttoliittyma {
 				}
 				break;
 			case JKPAIVITASTATUS:
-				System.out.println("Kirjoita muutettavan tuotteen nimi: ");
-				String muutettava_tuote = scanner.next();
-				ArrayList<Object> nimi_tuotteet = jaakaappi.readJaakaappiNimi(muutettava_tuote);
+				System.out.println("Valitse muutettavan tuotteen ID: \n");
+				int muutettava_id = scanner.nextInt();
+				purkkafiksi = scanner.nextLine();
 
-				if (nimi_tuotteet.isEmpty()) {
-					System.out.println("Ei tuotetta Jääkaapissa nimellä " + muutettava_tuote + ".\n");
-				} else {
-					System.out.println("Tuotteet nimellä " + muutettava_tuote + ": \n");
-					for (Object t : nimi_tuotteet) {
-						System.out.println(t);	
-					}
-					System.out.println("Valitse muutettavan tuotteen ID: \n");
-					int muutettava_id = scanner.nextInt();
-					purkkafiksi = scanner.nextLine();
-					System.out.println("Muutetaanko tuote: \n 1. hävikiksi \n 2. käytetyksi");
-					int havikki_vai_kaytetty = scanner.nextInt();
-					purkkafiksi = scanner.nextLine();
-					Jaakaappi muutettava_jaakaappi = jaakaappi.readJaakaappiId(muutettava_id);
-					System.out.println("Kuinka paljon tuotteen " + muutettava_jaakaappi.getTuote().getTuote_nimi() + 
-										" määrästä " + muutettava_jaakaappi.getTuote_maara() + " muutetaan? \n"); 
-					double tuote_maara = scanner.nextDouble();
-					purkkafiksi = scanner.nextLine();
-					double maara_erotus = muutettava_jaakaappi.getTuote_maara() -  tuote_maara;
+				System.out.println("Muutetaanko tuote: \n 1. hävikiksi \n 2. käytetyksi");
+				int havikki_vai_kaytetty = scanner.nextInt();
+				String muutettava_status = "Käytettävissä";
+				purkkafiksi = scanner.nextLine();
+				if (havikki_vai_kaytetty == 1) {
+					muutettava_status = "Hävikki";
+				} else if (havikki_vai_kaytetty == 2) {
+					muutettava_status = "Käytetty";
+				}
 
-					//Jos muutettavasta tuotteesta valitaan vain osa, luodaan toinen uusi tuote jääkaappiin.
-					//Eli jos erotus menee miinukselle, se tarkoittaa että vain koko tuote muutetaan, ei tarvitse uutta tuotetta.
-					if (maara_erotus <= 0) {
-						if (havikki_vai_kaytetty == 1) {
-							jaakaappi.updateJkHavikki(muutettava_id);
-						} else if (havikki_vai_kaytetty == 2) {
-							jaakaappi.updateJkKaytetty(muutettava_id);
-						}
-					} else {
-						muutettava_jaakaappi.setTuote_maara(maara_erotus);
-						String tyyppi_string = "Käytettävissä";
-						if (havikki_vai_kaytetty == 1) {
-							tyyppi_string = "Hävikki";
-						} else if (havikki_vai_kaytetty == 2) {
-							tyyppi_string = "Käytetty";
-						}
-						jaakaappi.createJaakaappi(muutettava_jaakaappi.getTuote_pvm(), tuote_maara,
-												tyyppi_string, muutettava_jaakaappi.getTuote().getTuote_id());
-						jaakaappi.updateJaakaappi(muutettava_jaakaappi.getJaakaappi_id(), muutettava_jaakaappi.getTuote_pvm(),
-												maara_erotus, muutettava_jaakaappi.getTuote_status());
-						}
-					}
+				Jaakaappi muutettava_jaakaappi = jaakaappi.readJaakaappiId(muutettava_id);
+				System.out.println("Kuinka paljon tuotteen " + muutettava_jaakaappi.getTuote().getTuote_nimi() + 
+									" määrästä " + muutettava_jaakaappi.getTuote_maara() + " " +
+									muutettava_jaakaappi.getTuote().getTuote_yksikko() + " muutetaan? \n"); 
+				double tuote_maara = scanner.nextDouble();
+				purkkafiksi = scanner.nextLine();
+				jaakaappi.updateJkMaara(muutettava_id, tuote_maara, muutettava_status);
 				break;
 			}
         } while (valinta != QUIT);

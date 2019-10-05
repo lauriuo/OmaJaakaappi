@@ -16,5 +16,6 @@ public interface IJaakaappiDAO {
 	public abstract boolean updateJkKaytetty(int jaakaappi_id);
 	public abstract boolean updateJkHavikki(int jaakaappi_id);
 	public abstract boolean deleteJaakaappi(int jaakaappi_id);
+	public abstract boolean updateJkMaara(int jaakaappi_id, double maara, String kaytetty_tai_havikki);
 	public abstract boolean emptyJaakaappi();
 }
