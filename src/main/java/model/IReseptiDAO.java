@@ -10,4 +10,5 @@ public interface IReseptiDAO {
 	public abstract boolean updateResepti(int resepti_id,String uusi_nimi, String uusi_ohje);
 	public abstract boolean deleteResepti(int resepti_id);
 	public abstract boolean emptyResepti();
+	public abstract double countKcalResepti(int resepti_id);
 }

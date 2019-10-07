@@ -10,7 +10,8 @@ import org.junit.jupiter.api.Test;
 
 class ReseptiDAOTest {
 	private static ReseptiDAO resepti = new ReseptiDAO();
-
+	private static TuoteDAO tuote = new TuoteDAO();
+	private static AinesDAO aines = new AinesDAO();
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 	}
@@ -23,6 +24,8 @@ class ReseptiDAOTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		resepti.emptyResepti();
+		tuote.emptyTuote();
+		aines.emptyAines();
 	}
 
 	@AfterEach
@@ -45,7 +48,7 @@ class ReseptiDAOTest {
 	}
 
 	@Test
-	void testUpdateResepti() {
+	 void testUpdateResepti() {
 		String vanha_ohje = "1. Tee näin. 2. Tee noin.";
 		String uusi_ohje = "1. Tee se. 2. Tee tää.";
 		String vanha_nimi = "Testi-Resepti";
@@ -54,7 +57,7 @@ class ReseptiDAOTest {
 		resepti.updateResepti(resepti.readReseptiNimi(vanha_nimi).getResepti_id(), uusi_nimi, uusi_ohje);
 		assertEquals(uusi_nimi, resepti.readReseptiNimi(uusi_nimi).getResepti_nimi(), "Nimi ei päivittynyt oikein.");
 		assertEquals(uusi_ohje, resepti.readReseptiNimi(uusi_nimi).getResepti_ohje(), "Ohje ei päivittynyt oikein.");
-	}
+	} 
 
 	@Test
 	void testDeleteResepti() {
@@ -63,5 +66,18 @@ class ReseptiDAOTest {
 		resepti.deleteResepti(resepti.readReseptiNimi(nimi).getResepti_id());
 		assertEquals(null, resepti.readReseptiNimi(nimi), "Tuotetta ei poistettu.");
 	}
-	
+	@Test
+	void testCountKcalResepti() {
+		resepti.createResepti("Kcal-Testi", "1. Tee näin. 2. Tee noin.");
+		Resepti id_resepti = resepti.readReseptiNimi("Kcal-Testi");
+
+		tuote.createTuote("Tuote1", "kpl", 200);
+		tuote.createTuote("Tuote2", "kpl", 400);
+		Tuote id_tuote1 = tuote.readTuoteNimi("Tuote1");
+		Tuote id_tuote2 = tuote.readTuoteNimi("Tuote2");
+		aines.createAines(id_tuote1.getTuote_id(), id_resepti.getResepti_id(), 2);
+		aines.createAines(id_tuote2.getTuote_id(), id_resepti.getResepti_id(), 2);
+
+		assertEquals(1200, resepti.countKcalResepti(id_resepti.getResepti_id()), "Pitäis olla 1200.");
+	}
 }
