@@ -27,7 +27,7 @@ public class Kayttoliittyma {
 		final int QUIT = 0, TUOTEHAE = 1, TUOTEID = 2, TUOTENIMI = 3, TUOTELISAA = 4, TUOTEPAIVITA = 5, TUOTEPOISTA = 6, 
 				JKHAE = 7, JKHAEID = 8, JKHAENIMI = 9, JKLISAA = 10, JKPAIVITA = 11, JKUPDATEKAYTETTY = 12, JKPOISTA = 13,
 				 JKHAEKAYTETTY = 14, JKHAEVANHENEVAT = 15, RESEPTIHAE = 16, RESEPTILISAA = 17, RESEPTIPAIVITA = 18, RESEPTIPOISTA = 19,
-				 JKHAEVANHAT = 20, JKPAIVITASTATUS = 21;
+				 JKHAEVANHAT = 20, JKPAIVITASTATUS = 21, LASKEKCAL = 22;
 		
         do {
         	LocalDateTime time = LocalDateTime.now();
@@ -55,6 +55,7 @@ public class Kayttoliittyma {
 							 "19: Poista resepti. \n" +
 							 "20: Näytä vanhaksi menneet tuotteet. \n" +
 							 "21: Muuta osa tuotteista käytetyiksi / hävikiksi. \n" +
+							 "22: Laske kcal reseptistä \n" +
 							 "Valintasi: ");
 			valinta = scanner.nextInt();
 			switch (valinta) {
@@ -73,6 +74,7 @@ public class Kayttoliittyma {
 				break;
 			case TUOTENIMI:
 				System.out.print("Kirjoita tuotteen nimi: ");
+				purkkafiksi = scanner.nextLine();
 				String hae_nimi = scanner.nextLine();
 				System.out.println(tuote.readTuoteNimi(hae_nimi));
 				System.out.println("-----------------------------------------");
@@ -206,9 +208,9 @@ public class Kayttoliittyma {
 				purkkafiksi = scanner.nextLine();
 				System.out.println("Kirjoita reseptin ID: ");
 				int resepti_id = scanner.nextInt();
+				purkkafiksi = scanner.nextLine();
 				System.out.println("Kirjoita reseptin uusi nimi: ");
 				String resepti_uusi_nimi = scanner.nextLine();
-				purkkafiksi = scanner.nextLine();
 				System.out.println("Kirjoita reseptin uusi ohje: ");
 				String resepti_uusi_ohje = scanner.nextLine();
 				purkkafiksi = scanner.nextLine();
@@ -262,6 +264,12 @@ public class Kayttoliittyma {
 				double tuote_maara = scanner.nextDouble();
 				purkkafiksi = scanner.nextLine();
 				jaakaappi.updateJkMaara(muutettava_id, tuote_maara, muutettava_status);
+				break;
+			case LASKEKCAL:
+				System.out.println("Anna reseptin id: \n");
+				int r_id = scanner.nextInt();
+				double kcalit = resepti.countKcalResepti(r_id);
+				System.out.print("reseptin koko kalorimäärä: " + kcalit + " kcal.");
 				break;
 			}
         } while (valinta != QUIT);
