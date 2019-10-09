@@ -30,8 +30,9 @@ public class Kayttoliittyma {
     	boolean v1Error = true;
 		final int QUIT = 0, TUOTEHAE = 1, TUOTEID = 2, TUOTENIMI = 3, TUOTELISAA = 4, TUOTEPAIVITA = 5, TUOTEPOISTA = 6,
 				JKHAE = 7, JKHAEID = 8, JKHAENIMI = 9, JKLISAA = 10, JKPAIVITA = 11, JKUPDATEKAYTETTY = 12, JKPOISTA = 13,
-				 JKHAEKAYTETTY = 14, JKHAEVANHENEVAT = 15, RESEPTIHAE = 18, RESEPTILISAA = 19, RESEPTIPAIVITA = 20, RESEPTIPOISTA = 21,
-				 JKHAEVANHAT = 16, JKPAIVITASTATUS = 17;
+				 JKHAEKAYTETTY = 14, JKHAEVANHENEVAT = 15, JKHAEVANHAT = 16, JKPAIVITASTATUS = 17, RESEPTIHAE = 18, RESEPTILISAA = 19,
+				 RESEPTIPAIVITA = 20, RESEPTIPOISTA = 21, LASKEKCAL = 22;
+				 ;
 
         do {
         	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -41,14 +42,14 @@ public class Kayttoliittyma {
 			try {
 			valinta = 0;
 			System.out.println("Kello on nyt: " + time.format(formatter) + "\n ---");
-			System.out.print("Etusivu. Siirry toimintavalikkoihin (1-4) tai lopeta ohjelma (0) \n" +
+			System.out.print("Etusivu. Siirry toimintavalikkoihin (1-3) tai lopeta ohjelma (0) \n" +
 							 "0. Lopeta ohjelma.\n" +
 							 "1: Tuotteet.\n" +
 							 "2: Jääkaappi.\n" +
 							 "3: Reseptit.\n");
 			alkuvalinta = scanner.nextInt();
 			if (alkuvalinta < 0 || alkuvalinta > 4) {
-				System.out.println("Virheellinen syöte. Valitse väliltä 0-4");
+				System.out.println("Virheellinen syöte. Valitse väliltä 0-3");
 			}
 			else {
 				vError = false;
@@ -136,13 +137,14 @@ public class Kayttoliittyma {
 								 "18: Hae reseptit. \n" +
 								 "19: Lisää resepti. \n" +
 								 "20: Päivitä reseptiä. \n" +
-								 "21: Poista resepti. \n");
+								 "21: Poista resepti. \n" +
+								 "22: Laske reseptin kalorit. \n");
 				boolean if3Error = true;
 				while (if3Error) {
 					try {
 						System.out.print("Valintasi: ");
 						int vif3 = scanner.nextInt();
-						if ((vif3 > 18 && vif3 < 21)) {
+						if ((vif3 >= 18 && vif3 <= 22)) {
 							valinta = vif3;
 							if3Error = false;
 							v1Error = false;
@@ -150,7 +152,7 @@ public class Kayttoliittyma {
 							if3Error = false;
 							v1Error = false;
 							vError = true;
-						} else { System.out.print("Virheellinen syöte. Valitse 0 tai väliltä 7-17 \n"); }
+						} else { System.out.print("Virheellinen syöte. Valitse 0 tai väliltä 18-22 \n"); }
 					} catch (InputMismatchException e) {
 						System.out.print("Virheellinen syöte. Valitse numeroilla \n");
 						scanner.next();
@@ -306,7 +308,8 @@ public class Kayttoliittyma {
 				vError = true;
 				break;
 			case JKHAENIMI:
-				System.out.print("Kirjoita jääkaapissa olevan tuotteen nimi: ");
+				purkkafiksi = scanner.nextLine();
+				System.out.println("Kirjoita jääkaapissa olevan tuotteen nimi: ");
 				String jk_nimi = scanner.nextLine();
 				System.out.println(jaakaappi.readJaakaappiNimi(jk_nimi));
 				System.out.println("-----------------------------------------");
@@ -573,7 +576,7 @@ public class Kayttoliittyma {
 				vError = true;
 				break;
 			case LASKEKCAL:
-				System.out.println("Anna reseptin id: \n");
+				System.out.println("Kirjoita reseptin id: \n");
 				int r_id = scanner.nextInt();
 				double kcalit = resepti.countKcalResepti(r_id);
 				System.out.print("reseptin koko kalorimäärä: " + kcalit + " kcal.");
