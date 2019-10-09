@@ -10,7 +10,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-@Transactional
 public class TuoteDAOTest {
 	private static TuoteDAO tuote = new TuoteDAO();
 

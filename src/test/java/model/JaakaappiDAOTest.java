@@ -13,7 +13,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-@Transactional
 class JaakaappiDAOTest {
 	private static TuoteDAO tuote = new TuoteDAO();
 	private static JaakaappiDAO jaakaappi = new JaakaappiDAO();
