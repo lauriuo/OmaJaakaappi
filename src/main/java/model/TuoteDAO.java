@@ -10,11 +10,23 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
-
+/**
+ * The class with all the methods for accessing the Tuote table in the database.
+ * @author ville
+ *
+ */
 public class TuoteDAO implements ITuoteDAO {
-	
+	/**
+	 * Holds, manages and provides access to services.
+	 */
 	private static StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
-    private static SessionFactory istuntotehdas = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+	/**
+	 * Used for creating database sessions.
+	 */
+	private static SessionFactory istuntotehdas = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+	/**
+     * Unit where all the operations happen.
+     */
     private static Transaction transaktio = null;
 
 	@Override

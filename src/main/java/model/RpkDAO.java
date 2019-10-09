@@ -13,12 +13,30 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
-
+/**
+ * The class with all the methods for accessing the Rpk table in the database.
+ * @author ville
+ *
+ */
 public class RpkDAO implements IRpkDAO {
+	/**
+	 * Holds, manages and provides access to services.
+	 */
 	private static StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
-    private static SessionFactory istuntotehdas = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-    private static Transaction transaktio = null;
-
+	/**
+	 * Used for creating database sessions.
+	 */
+	private static SessionFactory istuntotehdas = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+	/**
+     * Unit where all the operations happen.
+     */
+	private static Transaction transaktio = null;
+	/**
+	 * Inserts a new record into the Rpk table.
+	 * @param rpk_pvm The date on which the Rpk record was created.
+	 * @param jaakaappi_id The ID of the Jaakaappi record associated with the Rpk record.
+	 * @return Returns true if the operation was successful. Returns false if the operation failed.
+	 */
 	@Override
 	public boolean createRpk(Date rpk_pvm, int jaakaappi_id) {
 		Session istunto = istuntotehdas.openSession();
@@ -38,7 +56,11 @@ public class RpkDAO implements IRpkDAO {
             istunto.close();
 		}
 	}
-
+	/**
+	 * Reading a Rpk record from the database using the ID of the Rpk record to read it.
+	 * @param rpk_id The ID of the Rpk record to be read.
+	 * @return Returns the Rpk record which was read.
+	 */
 	@Override
 	public Rpk readRpkId(int rpk_id) {
 		Rpk rpk = null;
@@ -56,7 +78,11 @@ public class RpkDAO implements IRpkDAO {
             istunto.close();
 		}
 	}
-
+	/**
+	 * Reading a Rpk record from the database using the Jaakaappi record's ID associated with the Rpk.
+	 * @param jaakaappi_id The ID of the Jaakaappi record associated with the Rpk record to be read.
+	 * @return Return the Rpk record which was read.
+	 */
 	@Override
 	public Rpk readRpkJkId(int jaakaappi_id) {
 		Rpk rpk = null;
@@ -74,7 +100,10 @@ public class RpkDAO implements IRpkDAO {
             istunto.close();
 		}
 	}
-
+	/**
+	 * Reading all the Rpk record from the database.
+	 * @return An ArrayList of all the Rpk records from the database.
+	 */
 	@Override
 	public ArrayList<Object> readRpkt() {
 		ArrayList<Object> result = new ArrayList<>();
@@ -93,7 +122,11 @@ public class RpkDAO implements IRpkDAO {
 		}
 		return result;
 	}
-	
+	/**
+	 * Reading all the Rpk records sharing the same date.
+	 * @param rpk_pvm The date on which the Rpk records were made.
+	 * @return An ArrayList of all the Rpk records matching the date.
+	 */
 	@Override
 	public ArrayList<Object> readRpkPvm(Date rpk_pvm) {
 		ArrayList<Object> result = new ArrayList<>();
@@ -112,7 +145,12 @@ public class RpkDAO implements IRpkDAO {
 		}
 		return result;
 	}
-
+	/**
+	 * Updating a Rpk record in the database.
+	 * @param rpk_id The ID of the Rpk record to be updated.
+	 * @param rpk_pvm The new date to be set for the Rpk record.
+	 * @return Returns true if the operation was successful. Returns false if the operation failed.
+	 */
 	@Override
 	public boolean updateRpk(int rpk_id, Date rpk_pvm) {
 		Session istunto = istuntotehdas.openSession();
@@ -131,7 +169,11 @@ public class RpkDAO implements IRpkDAO {
             istunto.close();
 		}
 	}
-
+	/**
+	 * Deleting a Rpk record from the database.
+	 * @param rpk_id The ID of the Rpk record to be deleted from the database.
+	 * @return Return true if the records were deleted from the table successfully. Returns false in other cases.
+	 */
 	@Override
 	public boolean deleteRpk(int rpk_id) {
 		Session istunto = istuntotehdas.openSession();
@@ -152,7 +194,10 @@ public class RpkDAO implements IRpkDAO {
             istunto.close();
 		}
 	}
-
+	/**
+	 * Emptying the whole Rpk table of the database.
+	 * @return Returns true if the operation was successful. Returns false in other cases.
+	 */
 	@Override
 	public boolean emptyRpk() {
 		Session istunto = istuntotehdas.openSession();
