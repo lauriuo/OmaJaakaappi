@@ -145,6 +145,39 @@ public class ReseptiDAO implements IReseptiDAO {
 		}
 	}
 	/**
+	 * Calculates the total amount of calories in a Resepti.
+	 * @param resepti_id The ID of the Resepti which calories will be counted.
+	 * @return The total amount of calories of the Tuote records associated with the Resepti.
+	 */
+	@Override
+	public double countKcalResepti(int resepti_id) {
+		Session istunto = istuntotehdas.openSession();
+		double result = 0;
+		try {
+            transaktio = istunto.beginTransaction();
+			if (readReseptiId(resepti_id) != null) {
+				Query q = istunto.createQuery("select tuote.tuote_kcal, aines.aines_maara from Tuote tuote " + 
+															"inner join Aines aines on aines.tuote = tuote.tuote_id " +
+															"inner join Resepti resepti on aines.resepti = resepti.resepti_id " +
+															"where resepti.resepti_id = " + resepti_id);
+				List<Object[]> kcal_and_maara = (List<Object[]>) q.list();
+
+				for (Object[] o : kcal_and_maara) {
+					double kcal = (double) o[0];
+					double maara = (double) o[1];
+					result += kcal * maara;
+				}
+				return result;
+			}
+        } catch (Exception e) {
+            if (transaktio != null) transaktio.rollback();
+            e.printStackTrace();
+        } finally {
+            istunto.close();
+		}
+		return 0;
+	}
+	/**
 	 * Deleting a Resepti record from the database.
 	 * @param resepti_id The ID of the Resepti which is being removed.
 	 * @return Return true if the records were deleted from the table successfully. Returns false in other cases.
@@ -188,33 +221,5 @@ public class ReseptiDAO implements IReseptiDAO {
         } finally {
             istunto.close();
 		}
-	}
-	@Override
-	public double countKcalResepti(int resepti_id) {
-		Session istunto = istuntotehdas.openSession();
-		double result = 0;
-		try {
-            transaktio = istunto.beginTransaction();
-			if (readReseptiId(resepti_id) != null) {
-				Query q = istunto.createQuery("select tuote.tuote_kcal, aines.aines_maara from Tuote tuote " + 
-															"inner join Aines aines on aines.tuote = tuote.tuote_id " +
-															"inner join Resepti resepti on aines.resepti = resepti.resepti_id " +
-															"where resepti.resepti_id = " + resepti_id);
-				List<Object[]> kcal_and_maara = (List<Object[]>) q.list();
-
-				for (Object[] o : kcal_and_maara) {
-					double kcal = (double) o[0];
-					double maara = (double) o[1];
-					result += kcal * maara;
-				}
-				return result;
-			}
-        } catch (Exception e) {
-            if (transaktio != null) transaktio.rollback();
-            e.printStackTrace();
-        } finally {
-            istunto.close();
-		}
-		return 0;
 	}
 }

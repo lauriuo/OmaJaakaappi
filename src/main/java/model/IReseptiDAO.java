@@ -40,6 +40,12 @@ public interface IReseptiDAO {
 	 */
 	public abstract boolean updateResepti(int resepti_id,String uusi_nimi, String uusi_ohje);
 	/**
+	 * For calculating the total amount of calories in a Resepti.
+	 * @param resepti_id The ID of the Resepti which calories will be counted.
+	 * @return The total amount of calories of the Tuote records associated with the Resepti.
+	 */
+	public abstract double countKcalResepti(int resepti_id);
+	/**
 	 * For deleting a Resepti record from the database.
 	 * @param resepti_id The ID of the Resepti which is being removed.
 	 * @return Return true if the records were deleted from the table successfully. Returns false in other cases.
@@ -50,5 +56,4 @@ public interface IReseptiDAO {
 	 * @return Returns true if the operation was successful. Returns false in other cases.
 	 */
 	public abstract boolean emptyResepti();
-	public abstract double countKcalResepti(int resepti_id);
 }
