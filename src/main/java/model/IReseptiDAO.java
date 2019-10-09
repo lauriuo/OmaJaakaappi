@@ -50,4 +50,5 @@ public interface IReseptiDAO {
 	 * @return Returns true if the operation was successful. Returns false in other cases.
 	 */
 	public abstract boolean emptyResepti();
+	public abstract double countKcalResepti(int resepti_id);
 }

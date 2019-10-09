@@ -36,6 +36,7 @@ public class Kayttoliittyma {
         do {
         	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         	LocalDateTime time = LocalDateTime.now();
+
 	        while (vError) {
 			try {
 			valinta = 0;
@@ -570,6 +571,12 @@ public class Kayttoliittyma {
 				 }
 				}
 				vError = true;
+				break;
+			case LASKEKCAL:
+				System.out.println("Anna reseptin id: \n");
+				int r_id = scanner.nextInt();
+				double kcalit = resepti.countKcalResepti(r_id);
+				System.out.print("reseptin koko kalorimäärä: " + kcalit + " kcal.");
 				break;
 			}
         }
