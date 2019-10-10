@@ -580,6 +580,7 @@ public class Kayttoliittyma {
 				int r_id = scanner.nextInt();
 				double kcalit = resepti.countKcalResepti(r_id);
 				System.out.print("reseptin koko kalorimäärä: " + kcalit + " kcal.");
+				vError = true;
 				break;
 			}
         }

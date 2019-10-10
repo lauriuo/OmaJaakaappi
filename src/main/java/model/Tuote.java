@@ -46,7 +46,7 @@ public class Tuote {
      * @param tuote_kcal The amount of calories per unit in the Tuote for the Tuote table's tuote_kcal column, double data type.
      */
     public Tuote (int tuote_id, String tuote_nimi,
-     String tuote_yksikko, int tuote_kcal) {
+     String tuote_yksikko, double tuote_kcal) {
         this.tuote_id = tuote_id;
         this.tuote_kcal = tuote_kcal;
         this.tuote_yksikko = tuote_yksikko;
