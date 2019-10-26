@@ -77,4 +77,14 @@ public interface IAinesDAO {
 	 * @return Returns true if the operation was successful. Returns false in other cases.
 	 */
 	public abstract boolean emptyAines();
+	/**
+	 * For selecting from the Aines table the ingredients that are in Jaakaappi and in the given recipe
+	 * @return Returns an ArrayList of Aines objects if the operation was successful. Returns null otherwise.
+	 */
+	public abstract ArrayList<Object> availableForResepti(int resepti_id);
+	/**
+	 * For selecting from the Aines table the ingredients that are not in Jaakaappi, but are in the given recipe
+	 * @return Returns an ArrayList of Aines objects if the operation was successful. Returns null otherwise.
+	 */
+	public abstract ArrayList<Object> notAvailableForResepti(int resepti_id);
 }

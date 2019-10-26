@@ -330,5 +330,68 @@ public class AinesDAO implements IAinesDAO {
             istunto.close();
 		}
 	}
-
+	/**
+	 * For a given recipe, searches the ingredients for it that are in the Jaakaappi table.
+	 * @return Returns an ArrayList of Aines objects if the operation was successful. Returns null otherwise.
+	 */
+	@Override
+	public ArrayList<Object> availableForResepti(int resepti_id) {
+		ArrayList<Object> result = new ArrayList<>();
+		Session istunto = istuntotehdas.openSession();
+		try {
+			if (resepti.readReseptiId(resepti_id) != null) {
+				@SuppressWarnings("unchecked")
+				List<Aines> aines = istunto.createQuery("select DISTINCT aines from Aines aines " +
+												 "inner join Jaakaappi jaakaappi on jaakaappi.tuote = aines.tuote " +
+												 "inner join Resepti resepti on aines.resepti = resepti.resepti_id " +
+												 "where resepti.resepti_id = " + resepti_id)
+												 .getResultList();
+				for (Object o : aines) {
+					result.add(o);	
+				}
+				return result;
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+            if (transaktio != null) transaktio.rollback();
+            e.printStackTrace();
+            return null;
+        } finally {
+            istunto.close();
+		}
+	}
+	/**
+	 * For a given recipe, searches the ingredients for it that are not in the Jaakaappi table.
+	 * @return Returns an ArrayList of Aines objects if the operation was successful. Returns null otherwise.
+	 */
+	@Override
+	public ArrayList<Object> notAvailableForResepti(int resepti_id) {
+		ArrayList<Object> result = new ArrayList<>();
+		Session istunto = istuntotehdas.openSession();
+		try {
+			if (resepti.readReseptiId(resepti_id) != null) {
+				@SuppressWarnings("unchecked")
+				List<Aines> aines = istunto.createQuery("select aines from Aines aines " +
+												 "inner join Resepti resepti on aines.resepti = resepti.resepti_id " +
+												 "where resepti.resepti_id = " + resepti_id + 
+												 " and aines.aines_id not in " +
+												 "(select aines.aines_id from Aines aines inner join " + 
+												 "Jaakaappi jaakaappi on jaakaappi.tuote = aines.tuote)")
+												 .getResultList();
+				for (Object o : aines) {
+					result.add(o);	
+				}
+				return result;
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+            if (transaktio != null) transaktio.rollback();
+            e.printStackTrace();
+            return null;
+        } finally {
+            istunto.close();
+		}
+	}
 }

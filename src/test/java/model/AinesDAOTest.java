@@ -1,6 +1,7 @@
 package model;
 
 import static org.junit.jupiter.api.Assertions.*;
+import java.sql.Date;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -144,5 +145,37 @@ class AinesDAOTest {
 		aines.deleteAineksetResepti(resepti.readReseptiNimi(resepti_nimi).getResepti_id());
 		assertEquals(0, aines.readAineksetReseptiNimi(resepti_nimi).size(), "Aineksia ei poistettu oikein.");
 	}
-	
+	@Test
+	void testAvailableForResepti() {
+		String tuote_nimi = "Testi-Tuote";
+		String tuote_nimi2 = "Testi-Tuote2";
+		String resepti_nimi = "Testi-Resepti";
+		tuote.createTuote(tuote_nimi, "Kpl", 1);
+		tuote.createTuote(tuote_nimi2, "Kpl", 2);
+		resepti.createResepti(resepti_nimi, "1: ASD. 2: DSA.");
+		int tuote_nimi_id = tuote.readTuoteNimi("Testi-Tuote").getTuote_id();
+		jaakaappi.createJaakaappi(Date.valueOf("2019-10-25"), 10, "Käytettävissä", tuote_nimi_id);
+		aines.createAines(tuote.readTuoteNimi(tuote_nimi).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 5);
+		aines.createAines(tuote.readTuoteNimi(tuote_nimi2).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 6);
+		int resepti_id = resepti.readReseptiNimi("Testi-Resepti").getResepti_id();
+		assertEquals(1, aines.availableForResepti(resepti_id).size(), "Pitäisi olla 1 tuote");
+	}
+	@Test
+	void testNotAvailableForResepti() {
+		String tuote_nimi = "Testi-Tuote";
+		String tuote_nimi2 = "Testi-Tuote2";
+		String tuote_nimi3 = "Testi-Tuote3";
+		String resepti_nimi = "Testi-Resepti";
+		tuote.createTuote(tuote_nimi, "Kpl", 1);
+		tuote.createTuote(tuote_nimi2, "Kpl", 2);
+		tuote.createTuote(tuote_nimi3, "Kpl", 3);
+		resepti.createResepti(resepti_nimi, "1: ASD. 2: DSA.");
+		int tuote_nimi_id = tuote.readTuoteNimi("Testi-Tuote").getTuote_id();
+		jaakaappi.createJaakaappi(Date.valueOf("2019-10-25"), 10, "Käytettävissä", tuote_nimi_id);
+		aines.createAines(tuote.readTuoteNimi(tuote_nimi).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 5);
+		aines.createAines(tuote.readTuoteNimi(tuote_nimi2).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 6);
+		aines.createAines(tuote.readTuoteNimi(tuote_nimi3).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 7);
+		int resepti_id = resepti.readReseptiNimi("Testi-Resepti").getResepti_id();
+		assertEquals(2, aines.notAvailableForResepti(resepti_id).size(), "Pitäisi olla 2 tuotetta");
+	}
 }
