@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="foodDiaryBorderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.foodDiary.FoodDiaryController">
+   <left>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#foodDiaryList" prefHeight="25.0" prefWidth="100.0" text="View food diary" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#foodDiaryAdd" prefHeight="25.0" prefWidth="100.0" text="Add to food diary" />
+            <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#foodDiaryEdit" prefHeight="25.0" prefWidth="100.0" text="Edit food diary" />
+            <Button layoutX="10.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#foodDiaryDelete" prefHeight="25.0" prefWidth="100.0" text="Delete from food diary" />
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
