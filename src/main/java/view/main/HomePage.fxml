@@ -3,120 +3,104 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <BorderPane layoutX="163.0" layoutY="67.0" prefHeight="700.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <HBox prefHeight="50.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+<BorderPane fx:id="homePageBorderpane" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.main.HomePageController">
+   <right>
+      <VBox prefHeight="550.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="501.13671875">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Text>
+            <ListView prefHeight="300.0" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets right="20.0" />
+               </VBox.margin>
+            </ListView>
+         </children>
+      </VBox>
+   </right>
+   <left>
+      <VBox prefHeight="500.0" prefWidth="250.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="170.0" prefWidth="400.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Home" />
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Produces" />
-                  <Button layoutX="210.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Fridge" />
-                  <Button layoutX="410.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Food diary" />
-                  <Button layoutX="610.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Recipes" />
-               </children>
-            </HBox>
-         </top>
-         <right>
-            <VBox prefHeight="550.0" prefWidth="427.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="501.13671875">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Text>
-                  <ListView prefHeight="300.0" prefWidth="150.0">
-                     <VBox.margin>
-                        <Insets right="20.0" />
-                     </VBox.margin>
-                  </ListView>
-               </children>
-            </VBox>
-         </right>
-         <left>
-            <VBox prefHeight="500.0" prefWidth="400.0" BorderPane.alignment="CENTER">
-               <children>
-                  <HBox prefHeight="190.0" prefWidth="400.0">
-                     <children>
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Button">
-                           <HBox.margin>
-                              <Insets left="150.0" top="150.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="22.0" text="?">
-                           <HBox.margin>
-                              <Insets left="10.0" top="157.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="90.0" prefWidth="400.0">
-                     <children>
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Button">
-                           <HBox.margin>
-                              <Insets left="150.0" top="50.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="22.0" text="?">
-                           <HBox.margin>
-                              <Insets left="10.0" top="57.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <HBox layoutX="10.0" layoutY="170.0" prefHeight="90.0" prefWidth="400.0">
-                     <children>
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Button">
-                           <HBox.margin>
-                              <Insets left="150.0" top="50.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="22.0" text="?">
-                           <HBox.margin>
-                              <Insets left="10.0" top="57.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <HBox layoutX="10.0" layoutY="260.0" prefHeight="90.0" prefWidth="400.0">
-                     <children>
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Recipes">
-                           <HBox.margin>
-                              <Insets left="150.0" top="50.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="22.0" text="?">
-                           <HBox.margin>
-                              <Insets left="10.0" top="57.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </left>
-         <bottom>
-            <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button">
+                  <Button mnemonicParsing="false" onMouseClicked="#fridge" prefHeight="35.0" prefWidth="150.0" text="Fridge">
                      <HBox.margin>
-                        <Insets bottom="30.0" right="30.0" />
+                        <Insets left="50.0" top="130.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="22.0" text="?">
+                     <HBox.margin>
+                        <Insets left="10.0" top="135.0" />
                      </HBox.margin>
                   </Button>
                </children>
             </HBox>
-         </bottom>
-      </BorderPane>
-   </children>
-</AnchorPane>
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="90.0" prefWidth="400.0">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#products" prefHeight="35.0" prefWidth="150.0" text="Products">
+                     <HBox.margin>
+                        <Insets left="50.0" top="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="22.0" text="?">
+                     <HBox.margin>
+                        <Insets left="10.0" top="55.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="180.0" prefHeight="90.0" prefWidth="400.0">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#recipes" prefHeight="35.0" prefWidth="150.0" text="Recipes">
+                     <HBox.margin>
+                        <Insets left="50.0" top="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="22.0" text="?">
+                     <HBox.margin>
+                        <Insets left="10.0" top="55.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="270.0" prefHeight="90.0" prefWidth="400.0">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#foodDiary" prefHeight="35.0" prefWidth="150.0" text="Food diary">
+                     <HBox.margin>
+                        <Insets left="50.0" top="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="22.0" text="?">
+                     <HBox.margin>
+                        <Insets left="10.0" top="55.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+   <bottom>
+      <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Exit">
+               <HBox.margin>
+                  <Insets bottom="30.0" right="30.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
