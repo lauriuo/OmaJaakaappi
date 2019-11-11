@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane fx:id="recipesBorderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.recipes.RecipesController">
    <left>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="470.0" prefWidth="135.0" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#recipesList" prefHeight="25.0" prefWidth="100.0" text="List recipes" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#recipesAdd" prefHeight="25.0" prefWidth="100.0" text="Add recipes" />
-            <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#recipesEdit" prefHeight="25.0" prefWidth="100.0" text="Edit recipes" />
-            <Button layoutX="10.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#recipesDelete" prefHeight="25.0" prefWidth="100.0" text="Delete recipes" />
+            <Button mnemonicParsing="false" onMouseClicked="#recipesList" prefHeight="25.0" prefWidth="120.0" text="List recipes" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#recipesAdd" prefHeight="25.0" prefWidth="120.0" text="Add recipes" />
+            <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#recipesEdit" prefHeight="25.0" prefWidth="120.0" text="Edit recipes" />
+            <Button layoutX="10.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#recipesDelete" prefHeight="25.0" prefWidth="120.0" text="Delete recipes" />
          </children>
+         <BorderPane.margin>
+            <Insets left="10.0" top="30.0" />
+         </BorderPane.margin>
       </VBox>
    </left>
 </BorderPane>

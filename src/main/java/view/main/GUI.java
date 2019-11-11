@@ -12,8 +12,6 @@ import javafx.stage.StageStyle;
 
 public class GUI extends Application{
 	
-	private double x, y;
-
 	@Override
 	public void start(final Stage stage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("NavBar.fxml"));
