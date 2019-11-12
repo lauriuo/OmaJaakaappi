@@ -12,7 +12,7 @@ import javafx.scene.input.MouseEvent;
 
 import javafx.scene.layout.BorderPane;
 
-public class NavBarController{
+public class NavBarController implements Initializable{
 	@FXML
 	private BorderPane mainBorderpane;
 
@@ -24,17 +24,17 @@ public class NavBarController{
 	// Event Listener on Button.onMouseClicked
 	@FXML
 	public void fridge(MouseEvent event) {
-		loadContent("fridge");
+		loadContent("Fridge");
 	}
 	// Event Listener on Button.onMouseClicked
 	@FXML
 	public void products(MouseEvent event) {
-		loadContent("products");
+		loadContent("Products");
 	}
 	// Event Listener on Button.onMouseClicked
 	@FXML
 	public void recipes(MouseEvent event) {
-		loadContent("recipes");
+		loadContent("Recipes");
 	}
 	// Event Listener on Button.onMouseClicked
 	@FXML
@@ -51,6 +51,11 @@ public class NavBarController{
 			e.printStackTrace();
 		}
 		mainBorderpane.setLeft(content);
+	}
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		loadContent("HomePage");
 	}
 	
 }
