@@ -15,22 +15,22 @@ public class HomePageController {
 	// Event Listener on Button.onMouseClicked
 	@FXML
 	public void fridge(MouseEvent event) {
-		loadContent("fridge");
+		loadContent("Fridge");
 	}
 	// Event Listener on Button.onMouseClicked
 	@FXML
 	public void products(MouseEvent event) {
-		loadContent("products");
+		loadContent("Products");
 	}
 	// Event Listener on Button.onMouseClicked
 	@FXML
 	public void recipes(MouseEvent event) {
-		loadContent("recipes");
+		loadContent("Recipes");
 	}
 	// Event Listener on Button.onMouseClicked
 	@FXML
 	public void foodDiary(MouseEvent event) {
-		loadContent("fooddiary");
+		loadContent("FoodDiary");
 	}
 
 	private void loadContent(String ui) {

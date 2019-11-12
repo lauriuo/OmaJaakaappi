@@ -12,7 +12,7 @@ import javafx.scene.input.MouseEvent;
 
 import javafx.scene.layout.BorderPane;
 
-public class ProductsController{
+public class ProductsController implements Initializable{
 	@FXML
 	private BorderPane productsBorderpane;
 
@@ -47,6 +47,11 @@ public class ProductsController{
 			e.printStackTrace();
 		}
 		productsBorderpane.setCenter(content);
+	}
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		loadContent("ProductsList");
 	}
 	
 }
