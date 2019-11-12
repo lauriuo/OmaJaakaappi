@@ -21,6 +21,14 @@ CREATE TABLE jaakaappi
   PRIMARY KEY (jaakaappi_id),
   FOREIGN KEY (tuote_id) REFERENCES tuote(tuote_id)
 );
+CREATE TABLE ostoslista
+(
+  ostoslista_id INT NOT NULL AUTO_INCREMENT,
+  tuote_maara DOUBLE,
+  tuote_id INT NOT NULL,
+  PRIMARY KEY (ostoslista_id),
+  FOREIGN KEY (tuote_id) REFERENCES tuote(tuote_id)
+);
 
 CREATE TABLE resepti
 (
