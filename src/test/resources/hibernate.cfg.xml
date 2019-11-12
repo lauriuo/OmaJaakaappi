@@ -14,7 +14,7 @@
       
       <!-- Assume test is the database name -->
       <property name = "hibernate.connection.url">
-         jdbc:mariadb://localhost/omajaakaappi
+         jdbc:mariadb://10.114.32.55/omajaakaappi
       </property>
       
       <property name = "hibernate.connection.username">
