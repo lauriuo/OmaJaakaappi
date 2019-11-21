@@ -33,7 +33,7 @@ public class ProductsListController implements Initializable{
 	}
 
 	public ObservableList<Object> getAllProducts() {
-		ArrayList<Object> tuotteet =tuote.readTuotteet();
+		ArrayList<Object> tuotteet = tuote.readTuotteet();
 		ObservableList<Object> products = FXCollections.observableArrayList(tuotteet);
 		return products;
 	}
