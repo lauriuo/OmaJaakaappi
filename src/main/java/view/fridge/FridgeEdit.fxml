@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.fridge.FridgeEditController">
+   <center>
+      <VBox prefHeight="430.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="ID of the item in the fridge" />
+            <HBox prefHeight="40.0" prefWidth="600.0">
+               <children>
+                  <TextField fx:id="searchFridge" prefWidth="90.0" promptText="ID" />
+                  <Button mnemonicParsing="false" onAction="#searchFridgeAction" text="Search" />
+               </children>
+            </HBox>
+            <HBox prefHeight="26.0" prefWidth="600.0">
+               <children>
+                  <Label layoutX="10.0" layoutY="10.0" prefWidth="170.0" text="The product">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label prefWidth="170.0" text="The current amount">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding></Label>
+                  <Label prefWidth="170.0" text="The current date">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Label>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="127.0" prefHeight="49.0" prefWidth="600.0">
+               <children>
+                  <Label fx:id="lblFridgeProduct" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="170.0">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="lblOldAmount" prefHeight="17.0" prefWidth="170.0">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding></Label>
+                  <Label fx:id="lblOldDate" prefWidth="170.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="30.0" prefWidth="600.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="170.0">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label prefWidth="170.0" text="The new amount">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="10.0" prefWidth="170.0" text="The new date">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="50.0" prefWidth="600.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="170.0">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="newFridgeAmount" prefWidth="70.0" promptText="Amount">
+                     <HBox.margin>
+                        <Insets left="20.0" right="80.0" />
+                     </HBox.margin></TextField>
+                  <DatePicker fx:id="newFridgeDate" prefHeight="25.0" prefWidth="150.0" promptText="Expiration date" />
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#updateFridgeAction" prefWidth="65.0" text="Commit">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></Button>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Edit content of the fridge" BorderPane.alignment="CENTER" />
+   </top>
+   <bottom>
+      <VBox prefHeight="325.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefWidth="200.0" text="Content of the fridge">
+               <VBox.margin>
+                  <Insets left="250.0" />
+               </VBox.margin>
+            </Label>
+            <HBox prefHeight="300.0" prefWidth="700.0">
+               <children>
+                  <TableView fx:id="tableView" prefHeight="285.0" prefWidth="582.0">
+                    <columns>
+                      <TableColumn fx:id="fridgeIdColumn" prefWidth="50.0" text="ID" />
+                      <TableColumn fx:id="fridgeProductColumn" prefWidth="140.0" text="Product" />
+                        <TableColumn fx:id="fridgeCaloriesColumn" minWidth="80.0" text="Calories" />
+                        <TableColumn fx:id="fridgeUnitColumn" minWidth="80.0" text="Unit" />
+                        <TableColumn fx:id="fridgeAmountColumn" minWidth="80.0" text="Amount" />
+                        <TableColumn fx:id="fridgeDateColumn" prefWidth="150.0" text="Expiration date" />
+                    </columns>
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </TableView>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>

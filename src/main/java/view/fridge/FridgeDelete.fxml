@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.fridge.FridgeDeleteController">
+   <top>
+      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Delete content from the fridge" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <VBox prefHeight="122.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="30.0" prefWidth="141.0" text="ID of the content to delete" />
+            <HBox prefHeight="59.0" prefWidth="700.0">
+               <children>
+                  <TextField fx:id="fridgeSelectId" prefHeight="25.0" prefWidth="80.0" promptText="ID" />
+                  <Button mnemonicParsing="false" onAction="#deleteFromFridge" prefWidth="60.0" text="Delete">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <VBox prefHeight="474.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Content of the fridge">
+               <VBox.margin>
+                  <Insets left="250.0" />
+               </VBox.margin>
+            </Label>
+            <HBox prefHeight="400.0" prefWidth="700.0">
+               <children>
+                  <TableView fx:id="tableView" prefHeight="149.0" prefWidth="582.0">
+                    <columns>
+                      <TableColumn fx:id="fridgeIdColumn" prefWidth="50.0" text="ID" />
+                      <TableColumn fx:id="fridgeProductColumn" prefWidth="140.0" text="Product" />
+                        <TableColumn fx:id="fridgeCaloriesColumn" minWidth="80.0" text="Calories" />
+                        <TableColumn fx:id="fridgeUnitColumn" minWidth="80.0" text="Unit" />
+                        <TableColumn fx:id="fridgeAmountColumn" minWidth="80.0" text="Amount" />
+                        <TableColumn fx:id="fridgeDateColumn" prefWidth="150.0" text="Expiration date" />
+                    </columns>
+                  </TableView>
+               </children>
+               <VBox.margin>
+                  <Insets left="60.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>

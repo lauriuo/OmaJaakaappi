@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.products.ProductsEditController">
+   <center>
+      <VBox prefHeight="200.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Name of the product" />
+            <HBox prefHeight="54.0" prefWidth="600.0">
+               <children>
+                  <TextField fx:id="searchProducts" promptText="Name" />
+                  <Button mnemonicParsing="false" onAction="#searchButtonAction" text="Search" />
+               </children>
+            </HBox>
+            <HBox prefHeight="26.0" prefWidth="600.0">
+               <children>
+                  <Label prefWidth="170.0" text="The current name">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding></Label>
+                  <Label prefWidth="170.0" text="The current unit">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Label>
+                  <Label text="The current amount of calories">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Label>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="127.0" prefHeight="49.0" prefWidth="600.0">
+               <children>
+                  <Label fx:id="lblOldName" prefWidth="170.0">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding></Label>
+                  <Label fx:id="lblOldUnit" prefWidth="170.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Label>
+                  <Label fx:id="lblOldCalories" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="23.0" prefWidth="600.0">
+               <children>
+                  <Label prefWidth="170.0" text="The new name">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="10.0" prefWidth="170.0" text="The new unit">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label layoutX="38.0" layoutY="10.0" text="The new amount of calories">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="50.0" prefWidth="600.0">
+               <children>
+                  <TextField fx:id="newProductName" prefWidth="100.0" promptText="Name">
+                     <HBox.margin>
+                        <Insets left="20.0" right="50.0" />
+                     </HBox.margin></TextField>
+                  <TextField fx:id="newProductUnit" layoutX="10.0" layoutY="10.0" prefWidth="100.0" promptText="Unit">
+                     <HBox.margin>
+                        <Insets right="70.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="newProductCalories" layoutX="159.0" layoutY="10.0" prefWidth="100.0" promptText="Calories">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#updateButtonAction" prefWidth="65.0" text="Commit" />
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Edit products" BorderPane.alignment="CENTER" />
+   </top>
+   <bottom>
+      <VBox prefHeight="315.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Products">
+               <VBox.margin>
+                  <Insets left="250.0" />
+               </VBox.margin>
+            </Label>
+            <HBox prefHeight="280.0" prefWidth="700.0">
+               <children>
+                  <TableView fx:id="tableView" prefHeight="130.0" prefWidth="462.0">
+                    <columns>
+                      <TableColumn fx:id="productsIdColumn" prefWidth="50.0" text="ID" />
+                      <TableColumn fx:id="productsNameColumn" prefWidth="250.0" text="Name" />
+                        <TableColumn fx:id="productsUnitColumn" minWidth="80.0" text="Unit" />
+                        <TableColumn fx:id="productsCaloriesColumn" minWidth="80.0" text="Calories" />
+                    </columns>
+                  </TableView>
+               </children>
+               <VBox.margin>
+                  <Insets left="119.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>

@@ -3,6 +3,7 @@ package model;
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -34,6 +35,10 @@ public class JaakaappiDAO implements IJaakaappiDAO {
      * For accessing the Tuote operations.
      */
     private TuoteDAO tuote = new TuoteDAO();
+    /**
+     * For accessing the Rpk operations.
+     */
+    private RpkDAO rpk = new RpkDAO();
     /**
 	 * Inserts a new record in the Jaakaappi table.
 	 * @param pvm The expiration date of the Tuote being placed in the Jaakaappi.
@@ -363,9 +368,12 @@ public class JaakaappiDAO implements IJaakaappiDAO {
 			Query query = istunto.createQuery("from Jaakaappi where jaakaappi_id = :jaakaappiid").setParameter("jaakaappiid", jaakaappi_id);
 			Jaakaappi jaakaappi = (Jaakaappi) query.uniqueResult();
 			double erotus = jaakaappi.getTuote_maara() - maara;
+			java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 			if (erotus <= 0) {
 				updateJaakaappi(jaakaappi_id, jaakaappi.getTuote_pvm(),
 								jaakaappi.getTuote_maara(), kaytetty_tai_havikki);
+				rpk.createRpk(date, jaakaappi_id);
+				
 			} else {
 					updateJaakaappi(jaakaappi_id, jaakaappi.getTuote_pvm(),
 									erotus, jaakaappi.getTuote_status());
@@ -376,6 +384,10 @@ public class JaakaappiDAO implements IJaakaappiDAO {
 	        		uusiJaakaappi.setTuote(istunto.get(Tuote.class, jaakaappi.getTuote().getTuote_id()));
 	            	istunto.save(uusiJaakaappi);
 	            	istunto.getTransaction().commit();
+	            	
+	            	query = istunto.createQuery("select max(jaakaappi_id) from Jaakaappi");
+	    			int luku = (Integer) query.getSingleResult();
+	    			rpk.createRpk(date, luku);
 				}
 			return true;
         } catch (Exception e) {
@@ -406,5 +418,4 @@ public class JaakaappiDAO implements IJaakaappiDAO {
             istunto.close();
 		}
 	}
-	
 }
