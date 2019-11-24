@@ -54,4 +54,9 @@ public class ProductsController implements Initializable{
 		loadContent("ProductsList");
 	}
 	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		loadContent("ProductsList");
+	}
+	
 }

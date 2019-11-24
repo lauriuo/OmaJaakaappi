@@ -67,5 +67,4 @@ public class ProductsEditController implements Initializable{
 		ObservableList<Object> products = FXCollections.observableArrayList(tuotteet);
 		return products;
 	}
-	
 }

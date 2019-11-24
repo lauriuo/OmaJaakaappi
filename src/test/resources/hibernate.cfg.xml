@@ -29,6 +29,7 @@
       <mapping class="model.Rpk"/>
       <mapping class="model.Resepti"/>
       <mapping class="model.Aines"/>
+      <mapping class="model.Ostoslista"/>
       <!-- List of XML mapping files -->
    </session-factory>
 </hibernate-configuration>
