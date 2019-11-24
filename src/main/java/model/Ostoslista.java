@@ -1,7 +1,5 @@
 package model;
 
-import java.sql.Date;
-
 import javax.persistence.*;
 /**
  * Handles the Ostoslista objects created, corresponding the Ostoslista table in the database.
@@ -40,7 +38,7 @@ public class Ostoslista {
      * @param tuote_maara The amount of the associated Tuote with this Ostoslista for the Ostoslista table's tuote_maara column, double data type.
      * @param tuote The Tuote associated with this Ostoslista for the Ostoslista table's tuote_id column, Tuote data type.
      */
-    public Ostoslista(int ostoslista_id, Date tuote_pvm, double tuote_maara, String tuote_status, Tuote tuote) {
+    public Ostoslista(int ostoslista_id, double tuote_maara, Tuote tuote) {
     	this.ostoslista_id = ostoslista_id;
     	this.tuote_maara = tuote_maara;
     	this.tuote = tuote;

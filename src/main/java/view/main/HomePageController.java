@@ -32,6 +32,10 @@ public class HomePageController {
 	public void foodDiary(MouseEvent event) {
 		loadContent("FoodDiary");
 	}
+	@FXML
+	public void shoppingList(MouseEvent event) {
+		loadContent("ShoppingList");
+	}
 
 	private void loadContent(String ui) {
 		Parent content = null;
