@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="fridgeAddBorderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.fridge.FridgeAddController">
+   <center>
+      <VBox prefHeight="200.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Name of the product" />
+            <HBox prefHeight="43.0" prefWidth="600.0">
+               <children>
+                  <TextField fx:id="addFridgeName" promptText="Name" />
+               </children>
+            </HBox>
+            <Label text="The quantity of the products" />
+            <HBox layoutX="10.0" layoutY="27.0" prefHeight="43.0" prefWidth="600.0">
+               <children>
+                  <TextField fx:id="addFridgeQuantity" promptText="Quantity" />
+               </children>
+            </HBox>
+            <Label text="The expiration date of the products" />
+            <HBox layoutX="10.0" layoutY="87.0" prefHeight="43.0" prefWidth="600.0">
+               <children>
+                  <DatePicker fx:id="addFridgeDate" promptText="Expiration date" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="147.0" prefHeight="43.0" prefWidth="600.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#addFridgeButton" text="Add into the fridge" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <right>
+      <VBox prefHeight="549.0" prefWidth="184.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="The product needs to be found &#10;in the system before it can be &#10;added into the fridge." textAlignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#productsList" prefWidth="150.0" text="List the products below">
+               <VBox.margin>
+                  <Insets left="12.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#productsAdd" prefWidth="150.0" text="Add a new product">
+               <VBox.margin>
+                  <Insets left="12.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+         <BorderPane.margin>
+            <Insets top="10.0" />
+         </BorderPane.margin>
+      </VBox>
+   </right>
+   <top>
+      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Add content to the fridge" BorderPane.alignment="CENTER" />
+   </top>
+</BorderPane>

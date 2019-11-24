@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -7,21 +12,43 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.products.ProductsDeleteController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.products.ProductsDeleteController">
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="100.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Name of the product to be deleted" />
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="deleteProductName" promptText="Product name" />
-                  <Button mnemonicParsing="false" onAction="#deleteProductButton" text="Button" />
+                  <Button mnemonicParsing="false" onAction="#deleteProductButton" prefHeight="25.0" prefWidth="60.0" text="Delete" />
                </children>
             </HBox>
          </children>
       </VBox>
    </center>
    <top>
-      <Label text="Delete products" BorderPane.alignment="CENTER" />
+      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Delete products" BorderPane.alignment="CENTER" />
    </top>
+   <bottom>
+      <VBox prefHeight="500.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Products">
+               <VBox.margin>
+                  <Insets left="250.0" />
+               </VBox.margin>
+            </Label>
+            <TableView fx:id="tableView" prefHeight="450.0" prefWidth="462.0">
+              <columns>
+                <TableColumn fx:id="productsIdColumn" prefWidth="50.0" text="ID" />
+                <TableColumn fx:id="productsNameColumn" prefWidth="250.0" text="Name" />
+                  <TableColumn fx:id="productsUnitColumn" minWidth="80.0" text="Unit" />
+                  <TableColumn fx:id="productsCaloriesColumn" minWidth="80.0" text="Calories" />
+              </columns>
+               <VBox.margin>
+                  <Insets left="119.0" right="119.0" />
+               </VBox.margin>
+            </TableView>
+         </children>
+      </VBox>
+   </bottom>
 </BorderPane>

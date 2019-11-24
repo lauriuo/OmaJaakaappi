@@ -46,7 +46,12 @@ public class ProductsController implements Initializable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		productsBorderpane.setCenter(content);
+		productsBorderpane.setRight(content);
+	}
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		loadContent("ProductsList");
 	}
 	
 	@Override

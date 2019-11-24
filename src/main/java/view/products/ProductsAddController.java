@@ -8,12 +8,9 @@ import javafx.event.ActionEvent;
 
 public class ProductsAddController {
 	static TuoteDAO tuote = new TuoteDAO();
-	@FXML
-	private TextField addProductName;
-	@FXML
-	private TextField addProductUnit;
-	@FXML
-	private TextField addProductCalories;
+	@FXML private TextField addProductName;
+	@FXML private TextField addProductUnit;
+	@FXML private TextField addProductCalories;
 
 	// Event Listener on Button.onAction
 	@FXML

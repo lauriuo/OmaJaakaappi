@@ -113,9 +113,8 @@ public class Tuote {
 	 */
     @Override
     public String toString() {
-        return "id: " + tuote_id +
-                " nimi: " + tuote_nimi +
-                " kcal: " + tuote_kcal +
-                " yksikkö: " + tuote_yksikko;
+        return tuote_nimi +
+                ". Calories: " + tuote_kcal +
+                ". Unit: " + tuote_yksikko;
     }
 }
