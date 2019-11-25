@@ -22,6 +22,7 @@ public class ProductsDeleteController implements Initializable{
 	@FXML private TableColumn<Object, String> productsNameColumn;
 	@FXML private TableColumn<Object, String> productsUnitColumn;
 	@FXML private TableColumn<Object, Number> productsCaloriesColumn;
+	@FXML private TableColumn<Object, Number> productsSaltColumn;
 	@FXML private TextField deleteProductName;
 	
 	@FXML
@@ -36,6 +37,7 @@ public class ProductsDeleteController implements Initializable{
 		productsNameColumn.setCellValueFactory(new PropertyValueFactory<Object, String>("tuote_nimi"));
 		productsUnitColumn.setCellValueFactory(new PropertyValueFactory<Object, String>("tuote_yksikko"));
 		productsCaloriesColumn.setCellValueFactory(new PropertyValueFactory<Object, Number>("tuote_kcal"));
+		productsSaltColumn.setCellValueFactory(new PropertyValueFactory<Object, Number>("tuote_suola"));
 		
 		tableView.setItems(getAllProducts());
 	}

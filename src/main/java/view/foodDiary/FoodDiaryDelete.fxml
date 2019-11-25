@@ -41,17 +41,18 @@
             </Label>
             <HBox prefHeight="400.0" prefWidth="700.0">
                <children>
-                  <TableView fx:id="tableView" prefHeight="250.0" prefWidth="562.0">
+                  <TableView fx:id="tableView" prefHeight="250.0" prefWidth="612.0">
                     <columns>
                       <TableColumn fx:id="rpkIdColumn" prefWidth="50.0" text="ID" />
                       <TableColumn fx:id="rpkProductColumn" prefWidth="150.0" text="Product" />
-                        <TableColumn fx:id="rpkCaloriesColumn" text="Calories" />
-                        <TableColumn fx:id="rpkAmountColumn" text="Amount" />
+                        <TableColumn fx:id="rpkCaloriesColumn" minWidth="70.0" prefWidth="70.0" text="Calories" />
+                        <TableColumn fx:id="rpkSaltColumn" minWidth="70.0" prefWidth="70.0" text="Salt" />
+                        <TableColumn fx:id="rpkAmountColumn" minWidth="70.0" prefWidth="70.0" text="Amount" />
                         <TableColumn fx:id="rpkDateColumn" prefWidth="100.0" text="Date" />
                         <TableColumn fx:id="rpkUsageColumn" prefWidth="100.0" text="Usage" />
                     </columns>
                      <HBox.margin>
-                        <Insets left="69.0" />
+                        <Insets left="44.0" />
                      </HBox.margin>
                   </TableView>
                </children>

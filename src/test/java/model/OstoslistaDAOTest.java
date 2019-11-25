@@ -37,7 +37,7 @@ class OstoslistaDAOTest {
 	@Test
 	void testCreateOstoslista() {
 		String tuote_nimi = "Testi-Tuote";
-		tuote.createTuote(tuote_nimi, "kpl", 1);
+		tuote.createTuote(tuote_nimi, "kpl", 1, 1);
 		int tuote_id = tuote.readTuoteNimi(tuote_nimi).getTuote_id();
 		assertEquals(null, ostoslista.readOstoslista(tuote_id), "Tuotetta löytyy jo kyseisellä päivämäärällä.");
 		ostoslista.createOstoslista(5, tuote_id);
@@ -48,8 +48,8 @@ class OstoslistaDAOTest {
 	void testReadOstoslistat() {
         String tuote_nimi = "Testi-Tuote";
 		String tuote_nimi2 = "Testi-Tuote2";
-        tuote.createTuote(tuote_nimi, "kpl", 1);
-		tuote.createTuote(tuote_nimi2, "kpl", 1);
+        tuote.createTuote(tuote_nimi, "kpl", 1, 1);
+		tuote.createTuote(tuote_nimi2, "kpl", 1, 1);
         int tuote_id = tuote.readTuoteNimi(tuote_nimi).getTuote_id();
 		int tuote_id2 = tuote.readTuoteNimi(tuote_nimi2).getTuote_id();
 		ostoslista.createOstoslista(5, tuote_id);
@@ -59,7 +59,7 @@ class OstoslistaDAOTest {
     @Test
     void testReadOstoslistaName() {
          String tuote_nimi = "Testi-Tuote";
-        tuote.createTuote(tuote_nimi, "kpl", 1);       
+        tuote.createTuote(tuote_nimi, "kpl", 1, 1);       
         int tuote_id = tuote.readTuoteNimi(tuote_nimi).getTuote_id();
         ostoslista.createOstoslista(5, tuote_id);
         assertEquals(1, ostoslista.readOstoslistaName("Testi-Tuote").size(), "Pitäisi olla 1 tuote");
@@ -67,7 +67,7 @@ class OstoslistaDAOTest {
 	@Test
 	void testDeleteOstoslista() {
 		String tuote_nimi = "Testi-Tuote";
-		tuote.createTuote(tuote_nimi, "kpl", 1);
+		tuote.createTuote(tuote_nimi, "kpl", 1, 1);
 		int tuote_id = tuote.readTuoteNimi(tuote_nimi).getTuote_id();
 		ostoslista.createOstoslista(5, tuote_id);
 		int ostoslista_id = ostoslista.readOstoslista(tuote_id).getOstoslista_id();

@@ -11,10 +11,11 @@ public class ProductsAddController {
 	@FXML private TextField addProductName;
 	@FXML private TextField addProductUnit;
 	@FXML private TextField addProductCalories;
+	@FXML private TextField addProductSalt;
 
 	// Event Listener on Button.onAction
 	@FXML
 	public void addProductButton() {
-		tuote.createTuote(addProductName.getText(), addProductUnit.getText(), Double.parseDouble(addProductCalories.getText()));
+		tuote.createTuote(addProductName.getText(), addProductUnit.getText(), Double.parseDouble(addProductCalories.getText()), Double.parseDouble(addProductSalt.getText()));
 	}
 }

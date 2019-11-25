@@ -40,7 +40,7 @@ class JaakaappiDAOTest {
 	@Test
 	void testCreateJaakaappi() {
 		String tuote_nimi = "Testi-Tuote";
-		tuote.createTuote(tuote_nimi, "kpl", 1);
+		tuote.createTuote(tuote_nimi, "kpl", 1, 1);
 		Date pvm = Date.valueOf("2019-09-28");
 		int tuote_id = tuote.readTuoteNimi(tuote_nimi).getTuote_id();
 		assertEquals(null, jaakaappi.readJaakaappi(tuote_id, pvm), "Tuotetta löytyy jo kyseisellä päivämäärällä.");
@@ -51,7 +51,7 @@ class JaakaappiDAOTest {
 	@Test
 	void testSamaPvm() {
 		String tuote_nimi = "Testi-Tuote";
-		tuote.createTuote(tuote_nimi, "kpl", 1);
+		tuote.createTuote(tuote_nimi, "kpl", 1, 1);
 		Date pvm = Date.valueOf("2019-09-21");
 		double maara1 = 5;
 		double maara2 = 7;
@@ -65,7 +65,7 @@ class JaakaappiDAOTest {
 	@Test
 	void testReadJaakaapit() {
 		String tuote_nimi = "Testi-Tuote";
-		tuote.createTuote(tuote_nimi, "kpl", 1);
+		tuote.createTuote(tuote_nimi, "kpl", 1, 1);
 		Date pvm = Date.valueOf("2019-09-28");
 		int tuote_id = tuote.readTuoteNimi(tuote_nimi).getTuote_id();
 		jaakaappi.createJaakaappi(pvm, 5, "Käytettävissä", tuote_id);
@@ -77,7 +77,7 @@ class JaakaappiDAOTest {
 	@Test
 	void testUpdateJaakaappi() {
 		String tuote_nimi = "Testi-Tuote";
-		tuote.createTuote(tuote_nimi, "kpl", 1);
+		tuote.createTuote(tuote_nimi, "kpl", 1, 1);
 		Date pvm = Date.valueOf("2019-09-27");
 		Date uusi_pvm = Date.valueOf("2019-09-28");
 		int tuote_id = tuote.readTuoteNimi(tuote_nimi).getTuote_id();
@@ -89,7 +89,7 @@ class JaakaappiDAOTest {
 	@Test
 	void testUpdateJkKaytetty() {
 		String tuote_nimi = "Testi-Tuote";
-		tuote.createTuote(tuote_nimi, "kpl", 1);
+		tuote.createTuote(tuote_nimi, "kpl", 1, 1);
 		Date pvm = Date.valueOf("2019-09-27");
 		int tuote_id = tuote.readTuoteNimi(tuote_nimi).getTuote_id();
 		jaakaappi.createJaakaappi(pvm, 5, "Käytettävissä", tuote_id);
@@ -100,7 +100,7 @@ class JaakaappiDAOTest {
 	@Test
 	void testUpdateJkHavikki() {
 		String tuote_nimi = "Testi-Tuote";
-		tuote.createTuote(tuote_nimi, "kpl", 1);
+		tuote.createTuote(tuote_nimi, "kpl", 1, 1);
 		Date pvm = Date.valueOf("2019-09-27");
 		int tuote_id = tuote.readTuoteNimi(tuote_nimi).getTuote_id();
 		jaakaappi.createJaakaappi(pvm, 5, "Käytettävissä", tuote_id);
@@ -111,7 +111,7 @@ class JaakaappiDAOTest {
 	@Test
 	void testDeleteJaakaappi() {
 		String tuote_nimi = "Testi-Tuote";
-		tuote.createTuote(tuote_nimi, "kpl", 1);
+		tuote.createTuote(tuote_nimi, "kpl", 1, 1);
 		Date pvm = Date.valueOf("2019-09-27");
 		int tuote_id = tuote.readTuoteNimi(tuote_nimi).getTuote_id();
 		jaakaappi.createJaakaappi(pvm, 5, "Käytettävissä", tuote_id);
@@ -121,8 +121,8 @@ class JaakaappiDAOTest {
 	}
 	@Test
 	void testGoingOldJaakaapit() {
-		tuote.createTuote("aika1", "kpl", 1);
-		tuote.createTuote("aika2", "kpl", 1);
+		tuote.createTuote("aika1", "kpl", 1, 1);
+		tuote.createTuote("aika2", "kpl", 1, 1);
 		int aika1_id = tuote.readTuoteNimi("aika1").getTuote_id();
 		int aika2_id = tuote.readTuoteNimi("aika2").getTuote_id();
 		LocalDateTime now = LocalDateTime.now();
@@ -137,8 +137,8 @@ class JaakaappiDAOTest {
 	}
 	@Test
 	void testReadWasteJaakaapit() {
-		tuote.createTuote("huono", "kpl", 1);
-		tuote.createTuote("hyva", "kpl", 1);
+		tuote.createTuote("huono", "kpl", 1, 1);
+		tuote.createTuote("hyva", "kpl", 1, 1);
 		int huono_id = tuote.readTuoteNimi("huono").getTuote_id();
 		int hyva_id = tuote.readTuoteNimi("hyva").getTuote_id();
 		LocalDateTime now = LocalDateTime.now();

@@ -34,7 +34,7 @@ public class TuoteDAOTest {
 	@Test
 	void testCreateTuote() {
 		String tuote_nimi = "Testi-Tuote";
-		tuote.createTuote(tuote_nimi, "yksikko", 1);
+		tuote.createTuote(tuote_nimi, "yksikko", 1, 1);
 		assertEquals(tuote_nimi, tuote.readTuoteNimi(tuote_nimi).getTuote_nimi(), "Tuotetta ei löytynyt.");
 	}
 
@@ -44,15 +44,15 @@ public class TuoteDAOTest {
 		String uusi_nimi = "Uusi tuote";
 		String tuote_yksikko = "Kpl";
 		String uusi_yksikko = "Uusi yksikkö";
-		tuote.createTuote(tuote_nimi, tuote_yksikko, 1);
-		tuote.updateTuote(tuote_nimi, uusi_nimi, uusi_yksikko, 2);
+		tuote.createTuote(tuote_nimi, tuote_yksikko, 1, 1);
+		tuote.updateTuote(tuote_nimi, uusi_nimi, uusi_yksikko, 2, 2);
 		assertEquals(uusi_yksikko, tuote.readTuoteNimi(uusi_nimi).getTuote_yksikko(), "Tuotetta ei löytynyt.");
 	}
 
 	@Test
 	void testDeleteTuote() {
 		String tuote_nimi = "Testi-Tuote";
-		tuote.createTuote(tuote_nimi, "yksikko", 1);
+		tuote.createTuote(tuote_nimi, "yksikko", 1, 1);
 		tuote.deleteTuote(tuote_nimi);
 		assertEquals(null, tuote.readTuoteNimi(tuote_nimi), "Tuotetta ei poistettu.");
 

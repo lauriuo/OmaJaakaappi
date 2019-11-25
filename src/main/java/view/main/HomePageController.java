@@ -31,6 +31,7 @@ public class HomePageController implements Initializable{
 	@FXML private TableView<Object> tableView;
 	@FXML private TableColumn<Jaakaappi, String> productColumn;
 	@FXML private TableColumn<Jaakaappi, String> caloriesColumn;
+	@FXML private TableColumn<Jaakaappi, String> saltColumn;
 	@FXML private TableColumn<Jaakaappi, String> unitColumn;
 	@FXML private TableColumn<Object, Number> amountColumn;
 	@FXML private TableColumn<Object, Date> dateColumn;
@@ -48,6 +49,13 @@ public class HomePageController implements Initializable{
 	        @Override
 	        public ObservableValue<String> call(CellDataFeatures<Jaakaappi, String> result) {
 	            return new SimpleStringProperty(Double.toString(result.getValue().getTuote().getTuote_kcal()));                
+	        }
+		});
+		
+		saltColumn.setCellValueFactory(new Callback<CellDataFeatures<Jaakaappi, String>, ObservableValue<String>>() {
+	        @Override
+	        public ObservableValue<String> call(CellDataFeatures<Jaakaappi, String> result) {
+	            return new SimpleStringProperty(Double.toString(result.getValue().getTuote().getTuote_suola()));                
 	        }
 		});
 		
