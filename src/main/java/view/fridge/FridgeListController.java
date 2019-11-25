@@ -34,6 +34,7 @@ public class FridgeListController implements Initializable{
 	@FXML private TableColumn<Object, Number> fridgeIdColumn;
 	@FXML private TableColumn<Jaakaappi, String> fridgeProductColumn;
 	@FXML private TableColumn<Jaakaappi, String> fridgeCaloriesColumn;
+	@FXML private TableColumn<Jaakaappi, String> fridgeSaltColumn;
 	@FXML private TableColumn<Jaakaappi, String> fridgeUnitColumn;
 	@FXML private TableColumn<Object, Number> fridgeAmountColumn;
 	@FXML private TableColumn<Object, Date> fridgeDateColumn;
@@ -58,6 +59,13 @@ public class FridgeListController implements Initializable{
 	        @Override
 	        public ObservableValue<String> call(CellDataFeatures<Jaakaappi, String> result) {
 	            return new SimpleStringProperty(Double.toString(result.getValue().getTuote().getTuote_kcal()));                
+	        }
+		});
+		
+		fridgeSaltColumn.setCellValueFactory(new Callback<CellDataFeatures<Jaakaappi, String>, ObservableValue<String>>() {
+	        @Override
+	        public ObservableValue<String> call(CellDataFeatures<Jaakaappi, String> result) {
+	            return new SimpleStringProperty(Double.toString(result.getValue().getTuote().getTuote_suola()));                
 	        }
 		});
 		

@@ -36,6 +36,7 @@ public class FoodDiaryDateController implements Initializable{
 	@FXML private TableColumn<Object, Number> rpkIdColumn;
 	@FXML private TableColumn<Rpk, String> rpkProductColumn;
 	@FXML private TableColumn<Rpk, String> rpkCaloriesColumn;
+	@FXML private TableColumn<Rpk, String> rpkSaltColumn;
 	@FXML private TableColumn<Rpk, String> rpkAmountColumn;
 	@FXML private TableColumn<Rpk, String> rpkUsageColumn;
 	
@@ -57,7 +58,14 @@ public class FoodDiaryDateController implements Initializable{
 	        public ObservableValue<String> call(CellDataFeatures<Rpk, String> c) {
 	            return new SimpleStringProperty(Double.toString(c.getValue().getJaakaappi().getTuote().getTuote_kcal()));                
 	        }
-		}); 
+		});
+		
+		rpkSaltColumn.setCellValueFactory(new Callback<CellDataFeatures<Rpk, String>, ObservableValue<String>>() {
+	        @Override
+	        public ObservableValue<String> call(CellDataFeatures<Rpk, String> c) {
+	            return new SimpleStringProperty(Double.toString(c.getValue().getJaakaappi().getTuote().getTuote_suola()));                
+	        }
+		});
 		
 		rpkAmountColumn.setCellValueFactory(new Callback<CellDataFeatures<Rpk, String>, ObservableValue<String>>() {
 	        @Override

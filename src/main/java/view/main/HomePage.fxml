@@ -32,10 +32,11 @@
                   <TableView fx:id="tableView" prefHeight="207.0" prefWidth="532.0">
                     <columns>
                       <TableColumn fx:id="productColumn" prefWidth="140.0" text="Product" />
-                      <TableColumn fx:id="caloriesColumn" minWidth="80.0" text="Calories" />
+                      <TableColumn fx:id="caloriesColumn" minWidth="70.0" prefWidth="70.0" text="Calories" />
+                        <TableColumn fx:id="saltColumn" minWidth="70.0" prefWidth="70.0" text="Salt" />
                         <TableColumn fx:id="unitColumn" minWidth="80.0" text="Unit" />
-                        <TableColumn fx:id="amountColumn" minWidth="80.0" text="Amount" />
-                        <TableColumn fx:id="dateColumn" prefWidth="150.0" text="Expiration date" />
+                        <TableColumn fx:id="amountColumn" minWidth="70.0" prefWidth="70.0" text="Amount" />
+                        <TableColumn fx:id="dateColumn" prefWidth="100.0" text="Expiration date" />
                     </columns>
                      <HBox.margin>
                         <Insets left="50.0" />

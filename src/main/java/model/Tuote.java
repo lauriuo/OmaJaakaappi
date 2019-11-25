@@ -34,6 +34,11 @@ public class Tuote {
     @Column(name="tuote_kcal")
     private double tuote_kcal;
     /**
+     * A column in the Tuote table. The amount of salt contained in the chosen unit. Double data type.
+     */
+    @Column(name="tuote_suola")
+    private double tuote_suola;
+    /**
 	 * Initializes an empty Tuote object.
 	 */
     public Tuote () {
@@ -44,13 +49,15 @@ public class Tuote {
      * @param tuote_nimi The name for the Tuote table's tuote_nimi column, String data type.
      * @param tuote_yksikko The unit used for the Tuote for the Tuote table's tuote_yksikko column, String data type.
      * @param tuote_kcal The amount of calories per unit in the Tuote for the Tuote table's tuote_kcal column, double data type.
+     * @param tuote_suola The amount of salt per unit in the Tuote for the Tuote table's tuote_suola column, double data type.
      */
     public Tuote (int tuote_id, String tuote_nimi,
-     String tuote_yksikko, double tuote_kcal) {
+     String tuote_yksikko, double tuote_kcal, double tuote_suola) {
         this.tuote_id = tuote_id;
         this.tuote_kcal = tuote_kcal;
         this.tuote_yksikko = tuote_yksikko;
         this.tuote_nimi = tuote_nimi;
+        this.tuote_suola = tuote_suola;
     }
     /**
      * Returns the value of tuote_id set for the Tuote object.
@@ -67,7 +74,7 @@ public class Tuote {
     	this.tuote_id = tuote_id;
     }
     /**
-     * Returns the value of tuote_kca set for a Tuote object.
+     * Returns the value of tuote_kcal set for a Tuote object.
      * @return Double value Tuote object's tuote_kcal.
      */
     public double getTuote_kcal() {
@@ -79,6 +86,20 @@ public class Tuote {
      */
     public void setTuote_kcal(double tuote_kcal) {
     	this.tuote_kcal = tuote_kcal;
+    }
+    /**
+     * Returns the value of tuote_suola set for a Tuote object.
+     * @return Double value Tuote object's tuote_suola.
+     */
+    public double getTuote_suola() {
+        return tuote_suola;
+    }
+    /**
+     * Set the tuote_suola of a Tuote object.
+     * @param tuote_suola The value which a Tuote object's tuote_suola is to be set, double data type.
+     */
+    public void setTuote_suola(double tuote_suola) {
+    	this.tuote_suola = tuote_suola;
     }
     /**
 	 * Returns the value of tuote_nimi set for a Tuote object.
@@ -114,7 +135,8 @@ public class Tuote {
     @Override
     public String toString() {
         return tuote_nimi +
-                ". Calories: " + tuote_kcal +
-                ". Unit: " + tuote_yksikko;
+        		". Unit: " + tuote_yksikko +
+        		". Calories: " + tuote_kcal +
+                ". Salt: " + tuote_suola;
     }
 }

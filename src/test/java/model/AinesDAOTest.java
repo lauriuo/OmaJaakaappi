@@ -46,7 +46,7 @@ class AinesDAOTest {
 	void testCreateAines() {
 		String tuote_nimi = "Testi-Tuote";
 		String resepti_nimi = "Testi-Resepti";
-		tuote.createTuote(tuote_nimi, "Kpl", 1);
+		tuote.createTuote(tuote_nimi, "Kpl", 1, 1);
 		resepti.createResepti(resepti_nimi, "1: ASD. 2: DSA.");
 		aines.createAines(tuote.readTuoteNimi(tuote_nimi).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 5);
 		assertEquals(5, aines.readAines(tuote_nimi, resepti_nimi).getAines_maara(), "Ainesta ei luotu oikein.");
@@ -56,7 +56,7 @@ class AinesDAOTest {
 	void testSamaTR() {
 		String tuote_nimi = "Testi-Tuote";
 		String resepti_nimi = "Testi-Resepti";
-		tuote.createTuote(tuote_nimi, "Kpl", 1);
+		tuote.createTuote(tuote_nimi, "Kpl", 1, 1);
 		resepti.createResepti(resepti_nimi, "1: ASD. 2: DSA.");
 		aines.createAines(tuote.readTuoteNimi(tuote_nimi).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 5);
 		aines.createAines(tuote.readTuoteNimi(tuote_nimi).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 5);
@@ -68,8 +68,8 @@ class AinesDAOTest {
 		String tuote_nimi = "Testi-Tuote";
 		String tuote_nimi2 = "Testi-Tuote2";
 		String resepti_nimi = "Testi-Resepti";
-		tuote.createTuote(tuote_nimi, "Kpl", 1);
-		tuote.createTuote(tuote_nimi2, "Kpl", 2);
+		tuote.createTuote(tuote_nimi, "Kpl", 1, 1);
+		tuote.createTuote(tuote_nimi2, "Kpl", 2, 2);
 		resepti.createResepti(resepti_nimi, "1: ASD. 2: DSA.");
 		aines.createAines(tuote.readTuoteNimi(tuote_nimi).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 5);
 		aines.createAines(tuote.readTuoteNimi(tuote_nimi2).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 4);
@@ -81,8 +81,8 @@ class AinesDAOTest {
 		String tuote_nimi = "Testi-Tuote";
 		String tuote_nimi2 = "Testi-Tuote2";
 		String resepti_nimi = "Testi-Resepti";
-		tuote.createTuote(tuote_nimi, "Kpl", 1);
-		tuote.createTuote(tuote_nimi2, "Kpl", 2);
+		tuote.createTuote(tuote_nimi, "Kpl", 1, 1);
+		tuote.createTuote(tuote_nimi2, "Kpl", 2, 2);
 		resepti.createResepti(resepti_nimi, "1: ASD. 2: DSA.");
 		aines.createAines(tuote.readTuoteNimi(tuote_nimi).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 5);
 		aines.createAines(tuote.readTuoteNimi(tuote_nimi2).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 4);
@@ -94,7 +94,7 @@ class AinesDAOTest {
 		String tuote_nimi = "Testi-Tuote";
 		String resepti_nimi = "Testi-Resepti";
 		String resepti_nimi2 = "Testi-Resepti2";
-		tuote.createTuote(tuote_nimi, "Kpl", 1);
+		tuote.createTuote(tuote_nimi, "Kpl", 1, 1);
 		resepti.createResepti(resepti_nimi, "1: ASD. 2: DSA.");
 		resepti.createResepti(resepti_nimi2, "1: QWE. 2: EWQ.");
 		aines.createAines(tuote.readTuoteNimi(tuote_nimi).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 5);
@@ -108,8 +108,8 @@ class AinesDAOTest {
 		String tuote_nimi2 = "Uusi tuote";
 		String resepti_nimi = "Testi-Resepti";
 		String resepti_nimi2 = "Uusi resepti";
-		tuote.createTuote(tuote_nimi, "Kpl", 1);
-		tuote.createTuote(tuote_nimi2, "Kpll", 11);
+		tuote.createTuote(tuote_nimi, "Kpl", 1, 1);
+		tuote.createTuote(tuote_nimi2, "Kpll", 11, 11);
 		resepti.createResepti(resepti_nimi, "1: ASD. 2: DSA.");
 		resepti.createResepti(resepti_nimi2, "1: QWE. 2: EWQ.");
 		aines.createAines(tuote.readTuoteNimi(tuote_nimi).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 5);
@@ -124,7 +124,7 @@ class AinesDAOTest {
 	void testDeleteAines() {
 		String tuote_nimi = "Testi-Tuote";
 		String resepti_nimi = "Testi-Resepti";
-		tuote.createTuote(tuote_nimi, "Kpl", 1);
+		tuote.createTuote(tuote_nimi, "Kpl", 1, 1);
 		resepti.createResepti(resepti_nimi, "1: ASD. 2: DSA.");
 		aines.createAines(tuote.readTuoteNimi(tuote_nimi).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 5);
 		int aines_id = aines.readAines(tuote_nimi, resepti_nimi).getAines_id();
@@ -137,8 +137,8 @@ class AinesDAOTest {
 		String tuote_nimi = "Testi-Tuote";
 		String tuote_nimi2 = "Testi-Tuote2";
 		String resepti_nimi = "Testi-Resepti";
-		tuote.createTuote(tuote_nimi, "Kpl", 1);
-		tuote.createTuote(tuote_nimi2, "Kpl", 2);
+		tuote.createTuote(tuote_nimi, "Kpl", 1, 1);
+		tuote.createTuote(tuote_nimi2, "Kpl", 2, 2);
 		resepti.createResepti(resepti_nimi, "1: ASD. 2: DSA.");
 		aines.createAines(tuote.readTuoteNimi(tuote_nimi).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 5);
 		aines.createAines(tuote.readTuoteNimi(tuote_nimi2).getTuote_id(), resepti.readReseptiNimi(resepti_nimi).getResepti_id(), 6);
@@ -150,8 +150,8 @@ class AinesDAOTest {
 		String tuote_nimi = "Testi-Tuote";
 		String tuote_nimi2 = "Testi-Tuote2";
 		String resepti_nimi = "Testi-Resepti";
-		tuote.createTuote(tuote_nimi, "Kpl", 1);
-		tuote.createTuote(tuote_nimi2, "Kpl", 2);
+		tuote.createTuote(tuote_nimi, "Kpl", 1, 1);
+		tuote.createTuote(tuote_nimi2, "Kpl", 2, 2);
 		resepti.createResepti(resepti_nimi, "1: ASD. 2: DSA.");
 		int tuote_nimi_id = tuote.readTuoteNimi("Testi-Tuote").getTuote_id();
 		jaakaappi.createJaakaappi(Date.valueOf("2019-10-25"), 10, "Käytettävissä", tuote_nimi_id);
@@ -166,9 +166,9 @@ class AinesDAOTest {
 		String tuote_nimi2 = "Testi-Tuote2";
 		String tuote_nimi3 = "Testi-Tuote3";
 		String resepti_nimi = "Testi-Resepti";
-		tuote.createTuote(tuote_nimi, "Kpl", 1);
-		tuote.createTuote(tuote_nimi2, "Kpl", 2);
-		tuote.createTuote(tuote_nimi3, "Kpl", 3);
+		tuote.createTuote(tuote_nimi, "Kpl", 1, 1);
+		tuote.createTuote(tuote_nimi2, "Kpl", 2, 2);
+		tuote.createTuote(tuote_nimi3, "Kpl", 3, 3);
 		resepti.createResepti(resepti_nimi, "1: ASD. 2: DSA.");
 		int tuote_nimi_id = tuote.readTuoteNimi("Testi-Tuote").getTuote_id();
 		jaakaappi.createJaakaappi(Date.valueOf("2019-10-25"), 10, "Käytettävissä", tuote_nimi_id);

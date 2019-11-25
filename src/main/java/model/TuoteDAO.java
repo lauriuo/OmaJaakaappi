@@ -30,7 +30,7 @@ public class TuoteDAO implements ITuoteDAO {
     private static Transaction transaktio = null;
 
 	@Override
-	public boolean createTuote(String nimi, String yksikko, double kcal) {
+	public boolean createTuote(String nimi, String yksikko, double kcal, double suola) {
 		Session istunto = istuntotehdas.openSession();
 		try {
             transaktio = istunto.beginTransaction();
@@ -41,6 +41,7 @@ public class TuoteDAO implements ITuoteDAO {
                 uusiTuote.setTuote_nimi(nimi);
                 uusiTuote.setTuote_yksikko(yksikko);
                 uusiTuote.setTuote_kcal(kcal);
+                uusiTuote.setTuote_suola(suola);
                 istunto.save(uusiTuote);
                 istunto.getTransaction().commit();
         		return true;
@@ -104,15 +105,16 @@ public class TuoteDAO implements ITuoteDAO {
 	}
 
 	@Override
-	public boolean updateTuote(String vanha_nimi, String uusi_nimi, String uusi_yksikko, double uusi_kcal) {
+	public boolean updateTuote(String vanha_nimi, String uusi_nimi, String uusi_yksikko, double uusi_kcal, double uusi_suola) {
 		Session istunto = istuntotehdas.openSession();
 		try {
             transaktio = istunto.beginTransaction();
             Query query = istunto.createQuery("update Tuote set tuote_nimi = :nimi , tuote_yksikko = :yksikko ,"
-            		+ " tuote_kcal = :kcal where tuote_nimi = :vanha_nimi")
+            		+ " tuote_kcal = :kcal , tuote_suola = :suola where tuote_nimi = :vanha_nimi")
             		.setParameter("nimi", uusi_nimi)
             		.setParameter("yksikko", uusi_yksikko)
             		.setParameter("kcal", uusi_kcal)
+            		.setParameter("suola", uusi_suola)
             		.setParameter("vanha_nimi", vanha_nimi);
             query.executeUpdate();
             return true;

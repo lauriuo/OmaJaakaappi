@@ -46,16 +46,17 @@
             </HBox>
             <HBox prefHeight="400.0" prefWidth="700.0">
                <children>
-                  <TableView fx:id="tableView" prefHeight="259.0" prefWidth="462.0">
+                  <TableView fx:id="tableView" prefHeight="259.0" prefWidth="522.0">
                     <columns>
                       <TableColumn fx:id="rpkIdColumn" prefWidth="50.0" text="ID" />
                       <TableColumn fx:id="rpkProductColumn" prefWidth="150.0" text="Product" />
-                        <TableColumn fx:id="rpkCaloriesColumn" minWidth="80.0" text="Calories" />
+                        <TableColumn fx:id="rpkCaloriesColumn" minWidth="70.0" prefWidth="70.0" text="Calories" />
+                        <TableColumn fx:id="rpkSaltColumn" minWidth="70.0" prefWidth="70.0" text="Salt" />
                         <TableColumn fx:id="rpkAmountColumn" minWidth="80.0" text="Amount" />
                         <TableColumn fx:id="rpkUsageColumn" prefWidth="100.0" text="Usage" />
                     </columns>
                      <HBox.margin>
-                        <Insets left="119.0" />
+                        <Insets left="89.0" />
                      </HBox.margin>
                   </TableView>
                </children>

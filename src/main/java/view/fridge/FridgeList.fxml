@@ -93,10 +93,11 @@
               <columns>
                   <TableColumn fx:id="fridgeIdColumn" prefWidth="50.0" text="ID" />
                 <TableColumn fx:id="fridgeProductColumn" prefWidth="140.0" text="Product" />
-                  <TableColumn fx:id="fridgeCaloriesColumn" minWidth="80.0" text="Calories" />
+                  <TableColumn fx:id="fridgeCaloriesColumn" minWidth="70.0" prefWidth="70.0" text="Calories" />
+                  <TableColumn fx:id="fridgeSaltColumn" minWidth="70.0" prefWidth="70.0" text="Salt" />
                   <TableColumn fx:id="fridgeUnitColumn" minWidth="80.0" text="Unit" />
-                <TableColumn fx:id="fridgeAmountColumn" minWidth="80.0" text="Amount" />
-                  <TableColumn fx:id="fridgeDateColumn" prefWidth="150.0" text="Expiration date" />
+                <TableColumn fx:id="fridgeAmountColumn" minWidth="70.0" prefWidth="70.0" text="Amount" />
+                  <TableColumn fx:id="fridgeDateColumn" prefWidth="100.0" text="Expiration date" />
               </columns>
                <HBox.margin>
                   <Insets left="60.0" />

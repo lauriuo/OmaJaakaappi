@@ -17,9 +17,10 @@
             <TableView fx:id="tableView" prefHeight="370.0" prefWidth="462.0">
               <columns>
                 <TableColumn fx:id="productsIdColumn" prefWidth="50.0" text="ID" />
-                <TableColumn fx:id="productsNameColumn" prefWidth="250.0" text="Name" />
+                <TableColumn fx:id="productsNameColumn" prefWidth="190.0" text="Name" />
                   <TableColumn fx:id="productsUnitColumn" minWidth="80.0" text="Unit" />
-                  <TableColumn fx:id="productsCaloriesColumn" minWidth="80.0" text="Calories" />
+                  <TableColumn fx:id="productsCaloriesColumn" minWidth="70.0" prefWidth="70.0" text="Calories" />
+                  <TableColumn fx:id="productsSaltColumn" minWidth="70.0" prefWidth="70.0" text="Salt" />
               </columns>
                <HBox.margin>
                   <Insets left="120.0" />

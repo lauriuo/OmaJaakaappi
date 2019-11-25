@@ -29,6 +29,12 @@
                   <TextField fx:id="addProductCalories" promptText="Calories" />
                </children>
             </HBox>
+            <Label layoutX="10.0" layoutY="130.0" text="Salt in 100g/ml" />
+            <HBox layoutX="10.0" layoutY="147.0" prefHeight="43.0" prefWidth="600.0">
+               <children>
+                  <TextField fx:id="addProductSalt" promptText="Salt" />
+               </children>
+            </HBox>
             <HBox layoutX="10.0" layoutY="147.0" prefHeight="43.0" prefWidth="600.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#addProductButton" text="Add product" />

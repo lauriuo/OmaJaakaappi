@@ -22,18 +22,22 @@ public class ProductsEditController implements Initializable{
 	private String oldName;
 	private String oldUnit;
 	private String oldCalories;
+	private String oldSalt;
 	@FXML private TextField searchProducts;
 	@FXML private Label lblOldName;
 	@FXML private Label lblOldUnit;
 	@FXML private Label lblOldCalories;
+	@FXML private Label lblOldSalt;
 	@FXML private TextField newProductName;
 	@FXML private TextField newProductUnit;
 	@FXML private TextField newProductCalories;
+	@FXML private TextField newProductSalt;
 	@FXML private TableView<Object> tableView;
 	@FXML private TableColumn<Object, Number> productsIdColumn;
 	@FXML private TableColumn<Object, String> productsNameColumn;
 	@FXML private TableColumn<Object, String> productsUnitColumn;
 	@FXML private TableColumn<Object, Number> productsCaloriesColumn;
+	@FXML private TableColumn<Object, Number> productsSaltColumn;
 
 	@FXML
 	public void searchButtonAction() {
@@ -41,14 +45,16 @@ public class ProductsEditController implements Initializable{
 		this.oldName = editable.getTuote_nimi();
 		this.oldUnit = editable.getTuote_yksikko();
 		this.oldCalories = String.valueOf(editable.getTuote_kcal());
+		this.oldSalt = String.valueOf(editable.getTuote_suola());
 		lblOldName.setText(oldName);
 		lblOldUnit.setText(oldUnit);
 		lblOldCalories.setText(oldCalories);
+		lblOldSalt.setText(oldSalt);
 	}
 	
 	@FXML
 	public void updateButtonAction() {
-		tuote.updateTuote(oldName, newProductName.getText(), newProductUnit.getText(), Double.parseDouble(newProductCalories.getText()));
+		tuote.updateTuote(oldName, newProductName.getText(), newProductUnit.getText(), Double.parseDouble(newProductCalories.getText()), Double.parseDouble(newProductSalt.getText()));
 		tableView.setItems(getAllProducts());
 	}
 
@@ -58,6 +64,7 @@ public class ProductsEditController implements Initializable{
 		productsNameColumn.setCellValueFactory(new PropertyValueFactory<Object, String>("tuote_nimi"));
 		productsUnitColumn.setCellValueFactory(new PropertyValueFactory<Object, String>("tuote_yksikko"));
 		productsCaloriesColumn.setCellValueFactory(new PropertyValueFactory<Object, Number>("tuote_kcal"));
+		productsSaltColumn.setCellValueFactory(new PropertyValueFactory<Object, Number>("tuote_suola"));
 		
 		tableView.setItems(getAllProducts());
 	}
