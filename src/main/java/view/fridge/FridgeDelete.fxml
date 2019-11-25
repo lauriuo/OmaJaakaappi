@@ -17,13 +17,13 @@
    <center>
       <VBox prefHeight="122.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="30.0" prefWidth="141.0" text="ID of the content to delete" />
+            <Label prefHeight="30.0" prefWidth="200.0" text="ID of the content to delete" />
             <HBox prefHeight="59.0" prefWidth="700.0">
                <children>
                   <TextField fx:id="fridgeSelectId" prefHeight="25.0" prefWidth="80.0" promptText="ID" />
                   <Button mnemonicParsing="false" onAction="#deleteFromFridge" prefWidth="60.0" text="Delete">
                      <HBox.margin>
-                        <Insets />
+                        <Insets left="5.0" />
                      </HBox.margin>
                   </Button>
                </children>
@@ -32,7 +32,7 @@
       </VBox>
    </center>
    <bottom>
-      <VBox prefHeight="474.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="480.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Content of the fridge">
                <VBox.margin>

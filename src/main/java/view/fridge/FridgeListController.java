@@ -77,9 +77,9 @@ public class FridgeListController implements Initializable{
 	
 	
 	public ObservableList<Object> getAllFridges() {
-		ArrayList<Object> tuotteet = jaakaappi.readJaakaapit();
-		ObservableList<Object> fridges = FXCollections.observableArrayList(tuotteet);
-		return fridges;
+		ArrayList<Object> fridges = jaakaappi.readJaakaapit();
+		ObservableList<Object> result = FXCollections.observableArrayList(fridges);
+		return result;
 	}
 
 	@FXML
