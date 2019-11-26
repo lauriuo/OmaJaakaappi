@@ -103,7 +103,7 @@ public class HomePageController implements Initializable{
 	@FXML
 	public void shoppingList(MouseEvent event) {
 		loadContent("ShoppingList");
-
+	}
 	
 	@FXML
 	public void exit(MouseEvent event) {
