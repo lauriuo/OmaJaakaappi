@@ -71,8 +71,8 @@ class ReseptiDAOTest {
 		resepti.createResepti("Kcal-Testi", "1. Tee näin. 2. Tee noin.");
 		Resepti id_resepti = resepti.readReseptiNimi("Kcal-Testi");
 
-		tuote.createTuote("Tuote1", "kpl", 200);
-		tuote.createTuote("Tuote2", "kpl", 400);
+		tuote.createTuote("Tuote1", "kpl", 200, 1);
+		tuote.createTuote("Tuote2", "kpl", 400, 1);
 		Tuote id_tuote1 = tuote.readTuoteNimi("Tuote1");
 		Tuote id_tuote2 = tuote.readTuoteNimi("Tuote2");
 		aines.createAines(id_tuote1.getTuote_id(), id_resepti.getResepti_id(), 2);

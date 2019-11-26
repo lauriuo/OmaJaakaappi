@@ -44,7 +44,7 @@ class RpkDAOTest {
 	@Test
 	void testCreateRpk() {
 		String tuote_nimi = "Testi-Tuote";
-		tuote.createTuote(tuote_nimi, "kpl", 1);
+		tuote.createTuote(tuote_nimi, "kpl", 1, 1);
 		Date pvm = Date.valueOf("2019-09-28");
 		int tuote_id = tuote.readTuoteNimi(tuote_nimi).getTuote_id();
 		jaakaappi.createJaakaappi(pvm, 5, "Käytettävissä", tuote_id);
@@ -60,7 +60,7 @@ class RpkDAOTest {
 	@Test
 	void testUpdateRpk() {
 		String tuote_nimi = "Testi-Tuote";
-		tuote.createTuote(tuote_nimi, "kpl", 1);
+		tuote.createTuote(tuote_nimi, "kpl", 1, 1);
 		Date pvm = Date.valueOf("2019-09-28");
 		int tuote_id = tuote.readTuoteNimi(tuote_nimi).getTuote_id();
 		jaakaappi.createJaakaappi(pvm, 5, "Käytettävissä", tuote_id);
@@ -79,7 +79,7 @@ class RpkDAOTest {
 	@Test
 	void testDeleteRpk() {
 		String tuote_nimi = "Testi-Tuote";
-		tuote.createTuote(tuote_nimi, "kpl", 1);
+		tuote.createTuote(tuote_nimi, "kpl", 1, 1);
 		Date pvm = Date.valueOf("2019-09-28");
 		int tuote_id = tuote.readTuoteNimi(tuote_nimi).getTuote_id();
 		jaakaappi.createJaakaappi(pvm, 5, "Käytettävissä", tuote_id);

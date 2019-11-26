@@ -8,16 +8,14 @@ import javafx.event.ActionEvent;
 
 public class ProductsAddController {
 	static TuoteDAO tuote = new TuoteDAO();
-	@FXML
-	private TextField addProductName;
-	@FXML
-	private TextField addProductUnit;
-	@FXML
-	private TextField addProductCalories;
+	@FXML private TextField addProductName;
+	@FXML private TextField addProductUnit;
+	@FXML private TextField addProductCalories;
+	@FXML private TextField addProductSalt;
 
 	// Event Listener on Button.onAction
 	@FXML
 	public void addProductButton() {
-		tuote.createTuote(addProductName.getText(), addProductUnit.getText(), Double.parseDouble(addProductCalories.getText()));
+		tuote.createTuote(addProductName.getText(), addProductUnit.getText(), Double.parseDouble(addProductCalories.getText()), Double.parseDouble(addProductSalt.getText()));
 	}
 }

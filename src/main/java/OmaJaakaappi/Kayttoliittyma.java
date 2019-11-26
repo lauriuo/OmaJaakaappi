@@ -214,7 +214,9 @@ public class Kayttoliittyma {
 					String tuote_yksikko = scanner.next();
 					System.out.println("Kirjoita tuotteessa oleva kalorimäärä per 100g/1dl: ");
 					int tuote_kcal = scanner.nextInt();
-					if (tuote.createTuote(tuote_nimi, tuote_yksikko, tuote_kcal) == true) {
+					System.out.println("Kirjoita tuotteessa oleva suolamäärä per 100g/1dl: ");
+					double tuote_suola = scanner.nextDouble();
+					if (tuote.createTuote(tuote_nimi, tuote_yksikko, tuote_kcal, tuote_suola) == true) {
 						 System.out.println("Tuote lisätty.");
 						 tlError = false;
 						 vError = true;
@@ -250,7 +252,9 @@ public class Kayttoliittyma {
 					String uusi_yksikko = scanner.next();
 					System.out.println("Kirjoita tuotteessa oleva kalorimäärä per 100g/1dl: ");
 					double uusi_kcal = scanner.nextDouble();
-					tuote.updateTuote(vanha_nimi, uusi_nimi, uusi_yksikko, uusi_kcal);
+					System.out.println("Kirjoita tuotteessa oleva suolamäärä per 100g/1dl: ");
+					double uusi_suola = scanner.nextDouble();
+					tuote.updateTuote(vanha_nimi, uusi_nimi, uusi_yksikko, uusi_kcal, uusi_suola);
 					System.out.println("-----------------------------------------");
 					tpError = false;}
 				 catch (InputMismatchException e) {

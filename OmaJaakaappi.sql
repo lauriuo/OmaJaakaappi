@@ -8,6 +8,7 @@ CREATE TABLE tuote
   tuote_nimi VARCHAR(100) NOT NULL,
   tuote_yksikko VARCHAR(100),
   tuote_kcal DOUBLE,
+  tuote_suola DOUBLE,
   PRIMARY KEY (tuote_id)
 );
 

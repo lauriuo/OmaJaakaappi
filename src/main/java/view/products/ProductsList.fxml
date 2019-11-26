@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.HBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.products.ProductsListController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.products.ProductsListController">
    <top>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="list of products" BorderPane.alignment="CENTER" />
+      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="List of products" BorderPane.alignment="CENTER" />
    </top>
    <center>
-      <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn fx:id="productsIdColumn" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="productsNameColumn" prefWidth="75.0" text="Name" />
-            <TableColumn fx:id="productsUnitColumn" prefWidth="75.0" text="Unit" />
-            <TableColumn fx:id="productsCaloriesColumn" prefWidth="75.0" text="Calories" />
-        </columns>
-      </TableView>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="tableView" prefHeight="370.0" prefWidth="462.0">
+              <columns>
+                <TableColumn fx:id="productsIdColumn" prefWidth="50.0" text="ID" />
+                <TableColumn fx:id="productsNameColumn" prefWidth="190.0" text="Name" />
+                  <TableColumn fx:id="productsUnitColumn" minWidth="80.0" text="Unit" />
+                  <TableColumn fx:id="productsCaloriesColumn" minWidth="70.0" prefWidth="70.0" text="Calories" />
+                  <TableColumn fx:id="productsSaltColumn" minWidth="70.0" prefWidth="70.0" text="Salt" />
+              </columns>
+               <HBox.margin>
+                  <Insets left="120.0" />
+               </HBox.margin>
+            </TableView>
+         </children>
+      </HBox>
    </center>
 </BorderPane>
