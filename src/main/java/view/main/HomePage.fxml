@@ -106,6 +106,20 @@
                   </Button>
                </children>
             </HBox>
+            <HBox layoutX="10.0" layoutY="360.0" prefHeight="90.0" prefWidth="400.0">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#shoppingList" prefHeight="35.0" prefWidth="150.0" text="Shopping List">
+                     <HBox.margin>
+                        <Insets left="50.0" top="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" text="?">
+                     <HBox.margin>
+                        <Insets left="10.0" top="55.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </left>

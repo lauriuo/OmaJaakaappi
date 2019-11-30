@@ -8,11 +8,12 @@
    <top>
       <HBox prefHeight="50.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#homePage" prefHeight="50.0" prefWidth="200.0" text="%nav.home" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#fridge" prefHeight="50.0" prefWidth="200.0" text="%nav.fridge" />
-            <Button layoutX="210.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#products" prefHeight="50.0" prefWidth="200.0" text="%nav.products" />
-            <Button layoutX="410.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#recipes" prefHeight="50.0" prefWidth="200.0" text="%nav.recipes" />
-            <Button layoutX="610.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#foodDiary" prefHeight="50.0" prefWidth="200.0" text="%nav.foodDiary" />
+            <Button mnemonicParsing="false" onMouseClicked="#homePage" prefHeight="50.0" prefWidth="200.0" text="Homepage" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#fridge" prefHeight="50.0" prefWidth="160.0" text="%nav.fridge" />
+            <Button layoutX="210.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#products" prefHeight="50.0" prefWidth="160.0" text="%nav.products" />
+            <Button layoutX="410.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#recipes" prefHeight="50.0" prefWidth="160.0" text="%nav.recipes" />
+            <Button layoutX="610.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#foodDiary" prefHeight="50.0" prefWidth="160.0" text="%nav.foodDiary" />
+            <Button mnemonicParsing="false" onMouseClicked="#shoppingList" prefHeight="50.0" prefWidth="160.0" text="Shopping list" />
          </children>
       </HBox>
    </top>

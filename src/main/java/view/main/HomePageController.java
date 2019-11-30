@@ -100,10 +100,16 @@ public class HomePageController implements Initializable{
 	public void foodDiary(MouseEvent event) {
 		loadContent("FoodDiary");
 	}
+
+	@FXML
+	public void shoppingList(MouseEvent event) {
+		loadContent("ShoppingList");
+	}
 	
 	@FXML
 	public void exit(MouseEvent event) {
 		Platform.exit();
+
 	}
 
 	private void loadContent(String ui) {
