@@ -15,25 +15,28 @@
    <center>
       <VBox prefHeight="430.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="ID of the item in the fridge" />
+            <Label text="%fridge.edit.searchText" />
             <HBox prefHeight="40.0" prefWidth="600.0">
                <children>
-                  <TextField fx:id="searchFridge" prefWidth="90.0" promptText="ID" />
-                  <Button mnemonicParsing="false" onAction="#searchFridgeAction" text="Search" />
+                  <TextField fx:id="searchFridge" prefWidth="90.0" promptText="%fridge.edit.searchField" />
+                  <Button mnemonicParsing="false" onAction="#searchFridgeAction" text="%fridge.edit.searchButton">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin></Button>
                </children>
             </HBox>
             <HBox prefHeight="26.0" prefWidth="600.0">
                <children>
-                  <Label layoutX="10.0" layoutY="10.0" prefWidth="170.0" text="The product">
+                  <Label layoutX="10.0" layoutY="10.0" prefWidth="170.0" text="%fridge.edit.productText">
                      <padding>
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Label prefWidth="170.0" text="The current amount">
+                  <Label prefWidth="170.0" text="%fridge.edit.currentAmountText">
                      <padding>
                         <Insets left="20.0" />
                      </padding></Label>
-                  <Label prefWidth="170.0" text="The current date">
+                  <Label prefWidth="170.0" text="%fridge.edit.currentDateText">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></Label>
@@ -63,7 +66,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Label prefWidth="170.0" text="The new amount">
+                  <Label prefWidth="170.0" text="%fridge.edit.newAmountText">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -71,7 +74,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Label layoutX="10.0" layoutY="10.0" prefWidth="170.0" text="The new date">
+                  <Label layoutX="10.0" layoutY="10.0" prefWidth="170.0" text="%fridge.edit.newDateText">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -85,14 +88,14 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="newFridgeAmount" prefWidth="70.0" promptText="Amount">
+                  <TextField fx:id="newFridgeAmount" prefWidth="70.0" promptText="%fridge.edit.newAmountField">
                      <HBox.margin>
                         <Insets left="20.0" right="80.0" />
                      </HBox.margin></TextField>
-                  <DatePicker fx:id="newFridgeDate" prefHeight="25.0" prefWidth="150.0" promptText="Expiration date" />
+                  <DatePicker fx:id="newFridgeDate" prefHeight="25.0" prefWidth="150.0" promptText="%fridge.edit.newDateField" />
                </children>
             </HBox>
-            <Button mnemonicParsing="false" onAction="#updateFridgeAction" prefWidth="65.0" text="Commit">
+            <Button mnemonicParsing="false" onAction="#updateFridgeAction" prefWidth="65.0" text="%fridge.edit.editButton">
                <VBox.margin>
                   <Insets />
                </VBox.margin></Button>
@@ -100,12 +103,12 @@
       </VBox>
    </center>
    <top>
-      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Edit content of the fridge" BorderPane.alignment="CENTER" />
+      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="%fridge.edit.title" BorderPane.alignment="CENTER" />
    </top>
    <bottom>
       <VBox prefHeight="325.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefWidth="200.0" text="Content of the fridge">
+            <Label alignment="CENTER" prefWidth="200.0" text="%fridge.edit.contentText">
                <VBox.margin>
                   <Insets left="250.0" />
                </VBox.margin>
@@ -114,13 +117,13 @@
                <children>
                   <TableView fx:id="tableView" prefHeight="285.0" prefWidth="582.0">
                     <columns>
-                      <TableColumn fx:id="fridgeIdColumn" prefWidth="50.0" text="ID" />
-                      <TableColumn fx:id="fridgeProductColumn" prefWidth="140.0" text="Product" />
-                        <TableColumn fx:id="fridgeCaloriesColumn" minWidth="70.0" prefWidth="70.0" text="Calories" />
-                        <TableColumn fx:id="fridgeSaltColumn" minWidth="70.0" prefWidth="70.0" text="Salt" />
-                        <TableColumn fx:id="fridgeUnitColumn" minWidth="80.0" text="Unit" />
-                        <TableColumn fx:id="fridgeAmountColumn" minWidth="70.0" prefWidth="70.0" text="Amount" />
-                        <TableColumn fx:id="fridgeDateColumn" prefWidth="100.0" text="Expiration date" />
+                      <TableColumn fx:id="fridgeIdColumn" prefWidth="50.0" text="%table.id" />
+                      <TableColumn fx:id="fridgeProductColumn" prefWidth="140.0" text="%table.product" />
+                        <TableColumn fx:id="fridgeCaloriesColumn" minWidth="70.0" prefWidth="70.0" text="%table.calories" />
+                        <TableColumn fx:id="fridgeSaltColumn" minWidth="70.0" prefWidth="70.0" text="%table.salt" />
+                        <TableColumn fx:id="fridgeUnitColumn" minWidth="80.0" text="%table.unit" />
+                        <TableColumn fx:id="fridgeAmountColumn" minWidth="70.0" prefWidth="70.0" text="%table.amount" />
+                        <TableColumn fx:id="fridgeDateColumn" prefWidth="100.0" text="%table.expirationdate" />
                     </columns>
                      <HBox.margin>
                         <Insets left="60.0" />

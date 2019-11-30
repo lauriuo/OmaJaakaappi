@@ -14,34 +14,37 @@
    <center>
       <VBox prefHeight="100.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Name of the product to be deleted" />
+            <Label text="%products.delete.searchText" />
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="deleteProductName" promptText="Product name" />
-                  <Button mnemonicParsing="false" onAction="#deleteProductButton" prefHeight="25.0" prefWidth="60.0" text="Delete" />
+                  <TextField fx:id="deleteProductName" promptText="%products.delete.searchField" />
+                  <Button mnemonicParsing="false" onAction="#deleteProductButton" prefHeight="25.0" prefWidth="60.0" text="%products.delete.deleteButton">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin></Button>
                </children>
             </HBox>
          </children>
       </VBox>
    </center>
    <top>
-      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Delete products" BorderPane.alignment="CENTER" />
+      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="%products.delete.title" BorderPane.alignment="CENTER" />
    </top>
    <bottom>
       <VBox prefHeight="500.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Products">
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="%products.delete.productsText">
                <VBox.margin>
                   <Insets left="250.0" />
                </VBox.margin>
             </Label>
             <TableView fx:id="tableView" prefHeight="450.0" prefWidth="462.0">
               <columns>
-                <TableColumn fx:id="productsIdColumn" prefWidth="50.0" text="ID" />
-                <TableColumn fx:id="productsNameColumn" prefWidth="190.0" text="Name" />
-                  <TableColumn fx:id="productsUnitColumn" minWidth="80.0" text="Unit" />
-                  <TableColumn fx:id="productsCaloriesColumn" minWidth="70.0" prefWidth="70.0" text="Calories" />
-                  <TableColumn fx:id="productsSaltColumn" minWidth="70.0" prefWidth="70.0" text="Salt" />
+                <TableColumn fx:id="productsIdColumn" prefWidth="50.0" text="%table.id" />
+                <TableColumn fx:id="productsNameColumn" prefWidth="190.0" text="%table.product" />
+                  <TableColumn fx:id="productsUnitColumn" minWidth="80.0" text="%table.unit" />
+                  <TableColumn fx:id="productsCaloriesColumn" minWidth="70.0" prefWidth="70.0" text="%table.calories" />
+                  <TableColumn fx:id="productsSaltColumn" minWidth="70.0" prefWidth="70.0" text="%table.salt" />
               </columns>
                <VBox.margin>
                   <Insets left="119.0" right="119.0" />

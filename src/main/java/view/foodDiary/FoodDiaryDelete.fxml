@@ -12,16 +12,16 @@
 
 <BorderPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.foodDiary.FoodDiaryDeleteController">
    <top>
-      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Delete a record from the food diary" BorderPane.alignment="CENTER" />
+      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="%foodDiary.delete.title" BorderPane.alignment="CENTER" />
    </top>
    <center>
       <VBox prefHeight="80.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="33.0" prefWidth="200.0" text="ID of the food diary record" />
+            <Label prefHeight="33.0" prefWidth="200.0" text="%foodDiary.delete.searchText" />
             <HBox prefHeight="35.0" prefWidth="700.0">
                <children>
-                  <TextField fx:id="rpkSelectId" prefHeight="25.0" prefWidth="80.0" promptText="ID" />
-                  <Button mnemonicParsing="false" onAction="#deleteFromRpk" prefWidth="60.0" text="Delete">
+                  <TextField fx:id="rpkSelectId" prefHeight="25.0" prefWidth="80.0" promptText="%foodDiary.delete.searchField" />
+                  <Button mnemonicParsing="false" onAction="#deleteFromRpk" prefWidth="60.0" text="%foodDiary.delete.deleteButton">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
@@ -34,7 +34,7 @@
    <bottom>
       <VBox prefHeight="480.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Food diary">
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="%foodDiary.delete.listText">
                <VBox.margin>
                   <Insets left="250.0" />
                </VBox.margin>
@@ -43,13 +43,13 @@
                <children>
                   <TableView fx:id="tableView" prefHeight="250.0" prefWidth="612.0">
                     <columns>
-                      <TableColumn fx:id="rpkIdColumn" prefWidth="50.0" text="ID" />
-                      <TableColumn fx:id="rpkProductColumn" prefWidth="150.0" text="Product" />
-                        <TableColumn fx:id="rpkCaloriesColumn" minWidth="70.0" prefWidth="70.0" text="Calories" />
-                        <TableColumn fx:id="rpkSaltColumn" minWidth="70.0" prefWidth="70.0" text="Salt" />
-                        <TableColumn fx:id="rpkAmountColumn" minWidth="70.0" prefWidth="70.0" text="Amount" />
-                        <TableColumn fx:id="rpkDateColumn" prefWidth="100.0" text="Date" />
-                        <TableColumn fx:id="rpkUsageColumn" prefWidth="100.0" text="Usage" />
+                      <TableColumn fx:id="rpkIdColumn" prefWidth="50.0" text="%table.id" />
+                      <TableColumn fx:id="rpkProductColumn" prefWidth="150.0" text="%table.product" />
+                        <TableColumn fx:id="rpkCaloriesColumn" minWidth="70.0" prefWidth="70.0" text="%table.calories" />
+                        <TableColumn fx:id="rpkSaltColumn" minWidth="70.0" prefWidth="70.0" text="%table.salt" />
+                        <TableColumn fx:id="rpkAmountColumn" minWidth="70.0" prefWidth="70.0" text="%table.amount" />
+                        <TableColumn fx:id="rpkDateColumn" prefWidth="100.0" text="%table.useDate" />
+                        <TableColumn fx:id="rpkUsageColumn" prefWidth="100.0" text="%table.usage" />
                     </columns>
                      <HBox.margin>
                         <Insets left="44.0" />

@@ -14,11 +14,11 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Name of the product" />
+            <Label text="%products.edit.searchText" />
             <HBox prefHeight="54.0" prefWidth="600.0">
                <children>
-                  <TextField fx:id="searchProducts" promptText="Name" />
-                  <Button mnemonicParsing="false" onAction="#searchButtonAction" text="Search">
+                  <TextField fx:id="searchProducts" promptText="%products.edit.searchField" />
+                  <Button mnemonicParsing="false" onAction="#searchButtonAction" text="%products.edit.searchButton">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></Button>
@@ -26,19 +26,19 @@
             </HBox>
             <HBox prefHeight="26.0" prefWidth="600.0">
                <children>
-                  <Label prefWidth="170.0" text="Name">
+                  <Label prefWidth="170.0" text="%products.edit.currentNameText">
                      <padding>
                         <Insets left="10.0" />
                      </padding></Label>
-                  <Label prefWidth="170.0" text="Unit">
+                  <Label prefWidth="170.0" text="%products.edit.currentUnitText">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></Label>
-                  <Label prefWidth="170.0" text="Calories">
+                  <Label prefWidth="170.0" text="%products.edit.currentCaloriesText">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></Label>
-                  <Label layoutX="350.0" layoutY="10.0" prefWidth="170.0" text="Salt" />
+                  <Label layoutX="350.0" layoutY="10.0" prefWidth="170.0" text="%products.edit.currentSaltText" />
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="127.0" prefHeight="49.0" prefWidth="600.0">
@@ -60,7 +60,7 @@
             </HBox>
             <HBox prefHeight="23.0" prefWidth="600.0">
                <children>
-                  <Label prefWidth="170.0" text="New name">
+                  <Label prefWidth="170.0" text="%products.edit.newNameText">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -68,49 +68,49 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <Label layoutX="10.0" layoutY="10.0" prefWidth="170.0" text="New unit">
+                  <Label layoutX="10.0" layoutY="10.0" prefWidth="170.0" text="%products.edit.newUnitText">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label layoutX="38.0" layoutY="10.0" prefWidth="170.0" text="New amount of calories">
+                  <Label layoutX="38.0" layoutY="10.0" prefWidth="170.0" text="%products.edit.newCaloriesText">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label layoutX="350.0" layoutY="10.0" prefWidth="170.0" text="New amount of salt" />
+                  <Label layoutX="350.0" layoutY="10.0" prefWidth="170.0" text="%products.edit.newSaltText" />
                </children>
             </HBox>
             <HBox prefHeight="50.0" prefWidth="600.0">
                <children>
-                  <TextField fx:id="newProductName" prefWidth="100.0" promptText="Name">
+                  <TextField fx:id="newProductName" prefWidth="100.0" promptText="%products.edit.newNameField">
                      <HBox.margin>
                         <Insets left="10.0" right="60.0" />
                      </HBox.margin></TextField>
-                  <TextField fx:id="newProductUnit" layoutX="10.0" layoutY="10.0" prefWidth="100.0" promptText="Unit">
+                  <TextField fx:id="newProductUnit" layoutX="10.0" layoutY="10.0" prefWidth="100.0" promptText="%products.edit.newUnitField">
                      <HBox.margin>
                         <Insets right="70.0" />
                      </HBox.margin>
                   </TextField>
-                  <TextField fx:id="newProductCalories" layoutX="159.0" layoutY="10.0" prefWidth="100.0" promptText="Calories">
+                  <TextField fx:id="newProductCalories" layoutX="159.0" layoutY="10.0" prefWidth="100.0" promptText="%products.edit.newCaloriesField">
                      <HBox.margin>
                         <Insets right="70.0" />
                      </HBox.margin>
                   </TextField>
-                  <TextField fx:id="newProductSalt" layoutX="350.0" layoutY="10.0" prefWidth="100.0" promptText="Salt" />
+                  <TextField fx:id="newProductSalt" layoutX="350.0" layoutY="10.0" prefWidth="100.0" promptText="%products.edit.newSaltField" />
                </children>
             </HBox>
-            <Button mnemonicParsing="false" onAction="#updateButtonAction" prefWidth="65.0" text="Commit" />
+            <Button mnemonicParsing="false" onAction="#updateButtonAction" prefWidth="65.0" text="%products.edit.editButton" />
          </children>
       </VBox>
    </center>
    <top>
-      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Edit products" BorderPane.alignment="CENTER" />
+      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="%products.edit.title" BorderPane.alignment="CENTER" />
    </top>
    <bottom>
       <VBox prefHeight="315.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Products">
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="%products.edit.productsText">
                <VBox.margin>
                   <Insets left="250.0" />
                </VBox.margin>
@@ -119,11 +119,11 @@
                <children>
                   <TableView fx:id="tableView" prefHeight="130.0" prefWidth="472.0">
                     <columns>
-                      <TableColumn fx:id="productsIdColumn" prefWidth="50.0" text="ID" />
-                      <TableColumn fx:id="productsNameColumn" prefWidth="200.0" text="Name" />
-                        <TableColumn fx:id="productsUnitColumn" minWidth="80.0" text="Unit" />
-                        <TableColumn fx:id="productsCaloriesColumn" minWidth="70.0" prefWidth="70.0" text="Calories" />
-                        <TableColumn fx:id="productsSaltColumn" minWidth="70.0" prefWidth="70.0" text="Salt" />
+                      <TableColumn fx:id="productsIdColumn" prefWidth="50.0" text="%table.id" />
+                      <TableColumn fx:id="productsNameColumn" prefWidth="200.0" text="%table.product" />
+                        <TableColumn fx:id="productsUnitColumn" minWidth="80.0" text="%table.unit" />
+                        <TableColumn fx:id="productsCaloriesColumn" minWidth="70.0" prefWidth="70.0" text="%table.calories" />
+                        <TableColumn fx:id="productsSaltColumn" minWidth="70.0" prefWidth="70.0" text="%table.salt" />
                     </columns>
                   </TableView>
                </children>

@@ -9,10 +9,10 @@
    <left>
       <VBox prefHeight="200.0" prefWidth="135.0" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#fridgeList" prefHeight="25.0" prefWidth="120.0" text="Fridge" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#fridgeAdd" prefHeight="25.0" prefWidth="120.0" text="Add content" />
-            <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#fridgeEdit" prefHeight="25.0" prefWidth="120.0" text="Edit content" />
-            <Button layoutX="10.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#fridgeDelete" prefHeight="25.0" prefWidth="120.0" text="Delete content" />
+            <Button mnemonicParsing="false" onMouseClicked="#fridgeList" prefHeight="25.0" prefWidth="120.0" text="%fridge.nav.view" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#fridgeAdd" prefHeight="25.0" prefWidth="120.0" text="%fridge.nav.add" />
+            <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#fridgeEdit" prefHeight="25.0" prefWidth="120.0" text="%fridge.nav.edit" />
+            <Button layoutX="10.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#fridgeDelete" prefHeight="25.0" prefWidth="120.0" text="%fridge.nav.delete" />
          </children>
          <BorderPane.margin>
             <Insets left="10.0" top="30.0" />

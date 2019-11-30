@@ -13,27 +13,27 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Name of the product" />
+            <Label text="%fridge.add.fieldNameText" />
             <HBox prefHeight="43.0" prefWidth="600.0">
                <children>
-                  <TextField fx:id="addFridgeName" promptText="Name" />
+                  <TextField fx:id="addFridgeName" promptText="%fridge.add.fieldName" />
                </children>
             </HBox>
-            <Label text="The quantity of the products" />
+            <Label text="%fridge.add.fieldAmountText" />
             <HBox layoutX="10.0" layoutY="27.0" prefHeight="43.0" prefWidth="600.0">
                <children>
-                  <TextField fx:id="addFridgeQuantity" promptText="Quantity" />
+                  <TextField fx:id="addFridgeQuantity" promptText="%fridge.add.fieldAmount" />
                </children>
             </HBox>
-            <Label text="The expiration date of the products" />
+            <Label text="%fridge.add.fieldDateText" />
             <HBox layoutX="10.0" layoutY="87.0" prefHeight="43.0" prefWidth="600.0">
                <children>
-                  <DatePicker fx:id="addFridgeDate" promptText="Expiration date" />
+                  <DatePicker fx:id="addFridgeDate" promptText="%fridge.add.fieldDate" />
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="147.0" prefHeight="43.0" prefWidth="600.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#addFridgeButton" text="Add into the fridge" />
+                  <Button mnemonicParsing="false" onAction="#addFridgeButton" text="%fridge.add.addButton" />
                </children>
             </HBox>
          </children>
@@ -42,13 +42,13 @@
    <right>
       <VBox prefHeight="549.0" prefWidth="184.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="The product needs to be found &#10;in the system before it can be &#10;added into the fridge." textAlignment="CENTER" />
-            <Button mnemonicParsing="false" onAction="#productsList" prefWidth="150.0" text="List the products below">
+            <Label text="%fridge.add.productGuideText" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#productsList" prefWidth="150.0" text="%fridge.add.productListButton">
                <VBox.margin>
                   <Insets left="12.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#productsAdd" prefWidth="150.0" text="Add a new product">
+            <Button mnemonicParsing="false" onAction="#productsAdd" prefWidth="150.0" text="%fridge.add.productAddButton">
                <VBox.margin>
                   <Insets left="12.0" top="10.0" />
                </VBox.margin>
@@ -60,6 +60,6 @@
       </VBox>
    </right>
    <top>
-      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Add content to the fridge" BorderPane.alignment="CENTER" />
+      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="%fridge.add.title" BorderPane.alignment="CENTER" />
    </top>
 </BorderPane>

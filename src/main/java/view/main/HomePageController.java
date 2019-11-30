@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
@@ -108,7 +109,9 @@ public class HomePageController implements Initializable{
 	private void loadContent(String ui) {
 		Parent content = null;
 		try {
-			content = FXMLLoader.load(getClass().getResource(ui+".fxml"));
+			Locale locale = new Locale("fi", "FI");
+			ResourceBundle bundle = ResourceBundle.getBundle("TextResources", locale);
+			content = FXMLLoader.load(getClass().getResource(ui+".fxml"), bundle);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

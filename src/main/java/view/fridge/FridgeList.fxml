@@ -16,19 +16,19 @@
    <bottom>
       <VBox prefHeight="200.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Mark products as used or wasted">
+            <Label text="%fridge.list.markText">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Label>
             <HBox prefHeight="30.0" prefWidth="650.0">
                <children>
-                  <Label prefWidth="60.0" text="ID:">
+                  <Label prefWidth="60.0" text="%fridge.list.idText">
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="fridgeMarkId" prefHeight="25.0" prefWidth="60.0" promptText="ID">
+                  <TextField fx:id="fridgeMarkId" prefHeight="25.0" prefWidth="60.0" promptText="%fridge.list.idField">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -37,15 +37,15 @@
             </HBox>
             <HBox prefHeight="30.0" prefWidth="650.0">
                <children>
-                  <Label prefWidth="60.0" text="Amount:">
+                  <Label prefWidth="60.0" text="%fridge.list.amountText">
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="fridgeMarkAmount" prefHeight="25.0" prefWidth="60.0" promptText="Amount" />
+                  <TextField fx:id="fridgeMarkAmount" prefHeight="25.0" prefWidth="60.0" promptText="%fridge.list.amountField" />
                </children>
             </HBox>
-            <Label text="Used or wasted">
+            <Label text="%fridge.list.choiceText">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -53,7 +53,7 @@
                   <Insets left="15.0" />
                </padding>
             </Label>
-            <RadioButton fx:id="fridgeMarkUsed" mnemonicParsing="false" selected="true" text="Used">
+            <RadioButton fx:id="fridgeMarkUsed" mnemonicParsing="false" selected="true" text="%fridge.list.choiceUsed">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -64,7 +64,7 @@
                   <Insets left="15.0" />
                </padding>
             </RadioButton>
-            <RadioButton fx:id="fridgeMarkWaste" mnemonicParsing="false" text="Wasted" toggleGroup="$statusSelect">
+            <RadioButton fx:id="fridgeMarkWaste" mnemonicParsing="false" text="%fridge.list.choiceWasted" toggleGroup="$statusSelect">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
@@ -72,7 +72,7 @@
                   <Insets left="15.0" />
                </padding>
             </RadioButton>
-            <Button mnemonicParsing="false" onAction="#fridgeMarkUsedWasted" text="Commit">
+            <Button mnemonicParsing="false" onAction="#fridgeMarkUsedWasted" text="%fridge.list.markButton">
                <VBox.margin>
                   <Insets left="15.0" top="10.0" />
                </VBox.margin>
@@ -91,13 +91,13 @@
          <children>
             <TableView fx:id="tableView" prefHeight="383.0" prefWidth="582.0">
               <columns>
-                  <TableColumn fx:id="fridgeIdColumn" prefWidth="50.0" text="ID" />
-                <TableColumn fx:id="fridgeProductColumn" prefWidth="140.0" text="Product" />
-                  <TableColumn fx:id="fridgeCaloriesColumn" minWidth="70.0" prefWidth="70.0" text="Calories" />
-                  <TableColumn fx:id="fridgeSaltColumn" minWidth="70.0" prefWidth="70.0" text="Salt" />
-                  <TableColumn fx:id="fridgeUnitColumn" minWidth="80.0" text="Unit" />
-                <TableColumn fx:id="fridgeAmountColumn" minWidth="70.0" prefWidth="70.0" text="Amount" />
-                  <TableColumn fx:id="fridgeDateColumn" prefWidth="100.0" text="Expiration date" />
+                  <TableColumn fx:id="fridgeIdColumn" prefWidth="50.0" text="%table.id" />
+                <TableColumn fx:id="fridgeProductColumn" prefWidth="140.0" text="%table.product" />
+                  <TableColumn fx:id="fridgeCaloriesColumn" minWidth="70.0" prefWidth="70.0" text="%table.calories" />
+                  <TableColumn fx:id="fridgeSaltColumn" minWidth="70.0" prefWidth="70.0" text="%table.salt" />
+                  <TableColumn fx:id="fridgeUnitColumn" minWidth="80.0" text="%table.unit" />
+                <TableColumn fx:id="fridgeAmountColumn" minWidth="70.0" prefWidth="70.0" text="%table.amount" />
+                  <TableColumn fx:id="fridgeDateColumn" prefWidth="100.0" text="%table.expirationdate" />
               </columns>
                <HBox.margin>
                   <Insets left="60.0" />
@@ -107,7 +107,7 @@
       </HBox>
    </center>
    <top>
-      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Content of the fridge">
+      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="%fridge.list.title">
          <BorderPane.margin>
             <Insets left="250.0" />
          </BorderPane.margin>
