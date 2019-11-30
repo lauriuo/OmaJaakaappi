@@ -11,39 +11,39 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Name of the product" />
+            <Label text="%products.add.nameText" />
             <HBox prefHeight="43.0" prefWidth="600.0">
                <children>
-                  <TextField fx:id="addProductName" promptText="Name" />
+                  <TextField fx:id="addProductName" promptText="%products.add.nameField" />
                </children>
             </HBox>
-            <Label text="Unite used to measure the product" />
+            <Label text="%products.add.unitText" />
             <HBox layoutX="10.0" layoutY="27.0" prefHeight="43.0" prefWidth="600.0">
                <children>
-                  <TextField fx:id="addProductUnit" promptText="Unit" />
+                  <TextField fx:id="addProductUnit" promptText="%products.add.unitField" />
                </children>
             </HBox>
-            <Label text="Calories in 100g/ml" />
+            <Label text="%products.add.caloriesText" />
             <HBox layoutX="10.0" layoutY="87.0" prefHeight="43.0" prefWidth="600.0">
                <children>
-                  <TextField fx:id="addProductCalories" promptText="Calories" />
+                  <TextField fx:id="addProductCalories" promptText="%products.add.caloriesField" />
                </children>
             </HBox>
-            <Label layoutX="10.0" layoutY="130.0" text="Salt in 100g/ml" />
+            <Label layoutX="10.0" layoutY="130.0" text="%products.add.saltText" />
             <HBox layoutX="10.0" layoutY="147.0" prefHeight="43.0" prefWidth="600.0">
                <children>
-                  <TextField fx:id="addProductSalt" promptText="Salt" />
+                  <TextField fx:id="addProductSalt" promptText="%products.add.saltField" />
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="147.0" prefHeight="43.0" prefWidth="600.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#addProductButton" text="Add product" />
+                  <Button mnemonicParsing="false" onAction="#addProductButton" text="%products.add.addButton" />
                </children>
             </HBox>
          </children>
       </VBox>
    </center>
    <top>
-      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Add products" BorderPane.alignment="CENTER" />
+      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="%products.add.title" BorderPane.alignment="CENTER" />
    </top>
 </BorderPane>

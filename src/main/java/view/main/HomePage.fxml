@@ -14,7 +14,7 @@
    <right>
       <VBox prefHeight="550.0" prefWidth="640.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="MyFridge">
+            <Label text="%home.title">
                <font>
                   <Font size="55.0" />
                </font>
@@ -22,7 +22,7 @@
                   <Insets bottom="25.0" />
                </VBox.margin>
             </Label>
-            <Label alignment="CENTER" prefHeight="30.0" prefWidth="532.0" text="Products in the fridge with expiration date in the next two days">
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="532.0" text="%home.listText">
                <VBox.margin>
                   <Insets left="50.0" />
                </VBox.margin>
@@ -31,12 +31,12 @@
                <children>
                   <TableView fx:id="tableView" prefHeight="207.0" prefWidth="532.0">
                     <columns>
-                      <TableColumn fx:id="productColumn" prefWidth="140.0" text="Product" />
-                      <TableColumn fx:id="caloriesColumn" minWidth="70.0" prefWidth="70.0" text="Calories" />
-                        <TableColumn fx:id="saltColumn" minWidth="70.0" prefWidth="70.0" text="Salt" />
-                        <TableColumn fx:id="unitColumn" minWidth="80.0" text="Unit" />
-                        <TableColumn fx:id="amountColumn" minWidth="70.0" prefWidth="70.0" text="Amount" />
-                        <TableColumn fx:id="dateColumn" prefWidth="100.0" text="Expiration date" />
+                      <TableColumn fx:id="productColumn" prefWidth="140.0" text="%table.product" />
+                      <TableColumn fx:id="caloriesColumn" minWidth="70.0" prefWidth="70.0" text="%table.calories" />
+                        <TableColumn fx:id="saltColumn" minWidth="70.0" prefWidth="70.0" text="%table.salt" />
+                        <TableColumn fx:id="unitColumn" minWidth="80.0" text="%table.unit" />
+                        <TableColumn fx:id="amountColumn" minWidth="70.0" prefWidth="70.0" text="%table.amount" />
+                        <TableColumn fx:id="dateColumn" prefWidth="100.0" text="%table.expirationdate" />
                     </columns>
                      <HBox.margin>
                         <Insets left="50.0" />
@@ -52,7 +52,7 @@
          <children>
             <HBox prefHeight="210.0" prefWidth="250.0">
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#fridge" prefHeight="35.0" prefWidth="150.0" text="Fridge">
+                  <Button mnemonicParsing="false" onMouseClicked="#fridge" prefHeight="35.0" prefWidth="150.0" text="%nav.fridge">
                      <HBox.margin>
                         <Insets left="50.0" top="170.0" />
                      </HBox.margin>
@@ -66,7 +66,7 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="10.0" prefHeight="90.0" prefWidth="400.0">
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#products" prefHeight="35.0" prefWidth="150.0" text="Products">
+                  <Button mnemonicParsing="false" onMouseClicked="#products" prefHeight="35.0" prefWidth="150.0" text="%nav.products">
                      <HBox.margin>
                         <Insets left="50.0" top="50.0" />
                      </HBox.margin>
@@ -80,7 +80,7 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="180.0" prefHeight="90.0" prefWidth="400.0">
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#recipes" prefHeight="35.0" prefWidth="150.0" text="Recipes">
+                  <Button mnemonicParsing="false" onMouseClicked="#recipes" prefHeight="35.0" prefWidth="150.0" text="%nav.recipes">
                      <HBox.margin>
                         <Insets left="50.0" top="50.0" />
                      </HBox.margin>
@@ -94,7 +94,7 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="270.0" prefHeight="90.0" prefWidth="400.0">
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#foodDiary" prefHeight="35.0" prefWidth="150.0" text="Food diary">
+                  <Button mnemonicParsing="false" onMouseClicked="#foodDiary" prefHeight="35.0" prefWidth="150.0" text="%nav.foodDiary">
                      <HBox.margin>
                         <Insets left="50.0" top="50.0" />
                      </HBox.margin>
@@ -126,7 +126,7 @@
    <bottom>
       <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#exit" prefHeight="40.0" prefWidth="100.0" text="Exit">
+            <Button mnemonicParsing="false" onMouseClicked="#exit" prefHeight="40.0" prefWidth="100.0" text="%home.exit">
                <HBox.margin>
                   <Insets bottom="35.0" right="57.0" />
                </HBox.margin>

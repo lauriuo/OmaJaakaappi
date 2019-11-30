@@ -9,20 +9,20 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.foodDiary.FoodDiaryListController">
    <top>
-      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Food diary" BorderPane.alignment="CENTER" />
+      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="%foodDiary.list.title" BorderPane.alignment="CENTER" />
    </top>
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <TableView fx:id="tableView" prefHeight="518.0" prefWidth="622.0">
               <columns>
-                <TableColumn fx:id="rpkIdColumn" prefWidth="50.0" text="ID" />
-                <TableColumn fx:id="rpkProductColumn" prefWidth="150.0" text="Product" />
-                  <TableColumn fx:id="rpkCaloriesColumn" minWidth="70.0" prefWidth="70.0" text="Calories" />
-                  <TableColumn fx:id="rpkSaltColumn" minWidth="70.0" prefWidth="70.0" text="Salt" />
-                  <TableColumn fx:id="rpkAmountColumn" minWidth="70.0" prefWidth="70.0" text="Amount" />
-                  <TableColumn fx:id="rpkDateColumn" prefWidth="100.0" text="Date" />
-                  <TableColumn fx:id="rpkUsageColumn" prefWidth="100.0" text="Usage" />
+                <TableColumn fx:id="rpkIdColumn" prefWidth="50.0" text="%table.id" />
+                <TableColumn fx:id="rpkProductColumn" prefWidth="150.0" text="%table.product" />
+                  <TableColumn fx:id="rpkCaloriesColumn" minWidth="70.0" prefWidth="70.0" text="%table.calories" />
+                  <TableColumn fx:id="rpkSaltColumn" minWidth="70.0" prefWidth="70.0" text="%table.salt" />
+                  <TableColumn fx:id="rpkAmountColumn" minWidth="70.0" prefWidth="70.0" text="%table.amount" />
+                  <TableColumn fx:id="rpkDateColumn" prefWidth="100.0" text="%table.useDate" />
+                  <TableColumn fx:id="rpkUsageColumn" prefWidth="100.0" text="%table.usage" />
               </columns>
                <HBox.margin>
                   <Insets left="39.0" />

@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -43,7 +44,9 @@ public class FridgeAddController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		Parent content = null;
 		try {
-			content = FXMLLoader.load(getClass().getResource("/view/products/ProductsList.fxml"));
+			Locale locale = new Locale("fi", "FI");
+			ResourceBundle bundle = ResourceBundle.getBundle("TextResources", locale);
+			content = FXMLLoader.load(getClass().getResource("/view/products/ProductsList.fxml"), bundle);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,7 +64,9 @@ public class FridgeAddController implements Initializable{
 	public void productsAdd(ActionEvent event) {
 		Parent content = null;
 		try {
-			content = FXMLLoader.load(getClass().getResource("/view/products/ProductsAdd.fxml"));
+			Locale locale = new Locale("fi", "FI");
+			ResourceBundle bundle = ResourceBundle.getBundle("TextResources", locale);
+			content = FXMLLoader.load(getClass().getResource("/view/products/ProductsAdd.fxml"), bundle);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -73,7 +78,9 @@ public class FridgeAddController implements Initializable{
 	public void productsList(ActionEvent event) {
 		Parent content = null;
 		try {
-			content = FXMLLoader.load(getClass().getResource("/view/products/ProductsList.fxml"));
+			Locale locale = new Locale("fi", "FI");
+			ResourceBundle bundle = ResourceBundle.getBundle("TextResources", locale);
+			content = FXMLLoader.load(getClass().getResource("/view/products/ProductsList.fxml"), bundle);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

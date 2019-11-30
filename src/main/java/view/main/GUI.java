@@ -1,5 +1,8 @@
 package view.main;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +17,11 @@ public class GUI extends Application{
 	
 	@Override
 	public void start(final Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("NavBar.fxml"));
+		
+		Locale locale = new Locale("fi", "FI");
+		ResourceBundle bundle = ResourceBundle.getBundle("TextResources", locale);
+		
+		Parent root = FXMLLoader.load(getClass().getResource("NavBar.fxml"), bundle);
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();

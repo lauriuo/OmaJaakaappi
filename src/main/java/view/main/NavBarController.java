@@ -2,6 +2,7 @@ package view.main;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -49,7 +50,9 @@ public class NavBarController implements Initializable{
 	private void loadContent(String ui) {
 		Parent content = null;
 		try {
-			content = FXMLLoader.load(getClass().getResource(ui+".fxml"));
+			Locale locale = new Locale("fi", "FI");
+			ResourceBundle bundle = ResourceBundle.getBundle("TextResources", locale);
+			content = FXMLLoader.load(getClass().getResource(ui+".fxml"), bundle);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
