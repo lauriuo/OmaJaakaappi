@@ -22,7 +22,6 @@ import model.OstoslistaDAO;
 import model.Tuote;
 
 public class ShoppingListListController implements Initializable{
-//<Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" fx:id="#shoppingListRemove" prefHeight="25.0" prefWidth="120.0" text="Remove" />
 	static OstoslistaDAO ostoslista = new OstoslistaDAO();
 	@FXML private TableView<Ostoslista> tableView;
     @FXML private TableColumn<Ostoslista, Number> shoppingListIdColumn;

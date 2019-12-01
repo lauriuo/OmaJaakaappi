@@ -1,5 +1,6 @@
 package view.recipes;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -9,18 +10,25 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.Callback;
+import model.Aines;
+import model.AinesDAO;
 import model.Resepti;
 import model.ReseptiDAO;
 import model.TuoteDAO;
 
 public class RecipesListController implements Initializable{
-
+	static AinesDAO aines = new AinesDAO();
 	static ReseptiDAO resepti = new ReseptiDAO();
 	@FXML private TableView<Resepti> tableView;
 	@FXML private TableColumn<Resepti, Number> recipesIdColumn;
@@ -28,9 +36,12 @@ public class RecipesListController implements Initializable{
 	@FXML private TableColumn<Resepti, String> recipesInstructColumn;
 	@FXML private TableColumn<Resepti, String> recipesCaloriesColumn;
 	//@FXML private TableColumn<Object, Number> recipesIngredientColumn;
-	
+	@FXML private Button recipesDetails;	
+	@FXML private Button recipesRemove;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Button recipesDetails = new Button();
+		Button recipesRemove = new Button();
 		recipesIdColumn.setCellValueFactory(new PropertyValueFactory<Resepti, Number>("resepti_id"));
 		recipesNameColumn.setCellValueFactory(new PropertyValueFactory<Resepti, String>("resepti_nimi"));
 		recipesInstructColumn.setCellValueFactory(new PropertyValueFactory<Resepti, String>("resepti_ohje"));
@@ -53,5 +64,32 @@ public class RecipesListController implements Initializable{
 		}
 		ObservableList<Resepti> reseptilista = FXCollections.observableArrayList(recipes);
 		return reseptilista;
+	}
+	public void showRecipesDetails() {
+		Resepti chosenRecipe = tableView.getSelectionModel().getSelectedItem();
+		if (chosenRecipe != null) {
+			Context.getInstance().setId(chosenRecipe.getResepti_id());
+			try {
+				FXMLLoader loader = new FXMLLoader(getClass()
+					.getResource("./RecipesDetails.fxml"));
+				Parent root = loader.load();
+				Stage stage = new Stage();
+				stage.setScene(new Scene(root));
+				stage.setTitle("Recipe details");
+				stage.show();
+			} catch (IOException e) {
+				System.err.println(e);
+			}
+		}
+	}
+	public void removeRecipe() {
+		Resepti recipe_remove = tableView.getSelectionModel().getSelectedItem();
+		int remove_idx = tableView.getSelectionModel().getSelectedIndex();
+
+		if (aines.deleteAineksetResepti(recipe_remove.getResepti_id())) {
+			tableView.getItems().remove(remove_idx);
+			aines.deleteAineksetResepti(recipe_remove.getResepti_id());
+			resepti.deleteResepti(recipe_remove.getResepti_id());
+		}
 	}
 }

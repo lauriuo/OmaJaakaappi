@@ -18,14 +18,16 @@ class ReseptiDAOTest {
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
+		aines.emptyAines();
 		resepti.emptyResepti();
+		tuote.emptyTuote();
 	}
 
 	@BeforeEach
 	void setUp() throws Exception {
+		aines.emptyAines();
 		resepti.emptyResepti();
 		tuote.emptyTuote();
-		aines.emptyAines();
 	}
 
 	@AfterEach
@@ -77,7 +79,11 @@ class ReseptiDAOTest {
 		Tuote id_tuote2 = tuote.readTuoteNimi("Tuote2");
 		aines.createAines(id_tuote1.getTuote_id(), id_resepti.getResepti_id(), 2);
 		aines.createAines(id_tuote2.getTuote_id(), id_resepti.getResepti_id(), 2);
-
-		assertEquals(1200, resepti.countKcalResepti(id_resepti.getResepti_id()), "Pitäis olla 1200.");
+		double kcals = resepti.countKcalResepti(id_resepti.getResepti_id());
+		aines.deleteAineksetResepti(id_resepti.getResepti_id());
+		resepti.deleteResepti(id_resepti.getResepti_id());
+		tuote.deleteTuote("Tuote1");
+		tuote.deleteTuote("Tuote2");
+		assertEquals(12000.0, kcals, "Pitäis olla 12000.");
 	}
 }
