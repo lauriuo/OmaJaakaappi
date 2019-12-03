@@ -165,7 +165,7 @@ public class ReseptiDAO implements IReseptiDAO {
 				for (Object[] o : kcal_and_maara) {
 					double kcal = (double) o[0];
 					double maara = (double) o[1];
-					result += kcal * maara;
+					result += (10 * kcal) * maara;
 				}
 				return result;
 			}

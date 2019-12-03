@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.recipes.RecipesDetailsController">
+   <bottom>
+      <HBox prefHeight="289.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="289.0" prefWidth="707.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Recipes instructions" wrappingWidth="141.13000106811523">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextArea fx:id="textAreaDetails" prefHeight="295.0" prefWidth="700.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </bottom>
+   <top>
+      <GridPane prefHeight="321.0" prefWidth="703.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="700.0" minWidth="10.0" prefWidth="699.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="336.0" minWidth="0.0" prefWidth="1.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="287.0" minHeight="4.0" prefHeight="47.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="481.0" minHeight="10.0" prefHeight="309.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <HBox prefHeight="200.0" prefWidth="610.0" GridPane.rowIndex="1">
+               <children>
+                  <VBox prefHeight="600.0" prefWidth="424.0">
+                     <children>
+                        <TableView fx:id="tableViewFridge" prefHeight="292.0" prefWidth="365.0">
+                          <columns>
+                            <TableColumn fx:id="inFridgeNameColumn" prefWidth="99.0" text="Name" />
+                              <TableColumn fx:id="inFridgeAmountColumn" prefWidth="77.0" text="Amount" />
+                            <TableColumn fx:id="inFridgeUnitColumn" prefWidth="75.0" text="Unit" />
+                              <TableColumn fx:id="inFridgeKcalColumn" prefWidth="76.0" text="Calories" />
+                          </columns>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TableView>
+                     </children>
+                  </VBox>
+                  <Pane prefHeight="600.0" prefWidth="132.0" />
+                  <VBox prefHeight="579.0" prefWidth="431.0">
+                     <children>
+                        <TableView fx:id="tableViewNotFridge" prefHeight="311.0" prefWidth="217.0">
+                           <columns>
+                              <TableColumn fx:id="notFridgeNameColumn" prefWidth="119.0" text="Name" />
+                              <TableColumn fx:id="notFridgeAmountColumn" prefWidth="75.0" text="Amount" />
+                              <TableColumn fx:id="notFridgeUnitColumn" prefWidth="75.0" text="Unit" />
+                              <TableColumn fx:id="notFridgeKcalColumn" prefWidth="66.0" text="Calories" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="26.0" prefWidth="705.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredients in the fridge" wrappingWidth="367.13000106811523">
+                     <HBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Missing ingredients" wrappingWidth="356.13000106811523">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
+   </top>
+</BorderPane>
