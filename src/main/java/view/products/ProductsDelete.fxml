@@ -18,7 +18,7 @@
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="deleteProductName" promptText="%products.delete.searchField" />
-                  <Button mnemonicParsing="false" onAction="#deleteProductButton" prefHeight="25.0" prefWidth="60.0" text="%products.delete.deleteButton">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#deleteProductButton" prefHeight="25.0" prefWidth="60.0" text="%products.delete.deleteButton">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></Button>

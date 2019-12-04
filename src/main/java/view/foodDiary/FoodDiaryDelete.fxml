@@ -21,7 +21,7 @@
             <HBox prefHeight="35.0" prefWidth="700.0">
                <children>
                   <TextField fx:id="rpkSelectId" prefHeight="25.0" prefWidth="80.0" promptText="%foodDiary.delete.searchField" />
-                  <Button mnemonicParsing="false" onAction="#deleteFromRpk" prefWidth="60.0" text="%foodDiary.delete.deleteButton">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#deleteFromRpk" prefWidth="60.0" text="%foodDiary.delete.deleteButton">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>

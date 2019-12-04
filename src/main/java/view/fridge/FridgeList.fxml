@@ -72,7 +72,7 @@
                   <Insets left="15.0" />
                </padding>
             </RadioButton>
-            <Button mnemonicParsing="false" onAction="#fridgeMarkUsedWasted" text="%fridge.list.markButton">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#fridgeMarkUsedWasted" text="%fridge.list.markButton">
                <VBox.margin>
                   <Insets left="15.0" top="10.0" />
                </VBox.margin>

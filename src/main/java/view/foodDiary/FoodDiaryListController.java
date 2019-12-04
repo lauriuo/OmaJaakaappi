@@ -22,7 +22,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 
 public class FoodDiaryListController implements Initializable{
-
 	static TuoteDAO tuote = new TuoteDAO();
 	static JaakaappiDAO jaakaappi = new JaakaappiDAO();
 	static RpkDAO rpk = new RpkDAO();

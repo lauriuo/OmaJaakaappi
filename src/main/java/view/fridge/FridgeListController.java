@@ -3,6 +3,7 @@ package view.fridge;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -24,9 +25,13 @@ import model.JaakaappiDAO;
 import model.Rpk;
 import model.RpkDAO;
 import model.TuoteDAO;
+import view.main.Language;
 
 public class FridgeListController implements Initializable{
-	
+	private Language language = Language.getInstance();
+	private Locale english = new Locale("en", "GB");
+	private Locale finnish = new Locale("fi", "FI");
+	private String used = "Used", waste = "Waste", kaytetty = "Käytetty", havikki = "Hävikki";
 	static TuoteDAO tuote = new TuoteDAO();
 	static JaakaappiDAO jaakaappi = new JaakaappiDAO();
 	static RpkDAO rpk = new RpkDAO();
@@ -92,11 +97,22 @@ public class FridgeListController implements Initializable{
 
 	@FXML
 	public void fridgeMarkUsedWasted() {
-		if (statusSelect.getSelectedToggle().equals(fridgeMarkUsed)) {
-			jaakaappi.updateJkMaara(Integer.parseInt(fridgeMarkId.getText()), Double.parseDouble(fridgeMarkAmount.getText()), "Käytetty");
-		} else if (statusSelect.getSelectedToggle().equals(fridgeMarkWaste)) {
-			jaakaappi.updateJkMaara(Integer.parseInt(fridgeMarkId.getText()), Double.parseDouble(fridgeMarkAmount.getText()), "Hävikki");
+		// jos kielenä englanti, käytetään englantiä statuksessa
+		if (english.equals(language.getLocale())) {
+			if (statusSelect.getSelectedToggle().equals(fridgeMarkUsed)) {
+				jaakaappi.updateJkMaara(Integer.parseInt(fridgeMarkId.getText()), Double.parseDouble(fridgeMarkAmount.getText()), used);
+			} else if (statusSelect.getSelectedToggle().equals(fridgeMarkWaste)) {
+				jaakaappi.updateJkMaara(Integer.parseInt(fridgeMarkId.getText()), Double.parseDouble(fridgeMarkAmount.getText()), waste);
+			}
+		// jos kielenä suomi käytetään suomea statuksessa	
+		} else if (finnish.equals(language.getLocale())) {
+			if (statusSelect.getSelectedToggle().equals(fridgeMarkUsed)) {
+				jaakaappi.updateJkMaara(Integer.parseInt(fridgeMarkId.getText()), Double.parseDouble(fridgeMarkAmount.getText()), kaytetty);
+			} else if (statusSelect.getSelectedToggle().equals(fridgeMarkWaste)) {
+				jaakaappi.updateJkMaara(Integer.parseInt(fridgeMarkId.getText()), Double.parseDouble(fridgeMarkAmount.getText()), havikki);
+			}
 		}
+		
 		tableView.setItems(getAllFridges());
 		
 	}

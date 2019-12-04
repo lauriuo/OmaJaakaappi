@@ -27,7 +27,7 @@
                      <HBox.margin>
                         <Insets left="119.0" />
                      </HBox.margin></DatePicker>
-                  <Button fx:id="rpkSeachButton" mnemonicParsing="false" onAction="#searchRpk" text="%foodDiary.date.searchButton">
+                  <Button fx:id="rpkSeachButton" alignment="CENTER" mnemonicParsing="false" onAction="#searchRpk" text="%foodDiary.date.searchButton">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>

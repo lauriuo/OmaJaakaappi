@@ -16,17 +16,22 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.Jaakaappi;
 import model.JaakaappiDAO;
 
 public class HomePageController implements Initializable{
+	private Language language = Language.getInstance();
+	private Locale english = new Locale("en", "GB");
+	private Locale finnish = new Locale("fi", "FI");
 	static JaakaappiDAO jaakaappi = new JaakaappiDAO();
 	@FXML private BorderPane homePageBorderpane;
 	@FXML private TableView<Object> tableView;
@@ -111,12 +116,27 @@ public class HomePageController implements Initializable{
 		Platform.exit();
 
 	}
+	
+	@FXML
+	public void language(MouseEvent event) throws IOException {
+		if (english.equals(language.getLocale())) {
+			language.setLocale(finnish);
+		} else if (finnish.equals(language.getLocale())) {
+			language.setLocale(english);
+		}
+
+		Stage stage = (Stage) homePageBorderpane.getScene().getWindow();
+		ResourceBundle bundle = ResourceBundle.getBundle("TextResources", language.getLocale());
+		Parent root = FXMLLoader.load(getClass().getResource("NavBar.fxml"), bundle);
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		
+	}
 
 	private void loadContent(String ui) {
 		Parent content = null;
 		try {
-			Locale locale = new Locale("fi", "FI");
-			ResourceBundle bundle = ResourceBundle.getBundle("TextResources", locale);
+			ResourceBundle bundle = ResourceBundle.getBundle("TextResources", language.getLocale());
 			content = FXMLLoader.load(getClass().getResource(ui+".fxml"), bundle);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

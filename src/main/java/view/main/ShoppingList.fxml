@@ -9,8 +9,8 @@
    <left>
       <VBox prefHeight="470.0" prefWidth="164.0" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#shoppingListList" prefHeight="28.0" prefWidth="159.0" text="Show shopping list" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#shoppingListAdd" prefHeight="28.0" prefWidth="158.0" text="Add to shopping list" />
+            <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#shoppingListList" prefHeight="28.0" prefWidth="159.0" text="%shoppingList.nav.list" />
+            <Button alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#shoppingListAdd" prefHeight="28.0" prefWidth="158.0" text="%shoppingList.nav.add" />
          </children>
          <BorderPane.margin>
             <Insets left="10.0" top="30.0" />

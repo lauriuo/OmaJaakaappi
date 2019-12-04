@@ -9,10 +9,10 @@
    <left>
       <VBox prefHeight="470.0" prefWidth="160.0" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#foodDiaryList" prefHeight="25.0" prefWidth="155.0" text="%foodDiary.nav.view" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#foodDiaryDate" prefHeight="25.0" prefWidth="155.0" text="%foodDiary.nav.date" />
-            <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#foodDiaryEdit" prefHeight="25.0" prefWidth="155.0" text="%foodDiary.nav.edit" />
-            <Button layoutX="10.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#foodDiaryDelete" prefHeight="25.0" prefWidth="155.0" text="%foodDiary.nav.delete" />
+            <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#foodDiaryList" prefHeight="25.0" prefWidth="155.0" text="%foodDiary.nav.view" />
+            <Button alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#foodDiaryDate" prefHeight="25.0" prefWidth="155.0" text="%foodDiary.nav.date" />
+            <Button alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#foodDiaryEdit" prefHeight="25.0" prefWidth="155.0" text="%foodDiary.nav.edit" />
+            <Button alignment="CENTER" layoutX="10.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#foodDiaryDelete" prefHeight="25.0" prefWidth="155.0" text="%foodDiary.nav.delete" />
          </children>
          <BorderPane.margin>
             <Insets left="10.0" top="30.0" />
