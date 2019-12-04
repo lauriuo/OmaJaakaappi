@@ -18,7 +18,7 @@
             <HBox prefHeight="54.0" prefWidth="600.0">
                <children>
                   <TextField fx:id="searchProducts" promptText="%products.edit.searchField" />
-                  <Button mnemonicParsing="false" onAction="#searchButtonAction" text="%products.edit.searchButton">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#searchButtonAction" text="%products.edit.searchButton">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></Button>
@@ -100,7 +100,7 @@
                   <TextField fx:id="newProductSalt" layoutX="350.0" layoutY="10.0" prefWidth="100.0" promptText="%products.edit.newSaltField" />
                </children>
             </HBox>
-            <Button mnemonicParsing="false" onAction="#updateButtonAction" prefWidth="65.0" text="%products.edit.editButton" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#updateButtonAction" prefWidth="65.0" text="%products.edit.editButton" />
          </children>
       </VBox>
    </center>

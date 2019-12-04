@@ -12,11 +12,12 @@ import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 
 import javafx.scene.layout.BorderPane;
+import view.main.Language;
 
 public class ProductsController implements Initializable{
+	private Language language = Language.getInstance();
 	@FXML
 	private BorderPane productsBorderpane;
-
 	
 	// Event Listener on Button.onMouseClicked
 	@FXML
@@ -42,8 +43,7 @@ public class ProductsController implements Initializable{
 	private void loadContent(String ui) {
 		Parent content = null;
 		try {
-			Locale locale = new Locale("fi", "FI");
-			ResourceBundle bundle = ResourceBundle.getBundle("TextResources", locale);
+			ResourceBundle bundle = ResourceBundle.getBundle("TextResources", language.getLocale());
 			content = FXMLLoader.load(getClass().getResource(ui+".fxml"), bundle);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

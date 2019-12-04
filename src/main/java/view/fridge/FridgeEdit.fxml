@@ -19,7 +19,7 @@
             <HBox prefHeight="40.0" prefWidth="600.0">
                <children>
                   <TextField fx:id="searchFridge" prefWidth="90.0" promptText="%fridge.edit.searchField" />
-                  <Button mnemonicParsing="false" onAction="#searchFridgeAction" text="%fridge.edit.searchButton">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#searchFridgeAction" text="%fridge.edit.searchButton">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></Button>
@@ -95,7 +95,7 @@
                   <DatePicker fx:id="newFridgeDate" prefHeight="25.0" prefWidth="150.0" promptText="%fridge.edit.newDateField" />
                </children>
             </HBox>
-            <Button mnemonicParsing="false" onAction="#updateFridgeAction" prefWidth="65.0" text="%fridge.edit.editButton">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#updateFridgeAction" prefWidth="65.0" text="%fridge.edit.editButton">
                <VBox.margin>
                   <Insets />
                </VBox.margin></Button>
