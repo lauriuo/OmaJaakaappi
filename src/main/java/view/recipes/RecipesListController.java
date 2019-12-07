@@ -35,13 +35,13 @@ public class RecipesListController implements Initializable{
 	@FXML private TableColumn<Resepti, String> recipesNameColumn;
 	@FXML private TableColumn<Resepti, String> recipesInstructColumn;
 	@FXML private TableColumn<Resepti, String> recipesCaloriesColumn;
-	//@FXML private TableColumn<Object, Number> recipesIngredientColumn;
 	@FXML private Button recipesDetails;	
 	@FXML private Button recipesRemove;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Button recipesDetails = new Button();
-		Button recipesRemove = new Button();
+		tableView.setFixedCellSize(25); //without this, row height will expand if instructions have more lines
+		recipesDetails = new Button();
+		recipesRemove = new Button();
 		recipesIdColumn.setCellValueFactory(new PropertyValueFactory<Resepti, Number>("resepti_id"));
 		recipesNameColumn.setCellValueFactory(new PropertyValueFactory<Resepti, String>("resepti_nimi"));
 		recipesInstructColumn.setCellValueFactory(new PropertyValueFactory<Resepti, String>("resepti_ohje"));
@@ -75,7 +75,7 @@ public class RecipesListController implements Initializable{
 				Parent root = loader.load();
 				Stage stage = new Stage();
 				stage.setScene(new Scene(root));
-				stage.setTitle("Recipe details");
+				stage.setTitle(chosenRecipe.getResepti_nimi());
 				stage.show();
 			} catch (IOException e) {
 				System.err.println(e);
@@ -85,7 +85,6 @@ public class RecipesListController implements Initializable{
 	public void removeRecipe() {
 		Resepti recipe_remove = tableView.getSelectionModel().getSelectedItem();
 		int remove_idx = tableView.getSelectionModel().getSelectedIndex();
-
 		if (aines.deleteAineksetResepti(recipe_remove.getResepti_id())) {
 			tableView.getItems().remove(remove_idx);
 			aines.deleteAineksetResepti(recipe_remove.getResepti_id());
