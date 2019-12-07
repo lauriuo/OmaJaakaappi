@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -22,6 +23,8 @@ import model.Resepti;
 import model.ReseptiDAO;
 
 public class RecipesDetailsController implements Initializable {
+    @FXML private Label totalCalories;
+    @FXML private Label totalSalt;
     @FXML private TableView<Aines> tableViewFridge;
     @FXML private TableColumn<Aines, String> inFridgeNameColumn;
     @FXML private TableColumn<Aines, Number> inFridgeAmountColumn;
@@ -67,7 +70,7 @@ public class RecipesDetailsController implements Initializable {
 	    	@Override  
 	    	public ObservableValue<String> call(CellDataFeatures<Aines, String> aines){  
 				return new SimpleStringProperty(
-                    String.valueOf(aines.getValue().getTuote().getTuote_kcal() *
+                    String.valueOf(aines.getValue().getTuote().getTuote_kcal() * 10 *
                                    aines.getValue().getAines_maara()));
         }});
 
@@ -93,7 +96,6 @@ public class RecipesDetailsController implements Initializable {
                                                          ObservableValue<String>>() {  
 	    	@Override  
 	    	public ObservableValue<String> call(CellDataFeatures<Aines, String> aines){  
-                System.out.println("id column: " + aines.toString());
 				return new SimpleStringProperty(
                     String.valueOf(aines.getValue().getTuote().getTuote_yksikko()));
         }});
@@ -103,7 +105,8 @@ public class RecipesDetailsController implements Initializable {
 	    	@Override  
 	    	public ObservableValue<String> call(CellDataFeatures<Aines, String> aines){  
 				return new SimpleStringProperty(
-                    String.valueOf(aines.getValue().getTuote().getTuote_kcal()));
+                    String.valueOf(aines.getValue().getTuote().getTuote_kcal() * 10 *
+                                   aines.getValue().getAines_maara()));
         }});
         tableViewNotFridge.setItems(aineet);
     }
@@ -118,9 +121,10 @@ public class RecipesDetailsController implements Initializable {
         for (Aines aines : aineet) {
             salt += (aines.getAines_maara() * (10 * aines.getTuote().getTuote_suola()));
         }
-        String textAreaText = "total calories: " + kcal + "\n" +
-                              "total salt: " + salt + "\n\n" +
-                              r.getResepti_ohje();
+        String textAreaText = r.getResepti_ohje();
+        totalCalories.setText(String.format("%.2f", kcal));
+        totalSalt.setText(String.format("%.2f", salt));
+        textAreaDetails.setWrapText(true); //makes a new line when text goes over the area width
         textAreaDetails.setText(textAreaText);
     }
 
