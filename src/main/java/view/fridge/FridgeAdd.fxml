@@ -33,7 +33,7 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="147.0" prefHeight="43.0" prefWidth="600.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#addFridgeButton" text="%fridge.add.addButton" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#addFridgeButton" text="%fridge.add.addButton" />
                </children>
             </HBox>
          </children>
@@ -43,12 +43,12 @@
       <VBox prefHeight="549.0" prefWidth="184.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="%fridge.add.productGuideText" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" onAction="#productsList" prefWidth="150.0" text="%fridge.add.productListButton">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#productsList" prefWidth="150.0" text="%fridge.add.productListButton">
                <VBox.margin>
                   <Insets left="12.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#productsAdd" prefWidth="150.0" text="%fridge.add.productAddButton">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#productsAdd" prefWidth="150.0" text="%fridge.add.productAddButton">
                <VBox.margin>
                   <Insets left="12.0" top="10.0" />
                </VBox.margin>

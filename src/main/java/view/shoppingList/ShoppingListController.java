@@ -12,8 +12,10 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
 import javafx.scene.layout.BorderPane;
+import view.main.Language;
 
 public class ShoppingListController implements Initializable{
+	private Language language = Language.getInstance();
 	@FXML private BorderPane shoppingListBorderpane;
 	
 	// Event Listener on Button.onMouseClicked
@@ -29,11 +31,12 @@ public class ShoppingListController implements Initializable{
 	private void loadContent(String ui) {
 		Parent content = null;
 		try {
-			content = FXMLLoader.load(getClass().getResource(ui+".fxml"));
+			ResourceBundle bundle = ResourceBundle.getBundle("TextResources", language.getLocale());
+			content = FXMLLoader.load(getClass().getResource(ui+".fxml"), bundle);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		shoppingListBorderpane.setCenter(content);
+		shoppingListBorderpane.setRight(content);
 	}
 	
 	@Override

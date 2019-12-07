@@ -11,8 +11,10 @@ import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 
 import javafx.scene.layout.BorderPane;
+import view.main.Language;
 
 public class RecipesController implements Initializable{
+	private Language language = Language.getInstance();
 	@FXML
 	private BorderPane recipesBorderpane;
 
@@ -46,12 +48,13 @@ public class RecipesController implements Initializable{
 	private void loadContent(String ui) {
 		Parent content = null;
 		try {
-			content = FXMLLoader.load(getClass().getResource(ui+".fxml"));
+			ResourceBundle bundle = ResourceBundle.getBundle("TextResources", language.getLocale());
+			content = FXMLLoader.load(getClass().getResource(ui+".fxml"), bundle);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		recipesBorderpane.setCenter(content);
+		recipesBorderpane.setRight(content);
 	}
 	
 	@Override

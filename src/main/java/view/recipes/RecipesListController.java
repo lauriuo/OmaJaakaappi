@@ -26,8 +26,10 @@ import model.AinesDAO;
 import model.Resepti;
 import model.ReseptiDAO;
 import model.TuoteDAO;
+import view.main.Language;
 
 public class RecipesListController implements Initializable{
+	Language language = Language.getInstance();
 	static AinesDAO aines = new AinesDAO();
 	static ReseptiDAO resepti = new ReseptiDAO();
 	@FXML private TableView<Resepti> tableView;
@@ -37,6 +39,7 @@ public class RecipesListController implements Initializable{
 	@FXML private TableColumn<Resepti, String> recipesCaloriesColumn;
 	@FXML private Button recipesDetails;	
 	@FXML private Button recipesRemove;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		tableView.setFixedCellSize(25); //without this, row height will expand if instructions have more lines
@@ -70,8 +73,8 @@ public class RecipesListController implements Initializable{
 		if (chosenRecipe != null) {
 			Context.getInstance().setId(chosenRecipe.getResepti_id());
 			try {
-				FXMLLoader loader = new FXMLLoader(getClass()
-					.getResource("./RecipesDetails.fxml"));
+				ResourceBundle bundle = ResourceBundle.getBundle("TextResources", language.getLocale());
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("./RecipesDetails.fxml"), bundle);
 				Parent root = loader.load();
 				Stage stage = new Stage();
 				stage.setScene(new Scene(root));

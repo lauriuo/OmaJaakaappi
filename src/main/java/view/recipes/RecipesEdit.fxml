@@ -8,71 +8,98 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.recipes.RecipesEditController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.recipes.RecipesEditController">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Label" />
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <Label text="%recipes.edit.searchText" />
+            <HBox prefHeight="50.0" prefWidth="700.0">
                <children>
-                  <TextField fx:id="searchRecipes" promptText="Name of the recipe" />
-                  <Button mnemonicParsing="false" onAction="#searchButtonAction" text="Search" />
+                  <TextField fx:id="searchRecipes" promptText="%recipes.edit.searchField" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#searchButtonAction" text="%recipes.edit.searchButton">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin></Button>
                </children>
             </HBox>
             <HBox prefHeight="26.0" prefWidth="600.0">
                <children>
-                  <Label text="The current name">
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding></Label>
-                  <Label text="The current instructions">
+                  <Label prefWidth="170.0" text="%recipes.edit.currentNameText">
                      <HBox.margin>
-                        <Insets left="100.0" />
+                        <Insets left="10.0" />
+                     </HBox.margin></Label>
+                  <Label prefWidth="170.0" text="%recipes.edit.currentInstructionsText">
+                     <HBox.margin>
+                        <Insets left="30.0" />
                      </HBox.margin></Label>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="127.0" prefHeight="49.0" prefWidth="600.0">
+            <HBox layoutX="10.0" layoutY="127.0" prefHeight="180.0" prefWidth="700.0">
                <children>
-                  <Label fx:id="lblOldName" text="Label">
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding></Label>
-                  <Label fx:id="lblOldInst" text="Label">
+                  <Label fx:id="lblOldName" prefWidth="170.0">
                      <HBox.margin>
-                        <Insets left="170.0" />
+                        <Insets left="10.0" />
+                     </HBox.margin></Label>
+                  <Label fx:id="lblOldInst" alignment="TOP_LEFT" prefHeight="175.0" prefWidth="350.0">
+                     <HBox.margin>
+                        <Insets left="30.0" />
                      </HBox.margin></Label>
                </children>
             </HBox>
             <HBox prefHeight="30.0" prefWidth="600.0">
                <children>
-                  <Label text="The new name">
+                  <Label prefWidth="170.0" text="%recipes.edit.newNameText">
                      <HBox.margin>
-                        <Insets left="20.0" />
+                        <Insets left="10.0" />
                      </HBox.margin>
                   </Label>
-                  <Label layoutX="10.0" layoutY="10.0" text="The new instructions">
+                  <Label layoutX="10.0" layoutY="10.0" prefWidth="150.0" text="%recipes.edit.newInstructionsText">
                      <HBox.margin>
-                        <Insets left="115.0" />
+                        <Insets left="30.0" />
                      </HBox.margin>
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="36.0" prefWidth="600.0">
+            <HBox prefHeight="180.0" prefWidth="700.0">
                <children>
-                  <TextField fx:id="newRecipeName" promptText="Name" />
-                  <TextField fx:id="newRecipeInstructions" layoutX="10.0" layoutY="10.0" promptText="Instructions">
+                  <TextField fx:id="newRecipeName" prefHeight="25.0" prefWidth="160.0" promptText="%recipes.edit.newNameField">
                      <HBox.margin>
-                        <Insets left="50.0" />
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin></TextField>
+                  <TextField fx:id="newRecipeInstructions" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="175.0" prefWidth="350.0" promptText="%recipes.edit.newInstructionsField">
+                     <HBox.margin>
+                        <Insets left="30.0" />
                      </HBox.margin>
                   </TextField>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" onAction="#updateButtonEditAction" text="Edit" />
-            <Button mnemonicParsing="false" onAction="#updateemptyButtonEditAction" text="Edit and empty" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#updateButtonEditAction" prefWidth="80.0" text="%recipes.edit.editButton">
+                     <HBox.margin>
+                        <Insets right="190.0" top="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <VBox prefHeight="98.0" prefWidth="300.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" prefHeight="35.0" prefWidth="250.0" text="%recipes.edit.editAndEmptyText">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#updateemptyButtonEditAction" text="%recipes.edit.editAndEmptyButton">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </center>
    <top>
-      <Label text="Edit recipes" BorderPane.alignment="CENTER" />
+      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="%recipes.edit.title" BorderPane.alignment="CENTER" />
    </top>
 </BorderPane>

@@ -2,34 +2,21 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.recipes.RecipesListController">
-   <top>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="list of recipes" BorderPane.alignment="CENTER" />
-   </top>
-   <center>
-      <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn fx:id="recipesIdColumn" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="recipesNameColumn" prefWidth="75.0" text="Name" />
-            <TableColumn fx:id="recipesInstructColumn" prefWidth="190.0" text="Instructions" />
-            <TableColumn fx:id="recipesCaloriesColumn" prefWidth="59.0" text="Calories" />
-        </columns>
-      </TableView>
-   </center>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.recipes.RecipesListController">
    <left>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="379.0" prefWidth="207.0">
                <children>
-                  <Button fx:id="recipesDetails" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#showRecipesDetails" prefHeight="33.0" prefWidth="138.0" text="Show recipe details" />
-                  <Button fx:id="recipesRemove" mnemonicParsing="false" onMouseClicked="#removeRecipe" prefHeight="33.0" prefWidth="138.0" text="Remove a recipe">
+                  <Button fx:id="recipesDetails" alignment="CENTER" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#showRecipesDetails" prefHeight="33.0" prefWidth="138.0" text="%recipes.list.detailsButton" />
+                  <Button fx:id="recipesRemove" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#removeRecipe" prefHeight="33.0" prefWidth="138.0" text="%recipes.list.removeButton">
                      <VBox.margin>
                         <Insets top="25.0" />
                      </VBox.margin>
@@ -39,4 +26,20 @@
          </children>
       </HBox>
    </left>
+   <top>
+      <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="%recipes.list.title" BorderPane.alignment="CENTER" />
+   </top>
+   <right>
+      <TableView fx:id="tableView" prefHeight="200.0" prefWidth="462.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="recipesIdColumn" prefWidth="50.0" text="%table.id" />
+          <TableColumn fx:id="recipesNameColumn" prefWidth="150.0" text="%table.recipe" />
+            <TableColumn fx:id="recipesInstructColumn" prefWidth="190.0" text="%table.instructions" />
+            <TableColumn fx:id="recipesCaloriesColumn" minWidth="70.0" prefWidth="70.0" text="%table.calories" />
+        </columns>
+         <BorderPane.margin>
+            <Insets right="30.0" />
+         </BorderPane.margin>
+      </TableView>
+   </right>
 </BorderPane>

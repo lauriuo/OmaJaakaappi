@@ -9,10 +9,10 @@
    <left>
       <VBox prefHeight="470.0" prefWidth="135.0" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#productsList" prefHeight="25.0" prefWidth="120.0" text="%products.nav.list" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#productsAdd" prefHeight="25.0" prefWidth="120.0" text="%products.nav.add" />
-            <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#productsEdit" prefHeight="25.0" prefWidth="120.0" text="%products.nav.edit" />
-            <Button layoutX="10.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#productsDelete" prefHeight="25.0" prefWidth="120.0" text="%products.nav.delete" />
+            <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#productsList" prefHeight="25.0" prefWidth="120.0" text="%products.nav.list" />
+            <Button alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#productsAdd" prefHeight="25.0" prefWidth="120.0" text="%products.nav.add" />
+            <Button alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#productsEdit" prefHeight="25.0" prefWidth="120.0" text="%products.nav.edit" />
+            <Button alignment="CENTER" layoutX="10.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#productsDelete" prefHeight="25.0" prefWidth="120.0" text="%products.nav.delete" />
          </children>
          <BorderPane.margin>
             <Insets left="10.0" top="30.0" />

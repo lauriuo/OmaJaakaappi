@@ -14,7 +14,7 @@
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="tableView" prefHeight="518.0" prefWidth="622.0">
+            <TableView fx:id="tableView" prefHeight="518.0" prefWidth="612.0">
               <columns>
                 <TableColumn fx:id="rpkIdColumn" prefWidth="50.0" text="%table.id" />
                 <TableColumn fx:id="rpkProductColumn" prefWidth="150.0" text="%table.product" />
@@ -25,7 +25,7 @@
                   <TableColumn fx:id="rpkUsageColumn" prefWidth="100.0" text="%table.usage" />
               </columns>
                <HBox.margin>
-                  <Insets left="39.0" />
+                  <Insets left="44.0" />
                </HBox.margin>
             </TableView>
          </children>

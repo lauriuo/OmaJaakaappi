@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import model.JaakaappiDAO;
 import model.TuoteDAO;
+import view.main.Language;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,6 +25,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.DatePicker;
 
 public class FridgeAddController implements Initializable{
+	private Language language = Language.getInstance();
 	static TuoteDAO tuote = new TuoteDAO();
 	static JaakaappiDAO jaakaappi = new JaakaappiDAO();
 	@FXML private BorderPane fridgeAddBorderpane;
@@ -44,8 +46,7 @@ public class FridgeAddController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		Parent content = null;
 		try {
-			Locale locale = new Locale("fi", "FI");
-			ResourceBundle bundle = ResourceBundle.getBundle("TextResources", locale);
+			ResourceBundle bundle = ResourceBundle.getBundle("TextResources", language.getLocale());
 			content = FXMLLoader.load(getClass().getResource("/view/products/ProductsList.fxml"), bundle);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -64,8 +65,7 @@ public class FridgeAddController implements Initializable{
 	public void productsAdd(ActionEvent event) {
 		Parent content = null;
 		try {
-			Locale locale = new Locale("fi", "FI");
-			ResourceBundle bundle = ResourceBundle.getBundle("TextResources", locale);
+			ResourceBundle bundle = ResourceBundle.getBundle("TextResources", language.getLocale());
 			content = FXMLLoader.load(getClass().getResource("/view/products/ProductsAdd.fxml"), bundle);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -78,8 +78,7 @@ public class FridgeAddController implements Initializable{
 	public void productsList(ActionEvent event) {
 		Parent content = null;
 		try {
-			Locale locale = new Locale("fi", "FI");
-			ResourceBundle bundle = ResourceBundle.getBundle("TextResources", locale);
+			ResourceBundle bundle = ResourceBundle.getBundle("TextResources", language.getLocale());
 			content = FXMLLoader.load(getClass().getResource("/view/products/ProductsList.fxml"), bundle);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

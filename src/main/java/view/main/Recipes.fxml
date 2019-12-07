@@ -9,11 +9,11 @@
    <left>
       <VBox prefHeight="470.0" prefWidth="135.0" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#recipesList" prefHeight="25.0" prefWidth="120.0" text="List recipes" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#recipesAdd" prefHeight="25.0" prefWidth="120.0" text="Add recipes" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#ingredientAdd" prefHeight="25.0" prefWidth="120.0" text="Add ingredients" />
-            <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#recipesEdit" prefHeight="25.0" prefWidth="120.0" text="Edit recipes" />
-            <Button layoutX="10.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#recipesDelete" prefHeight="25.0" prefWidth="120.0" text="Delete recipes" />
+            <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#recipesList" prefHeight="25.0" prefWidth="120.0" text="%recipes.nav.list" />
+            <Button alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#recipesAdd" prefHeight="25.0" prefWidth="120.0" text="%recipes.nav.add" />
+            <Button alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#ingredientAdd" prefHeight="25.0" prefWidth="120.0" text="%recipes.nav.addIngredients" />
+            <Button alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#recipesEdit" prefHeight="25.0" prefWidth="120.0" text="%recipes.nav.edit" />
+            <Button alignment="CENTER" layoutX="10.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#recipesDelete" prefHeight="25.0" prefWidth="120.0" text="%recipes.nav.delete" />
          </children>
          <BorderPane.margin>
             <Insets left="10.0" top="30.0" />
