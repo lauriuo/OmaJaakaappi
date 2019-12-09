@@ -15,10 +15,13 @@
          <children>
             <VBox prefHeight="379.0" prefWidth="207.0">
                <children>
-                  <Button fx:id="recipesDetails" alignment="CENTER" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#showRecipesDetails" prefHeight="33.0" prefWidth="138.0" text="%recipes.list.detailsButton" />
+                  <Button fx:id="recipesDetails" alignment="CENTER" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#showRecipesDetails" prefHeight="33.0" prefWidth="138.0" text="%recipes.list.detailsButton">
+                     <VBox.margin>
+                        <Insets left="40.0" />
+                     </VBox.margin></Button>
                   <Button fx:id="recipesRemove" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#removeRecipe" prefHeight="33.0" prefWidth="138.0" text="%recipes.list.removeButton">
                      <VBox.margin>
-                        <Insets top="25.0" />
+                        <Insets left="40.0" top="25.0" />
                      </VBox.margin>
                   </Button>
                </children>
