@@ -116,10 +116,12 @@ public class RecipesDetailsController implements Initializable {
         double salt = 0;
         @SuppressWarnings("unchecked")
         ArrayList<Aines> aineet = (ArrayList<Aines>)(ArrayList<?>)
-            aines_dao.availableForResepti(Context.getInstance().getId());       
+            aines_dao.readAineksetReseptiID(Context.getInstance().getId());       
 
         for (Aines aines : aineet) {
+            System.out.println("salt: " + salt + "aines_maara: " + aines.getAines_maara() + " suola tuote: " + aines.getTuote().getTuote_suola());
             salt += (aines.getAines_maara() * (10 * aines.getTuote().getTuote_suola()));
+            System.out.println("salt: " + salt);
         }
         String textAreaText = r.getResepti_ohje();
         totalCalories.setText(String.format("%.2f", kcal));
