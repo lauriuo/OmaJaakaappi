@@ -119,9 +119,7 @@ public class RecipesDetailsController implements Initializable {
             aines_dao.readAineksetReseptiID(Context.getInstance().getId());       
 
         for (Aines aines : aineet) {
-            System.out.println("salt: " + salt + "aines_maara: " + aines.getAines_maara() + " suola tuote: " + aines.getTuote().getTuote_suola());
             salt += (aines.getAines_maara() * (10 * aines.getTuote().getTuote_suola()));
-            System.out.println("salt: " + salt);
         }
         String textAreaText = r.getResepti_ohje();
         totalCalories.setText(String.format("%.2f", kcal));
