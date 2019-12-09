@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+
+<HBox fx:id="rootPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="310.0" prefWidth="384.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.main.SplashController">
+   <children>
+      <StackPane prefHeight="150.0" prefWidth="200.0">
+         <children>
+            <Rectangle fx:id="r1" arcHeight="5.0" arcWidth="5.0" fill="#344657" height="200.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+            <Rectangle fx:id="r2" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="161.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
+            <Rectangle fx:id="r3" arcHeight="5.0" arcWidth="5.0" fill="#1396d6" height="114.0" stroke="BLACK" strokeType="INSIDE" width="124.0" />
+            <Rectangle fx:id="r4" arcHeight="5.0" arcWidth="5.0" fill="#f2f2f2" height="89.0" stroke="BLACK" strokeType="INSIDE" width="94.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME" />
+         </children>
+      </StackPane>
+   </children>
+</HBox>
