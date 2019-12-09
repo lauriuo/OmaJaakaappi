@@ -66,8 +66,8 @@ INSERT INTO tuote (tuote_nimi, tuote_yksikko, tuote_kcal, tuote_suola) VALUES ("
 INSERT INTO tuote (tuote_nimi, tuote_yksikko, tuote_kcal, tuote_suola) VALUES ("Pea", "kg", 70, 0.002);
 INSERT INTO tuote (tuote_nimi, tuote_yksikko, tuote_kcal, tuote_suola) VALUES ("Olive oil", "l", 820, 0.002);
 INSERT INTO tuote (tuote_nimi, tuote_yksikko, tuote_kcal, tuote_suola) VALUES ("Spinach", "kg", 20, 0.06);
-INSERT INTO jaakaappi (tuote_pvm, tuote_maara, tuote_status, tuote_id) VALUES (14/07/2019, 0.5, "Käytettävissä", 1);
-INSERT INTO jaakaappi (tuote_pvm, tuote_maara, tuote_status, tuote_id) VALUES (13/07/2019, 0.8, "Käytettävissä", 3);
+INSERT INTO jaakaappi (tuote_pvm, tuote_maara, tuote_status, tuote_id) VALUES (DATE("2019/12/14"), 0.5, "Käytettävissä", 1);
+INSERT INTO jaakaappi (tuote_pvm, tuote_maara, tuote_status, tuote_id) VALUES (DATE("2019/12/11"), 0.8, "Käytettävissä", 3);
 INSERT INTO resepti (resepti_nimi, resepti_ohje) VALUES ("Parmesan spring chicken",
 "Heat grill to medium and line the grill pan with foil. Beat the egg white on a plate with a little salt and pepper. Tip the parmesan onto another plate. Dip the chicken first in egg white, then in the cheese. Grill the coated chicken for 10-12 mins, turning once until browned and crisp.
 Meanwhile, boil the potatoes for 10 mins, adding the peas for the final 3 mins, then drain. Toss the vegetables with the spinach leaves, vinegar, oil and seasoning to taste. Divide between four warm plates, then serve with the chicken.");

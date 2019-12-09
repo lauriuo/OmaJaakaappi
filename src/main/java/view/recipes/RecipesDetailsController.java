@@ -122,8 +122,8 @@ public class RecipesDetailsController implements Initializable {
             salt += (aines.getAines_maara() * (10 * aines.getTuote().getTuote_suola()));
         }
         String textAreaText = r.getResepti_ohje();
-        totalCalories.setText(String.format("%.2f", kcal));
-        totalSalt.setText(String.format("%.2f", salt));
+        totalCalories.setText(String.format("%.2f kcal", kcal));
+        totalSalt.setText(String.format("%.2f g", salt));
         textAreaDetails.setWrapText(true); //makes a new line when text goes over the area width
         textAreaDetails.setText(textAreaText);
     }
