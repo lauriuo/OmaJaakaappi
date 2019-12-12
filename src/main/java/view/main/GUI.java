@@ -10,7 +10,11 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**
+ * The class for starting the graphical user interface.
+ * @author Ville
+ *
+ */
 public class GUI extends Application{
 	
 	@Override

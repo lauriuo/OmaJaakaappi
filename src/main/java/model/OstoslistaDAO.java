@@ -77,7 +77,6 @@ public class OstoslistaDAO implements IOstoslistaDAO {
 	/**
 	 * Reading a Ostoslista record from the database using the ID and the expiration date of the Tuote to read it.
 	 * @param tuote_id The ID of the Tuote in the Ostoslista to be read.
-	 * @param pvm The expiration date of the Tuote which is being read from the Ostoslista.
 	 * @return Returns the Ostoslista record form the database which was read.
 	 */
 	@Override
@@ -209,14 +208,5 @@ public class OstoslistaDAO implements IOstoslistaDAO {
         } finally {
             istunto.close();
 		}
-    }
-    public static void main(String[] args) {
-        OstoslistaDAO ostoslista = new OstoslistaDAO();
-        ostoslista.createOstoslista(2, 1);
-        ArrayList<Object> os = ostoslista.readOstoslistat();
-
-        for (Object o : os) {
-            System.out.println(o.toString());
-        }
     }
 }
