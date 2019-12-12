@@ -332,6 +332,7 @@ public class AinesDAO implements IAinesDAO {
 	}
 	/**
 	 * For a given recipe, searches the ingredients for it that are in the Jaakaappi table.
+	 * @param resepti_id The ID of the recipe in question.
 	 * @return Returns an ArrayList of Aines objects if the operation was successful. Returns null otherwise.
 	 */
 	@Override
@@ -363,6 +364,7 @@ public class AinesDAO implements IAinesDAO {
 	}
 	/**
 	 * For a given recipe, searches the ingredients for it that are not in the Jaakaappi table.
+	 * @param resepti_id The ID of the recipe in question.
 	 * @return Returns an ArrayList of Aines objects if the operation was successful. Returns null otherwise.
 	 */
 	@Override
